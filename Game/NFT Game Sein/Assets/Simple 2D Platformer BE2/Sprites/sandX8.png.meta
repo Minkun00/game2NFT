@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 36506c6a32017204ab1c0f729f8fae7f
+guid: 2f8fa57bdd3c5644bb9221bc81e27783
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4033355307889638888
-    second: pixil-frame-0 (6)_0
+      213: -8845832577652336029
+    second: sandX8_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -98,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_0
+      name: sandX8_0
       rect:
         serializedVersion: 2
         x: 0
@@ -106,20 +106,26 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -58, y: 64}
+        - {x: -64, y: 58}
+        - {x: -64, y: 6}
+        - {x: -58, y: -64}
+        - {x: 64, y: -64}
+        - {x: 64, y: 64}
       tessellationDetail: 0
       bones: []
-      spriteID: f5062c5de5a7b1447bdc56e0e4c9542d
-      internalID: -937527992
+      spriteID: 36a547a432a4d3580800000000000000
+      internalID: -8845832577652336029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_1
+      name: sandX8_1
       rect:
         serializedVersion: 2
         x: 128
@@ -127,20 +133,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdd37287ce2a84342b71b3b996fb77fa
-      internalID: -547805789
+      spriteID: f24ec3b87b2bf3047b3d9956b2c86741
+      internalID: -730936324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_2
+      name: sandX8_2
       rect:
         serializedVersion: 2
         x: 256
@@ -148,20 +154,44 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16cb6c1230a1fce4e8b29ff3d8763738
-      internalID: 893935029
+      spriteID: cadffde17f35ac847a659d9d6de25a1e
+      internalID: -1061724386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_3
+      name: sandX8_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -64, y: -64}
+        - {x: 64, y: -64}
+        - {x: 64, y: 64}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57350538591d4a74283738a1ed615d45
+      internalID: -184090176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sandX8_4
       rect:
         serializedVersion: 2
         x: 0
@@ -169,20 +199,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1df7f33481ed5754cad4deb0b90ce544
-      internalID: 582862482
+      spriteID: 8a2148223b3264a41b9d4bc3a0dac7d2
+      internalID: 1782584700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_4
+      name: sandX8_5
       rect:
         serializedVersion: 2
         x: 128
@@ -190,20 +220,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 092645321ac627f4e97f71425396c431
-      internalID: -332187022
+      spriteID: fa90f05050ce31d4b8b2c53c85b16ae9
+      internalID: 1508602809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_5
+      name: sandX8_6
       rect:
         serializedVersion: 2
         x: 256
@@ -211,20 +241,44 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6190ab4334367a4d98db79d7a44900f
-      internalID: 348123012
+      spriteID: 13b825696e6cc764394358872349780f
+      internalID: -746539282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_6
+      name: sandX8_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 64, y: -64}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3902c6db563de1f43a434a28be5fa8d5
+      internalID: -925454242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sandX8_8
       rect:
         serializedVersion: 2
         x: 0
@@ -232,20 +286,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa3ec606558698048847630446a252f3
-      internalID: 310868547
+      spriteID: ff041ecac8fe42644aa71059da4dc38f
+      internalID: 2052422342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_7
+      name: sandX8_9
       rect:
         serializedVersion: 2
         x: 128
@@ -253,20 +307,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a609f85b64c5a5b4191b86307cf51568
-      internalID: -30703930
+      spriteID: 5d0afe801731e384ca8ee60ab6c65bf6
+      internalID: 1963611383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_8
+      name: sandX8_10
       rect:
         serializedVersion: 2
         x: 256
@@ -274,20 +328,41 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d74db2522447ad14e8992a4e24dac0f7
-      internalID: 112674143
+      spriteID: 2360e2544c9c67e4bba8be020e1c80dc
+      internalID: -1397113207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_9
+      name: sandX8_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aee22865ab78e2e478f5d70698f7745a
+      internalID: -15456006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sandX8_12
       rect:
         serializedVersion: 2
         x: 0
@@ -295,20 +370,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d82526fbf93d5a24494038d25466363d
-      internalID: -2054892185
+      spriteID: a3cfd7b817244d2498f1f1fde61d8f60
+      internalID: 712344504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_10
+      name: sandX8_13
       rect:
         serializedVersion: 2
         x: 128
@@ -316,20 +391,20 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e23d6bf3bba800846a1a5a3e7ab96361
-      internalID: -1690269372
+      spriteID: d18d35ae06ccbfa469e8b1ffa4a1fa37
+      internalID: -2118001539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixil-frame-0 (6)_11
+      name: sandX8_14
       rect:
         serializedVersion: 2
         x: 256
@@ -337,14 +412,35 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23021976ffc60bc46a61be3b21285cff
-      internalID: -61959303
+      spriteID: 44a6e2fdb8b543146bd23435f6c1b128
+      internalID: 1007989742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sandX8_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de097d12e62beb9479241cd466468548
+      internalID: 8493018
       vertices: []
       indices: 
       edges: []
@@ -352,7 +448,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b1ceddcf24af7da4b85308acd9488d92
+    spriteID: d3dc383192918ae4cb819f1333fe921a
     internalID: 0
     vertices: []
     indices: 
@@ -360,18 +456,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pixil-frame-0 (6)_0: -937527992
-      pixil-frame-0 (6)_1: -547805789
-      pixil-frame-0 (6)_10: -1690269372
-      pixil-frame-0 (6)_11: -61959303
-      pixil-frame-0 (6)_2: 893935029
-      pixil-frame-0 (6)_3: 582862482
-      pixil-frame-0 (6)_4: -332187022
-      pixil-frame-0 (6)_5: 348123012
-      pixil-frame-0 (6)_6: 310868547
-      pixil-frame-0 (6)_7: -30703930
-      pixil-frame-0 (6)_8: 112674143
-      pixil-frame-0 (6)_9: -2054892185
+      sandX8_0: -8845832577652336029
+      sandX8_1: -730936324
+      sandX8_10: -1397113207
+      sandX8_11: -15456006
+      sandX8_12: 712344504
+      sandX8_13: -2118001539
+      sandX8_14: 1007989742
+      sandX8_15: 8493018
+      sandX8_2: -1061724386
+      sandX8_3: -184090176
+      sandX8_4: 1782584700
+      sandX8_5: 1508602809
+      sandX8_6: -746539282
+      sandX8_7: -925454242
+      sandX8_8: 2052422342
+      sandX8_9: 1963611383
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

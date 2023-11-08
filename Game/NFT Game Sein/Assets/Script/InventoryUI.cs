@@ -47,7 +47,7 @@ public class InventoryUI : MonoBehaviour
 
     public void AddSlot()
     {
-        inven.SlotCnt = inven.SlotCnt + 4;
+        inven.SlotCnt = inven.SlotCnt + 1;
     }
 
     void RedrawSlotUI()
