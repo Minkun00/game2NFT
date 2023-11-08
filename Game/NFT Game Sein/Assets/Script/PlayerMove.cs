@@ -25,8 +25,9 @@ public class PlayerMove : MonoBehaviour
     {
         // 방향전환
         if (Input.GetButton("Horizontal"))
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;  // Input.GetAxisRaw : 방향키 입력 받아옴. 왼쪽 -1 오른쪽 1
-
+        {
+            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;  // Input.GetAxisRaw : 방향키 입력 받아옴. 왼쪽 -1 오른쪽 1
+        }
 
         // stop speed
         if (Input.GetButtonUp("Horizontal"))  
@@ -36,14 +37,16 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftAlt) && !anim.GetBool("isJumping"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            anim.SetBool("isJumping", true);
+            //anim.SetBool("isJumping", true);
         }
 
         // animation
+        /*
         if (Mathf.Abs(rigid.velocity.x) < 0.3)
             anim.SetBool("isWalking", false);
         else
             anim.SetBool("isWalking", true);
+        */
     }
 
 
@@ -67,11 +70,13 @@ public class PlayerMove : MonoBehaviour
 
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 2, LayerMask.GetMask("Ground"));  // RatCastHit : Ray에 닿은 오브젝트
                                                                                                                       // LayerMask.GetMask로 Platform이라는 Layer에만 적용되게 함.
+            
             if (rayHit.collider != null)  // RaycastHit의 변수인 rayHit의 collider로 검색 확인 가능.
             {
                 if (rayHit.distance < 1.0f)
                     anim.SetBool("isJumping", false);
             }
+            
         }
     }
 
