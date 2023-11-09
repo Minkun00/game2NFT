@@ -37,16 +37,15 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftAlt) && !anim.GetBool("isJumping"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            //anim.SetBool("isJumping", true);
+            anim.SetBool("isJumping", true);
         }
 
         // animation
-        /*
+        
         if (Mathf.Abs(rigid.velocity.x) < 0.3)
             anim.SetBool("isWalking", false);
         else
             anim.SetBool("isWalking", true);
-        */
     }
 
 
