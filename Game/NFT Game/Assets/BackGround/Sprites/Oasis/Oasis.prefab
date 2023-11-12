@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 4371689775892921881}
   - component: {fileID: 9065953981516646906}
   m_Layer: 0
-  m_Name: New Tile Palette
+  m_Name: Oasis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
