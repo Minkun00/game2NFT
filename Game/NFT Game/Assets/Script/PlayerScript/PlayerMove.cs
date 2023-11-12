@@ -10,10 +10,11 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = rb.GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -35,10 +36,14 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;  // Input.GetAxisRaw : 방향키 입력 받아옴. 왼쪽 -1 오른쪽 1
         }
 
-        bool IsGrounded()
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
-            return hit.collider != null;
-        }
+        //Raycast 선 확인
+        Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
+       
+    }
+
+    bool IsGrounded()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 2, LayerMask.GetMask("Ground"));
+        return hit.collider != null;
     }
 }
