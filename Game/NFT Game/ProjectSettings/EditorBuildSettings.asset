@@ -8,5 +8,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/CaveRoad1.unity
+    guid: 3ffa8d7a0721c654da5815f8e757ffd6
+  - enabled: 1
+    path: Assets/Scenes/CaveRoad2.unity
+    guid: b853faa22777ba04ea1faedb66f89c26
+  - enabled: 1
+    path: Assets/Scenes/HiddenMap.unity
+    guid: fb4cea728a8dd864db738a1f7ace3478
+  - enabled: 1
+    path: Assets/Scenes/InCave.unity
+    guid: 1ae40f5b66104514bb0c186d8ba70158
+  - enabled: 1
+    path: Assets/Scenes/BossRoom.unity
+    guid: ed4a3695cc8263e4ca07348daf9ca2b3
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
