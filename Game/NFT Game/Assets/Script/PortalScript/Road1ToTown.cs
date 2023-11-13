@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-// using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public class Road1ToTown : MonoBehaviour
 {
@@ -14,13 +12,7 @@ public class Road1ToTown : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerOnPortal = true;
-        }
-    }
-    void MovingPortal()
-    {
-        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            SceneManager.LoadScene("Town");
+            Debug.Log("Player");
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -28,32 +20,40 @@ public class Road1ToTown : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerOnPortal = false;
+            Debug.Log("PlayerOut");
         }
     }
+
     private void Update()
     {
         MovingPortal();
+    }
+
+    void MovingPortal()
+    {
+        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SceneManager.LoadScene("Town");
+        }
     }
 
     void Start()
     {
         // 이벤트 핸들러 등록
         SceneManager.sceneLoaded += OnSceneLoaded;
-
-        // 씬 로드
-        MovingPortal();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 이벤트 핸들러 제거
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         // 씬이 로드되면 오브젝트의 위치를 변경
-        GameObject player = GameObject.Find("Player"); // 오브젝트의 이름을 실제 사용하는 오브젝트의 이름으로 변경
+        GameObject player = GameObject.FindWithTag("Player");
+
         if (player != null)
         {
             player.transform.position = new Vector3(0f, 9f, 0f);
         }
 
-        // 이벤트 핸들러 제거 (선택사항)
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

@@ -13,15 +13,6 @@ public class TownToRoad1 : MonoBehaviour
             Debug.Log("Player");
         }
     }
-
-    void MovingPortal()
-    {
-        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            SceneManager.LoadScene("CaveRoad1");
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -35,25 +26,32 @@ public class TownToRoad1 : MonoBehaviour
     {
         MovingPortal();
     }
+
+    void MovingPortal()
+    {
+        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SceneManager.LoadScene("CaveRoad1");
+        }
+    }
+
     void Start()
     {
         // 이벤트 핸들러 등록
         SceneManager.sceneLoaded += OnSceneLoaded;
-
-        // 씬 로드
-        MovingPortal();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 이벤트 핸들러 제거
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         // 씬이 로드되면 오브젝트의 위치를 변경
-        GameObject player = GameObject.Find("Player"); // 오브젝트의 이름을 실제 사용하는 오브젝트의 이름으로 변경
+        GameObject player = GameObject.FindWithTag("Player");
+
         if (player != null)
         {
-            player.transform.position = new Vector3(0f, 9f, 0f);
+            player.transform.position = new Vector3(0f, 0f, 0f);
         }
 
-        // 이벤트 핸들러 제거 (선택사항)
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
