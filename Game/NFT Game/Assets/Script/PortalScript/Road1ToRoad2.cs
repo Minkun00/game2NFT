@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,13 +12,6 @@ public class Road1ToRoad2 : MonoBehaviour
             isPlayerOnPortal = true;
         }
     }
-    void MovingPortal()
-    {
-        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            SceneManager.LoadScene("CaveRoad2");
-        }
-    }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -28,8 +19,36 @@ public class Road1ToRoad2 : MonoBehaviour
             isPlayerOnPortal = false;
         }
     }
+
     private void Update()
     {
         MovingPortal();
+    }
+
+    void MovingPortal()
+    {
+        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            SceneManager.LoadScene("CaveRoad1");
+        }
+    }
+    void Start()
+    {
+        // 이벤트 핸들러 등록
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 이벤트 핸들러 제거
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        // 씬이 로드되면 오브젝트의 위치를 변경
+        GameObject player = GameObject.FindWithTag("Player");
+
+        if (player != null)
+        {
+            player.transform.position = new Vector3(0f, 0f, 0f);
+        }
+
     }
 }
