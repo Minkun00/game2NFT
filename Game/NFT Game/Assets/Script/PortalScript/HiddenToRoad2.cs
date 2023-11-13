@@ -48,7 +48,7 @@ public class HiddenToRoad2 : MonoBehaviour
         GameObject player = GameObject.Find("Player"); // 오브젝트의 이름을 실제 사용하는 오브젝트의 이름으로 변경
         if (player != null)
         {
-            player.transform.position = new Vector3(95f, -3f, 0f);
+            player.transform.position = new Vector3(2f, -9f, 0f);
         }
 
         // 이벤트 핸들러 제거 (선택사항)
