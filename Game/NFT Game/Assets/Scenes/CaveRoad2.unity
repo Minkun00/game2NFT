@@ -868,7 +868,7 @@ Transform:
   m_GameObject: {fileID: 100082147}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1195,11 +1195,6 @@ MonoBehaviour:
   - itemType: 4
     itemName: Sword
     itemImage: {fileID: 712035800519618848, guid: 54f4cd9c318163c4188d3291d5c96b6a, type: 3}
-  fieldItemPrefab: {fileID: 3605148081851045582, guid: 61063388ac37df541bcfde48a9c23abd, type: 3}
-  pos:
-  - {x: 2, y: -1, z: 0}
-  - {x: 5, y: 0, z: 0}
-  - {x: 8, y: 3, z: 0}
 --- !u!4 &184750467
 Transform:
   m_ObjectHideFlags: 0

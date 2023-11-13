@@ -21,7 +21,9 @@ public class PlayerMove : MonoBehaviour
     {
         // 이동
         float horizontalInput = Input.GetAxis("Horizontal");
-        Vector2 moveDirection = new Vector2(horizontalInput, 0);
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector2 moveDirection = new Vector2(horizontalInput, verticalInput);
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
 
         // 점프
@@ -38,7 +40,6 @@ public class PlayerMove : MonoBehaviour
 
         //Raycast 선 확인
         Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
-       
     }
 
     bool IsGrounded()

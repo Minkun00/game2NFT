@@ -5,12 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Road1ToRoad2 : MonoBehaviour
 {
+    private bool isPlayerOnPortal = false;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            // 플레이어가 포탈에 도달하면 CaveRoad2 씬으로 이동
+            isPlayerOnPortal = true;
+        }
+    }
+    void MovingPortal()
+    {
+        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
+        {
             SceneManager.LoadScene("CaveRoad2");
         }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerOnPortal = false;
+        }
+    }
+    private void Update()
+    {
+        MovingPortal();
     }
 }

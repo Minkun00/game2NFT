@@ -5,12 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class BossToInCave : MonoBehaviour
 {
+    private bool isPlayerOnPortal = false;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            // 플레이어가 포탈에 도달하면 InCave 씬으로 이동
+            isPlayerOnPortal = true;
+        }
+    }
+    void MovingPortal()
+    {
+        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
+        {
             SceneManager.LoadScene("InCave");
         }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerOnPortal = false;
+        }
+    }
+    private void Update()
+    {
+        MovingPortal();
     }
 }

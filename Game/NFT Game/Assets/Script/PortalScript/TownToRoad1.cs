@@ -1,16 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TownToRoad1 : MonoBehaviour
 {
+    private bool isPlayerOnPortal = false;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            // 플레이어가 포탈에 도달하면 CaveRoad1 씬으로 이동
+            isPlayerOnPortal = true;
+            Debug.Log("Player");
+        }
+    }
+
+    void MovingPortal()
+    {
+        if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
+        {
             SceneManager.LoadScene("CaveRoad1");
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerOnPortal = false;
+            Debug.Log("PlayerOut");
+        }
+    }
+
+    private void Update()
+    {
+        MovingPortal();
     }
 }

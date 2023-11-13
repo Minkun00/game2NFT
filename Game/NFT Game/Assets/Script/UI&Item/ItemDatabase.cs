@@ -11,7 +11,7 @@ public class ItemDatabase : MonoBehaviour
     }
     public List<Item> itemDB = new List<Item>();
 
-
+    /*
     public GameObject fieldItemPrefab;   
     public Vector3[] pos;        // 생성되는 위치 정하는 배열    
 
@@ -24,4 +24,5 @@ public class ItemDatabase : MonoBehaviour
             go.GetComponent<FieldItems>().SetItem(itemDB[Random.Range(0,5)]);
         } 
     }
+    */
 }
