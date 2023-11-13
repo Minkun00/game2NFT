@@ -32,4 +32,26 @@ public class Road2ToRoad1 : MonoBehaviour
     {
         MovingPortal();
     }
+
+    void Start()
+    {
+        // 이벤트 핸들러 등록
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // 씬 로드
+        MovingPortal();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 씬이 로드되면 오브젝트의 위치를 변경
+        GameObject player = GameObject.Find("Player"); // 오브젝트의 이름을 실제 사용하는 오브젝트의 이름으로 변경
+        if (player != null)
+        {
+            player.transform.position = new Vector3(88f, 4f, 0f);
+        }
+
+        // 이벤트 핸들러 제거 (선택사항)
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 }
