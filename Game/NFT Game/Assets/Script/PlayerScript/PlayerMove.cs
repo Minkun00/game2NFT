@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public const float moveSpeed = 10f;
     public const float jumpForce = 25f;
-
+    
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 

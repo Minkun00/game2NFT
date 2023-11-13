@@ -1,12 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Road1ToRoad2 : MonoBehaviour
+public class Road2ToRoad1 : MonoBehaviour
 {
     // 이동할 다음 씬의 이름
-    public string nextSceneName = "CaveRoad2";
+    public string nextSceneName = "CaveRoad1";
     // Player의 목적지 위치
-    public Vector3 playerDestination = new Vector3(0f, 0f, 0f);
+    public Vector3 playerDestination;
     public Scene scene;
 
     private bool isPlayerOnPortal = false;
