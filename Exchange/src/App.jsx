@@ -1,13 +1,13 @@
 import React from 'react';
-import KaikasConnect from './src/kaikasConnect/KaikasConnect';
+import KaikasConnect from './contracts/kaikasConnect/KaikasConnect';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
-import ItemToImg from './src/itemToIMG/itemToImg';
-import CreateAuction from './src/createAuction/createAuction';
-import Marketplace from './src/buyItem/market';
-import myToken from './Hardhat_abis/MyToken.json';
-import myNFT from './Hardhat_abis/MyNFT.json';
-import myMarcket from './Hardhat_abis/MyMarketplace.json';
-import CheckKlaytnAPI from './src/checkKlaytnAPI/checkKlaytnAPI_NFT';
+import ItemToImg from './contracts/itemToIMG/itemToImg';
+import CreateAuction from './contracts/createAuction/createAuction';
+import Marketplace from './contracts/buyItem/market';
+import myToken from './contracts/Hardhat_abis/MyToken.json';
+import myNFT from './contracts/Hardhat_abis/MyNFT.json';
+import myMarcket from './contracts/Hardhat_abis/MyMarketplace.json';
+import CheckKlaytnAPI from './contracts/checkKlaytnAPI/checkKlaytnAPI_NFT';
 
 function App() {
   const nftContractABI = myNFT.abi;
