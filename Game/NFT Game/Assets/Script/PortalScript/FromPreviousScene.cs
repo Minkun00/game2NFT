@@ -6,11 +6,9 @@ using UnityEngine.UIElements;
 public class FromPreviousScene : MonoBehaviour
 {
     public string moveMap;
-    public Vector3 Position;
 
     private PlayerMove thePlayer;
     private MainCamera theCamera;
-
 
     void Start()
     {
@@ -19,10 +17,9 @@ public class FromPreviousScene : MonoBehaviour
 
         if (moveMap == thePlayer.playerCurrentMap)
         {
-            Vector3 CameraPoint = new Vector3(Position.x, Position.y, -10f);
-            theCamera.transform.position = CameraPoint;
-            thePlayer.transform.position = Position;
-            Debug.Log("ok " + Position);
+            theCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10f);
+            thePlayer.transform.position = this.transform.position;
+            Debug.Log("ok " + this.transform.position);
         }
         else
         {

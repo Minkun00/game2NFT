@@ -8,7 +8,7 @@ public class GoNextScene : MonoBehaviour
 
     private PlayerMove thePlayer;
 
-    private void Start()
+    private void Awake()
     {
         thePlayer = FindAnyObjectByType<PlayerMove>();
     }

@@ -22,12 +22,11 @@ public class PlayerMove : MonoBehaviour
     {
         if(Instance == null)
         {
-            Instance = this;
-
             DontDestroyOnLoad(this.gameObject);
-
             rb = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+
+            Instance = this;
         }
         else
         {
