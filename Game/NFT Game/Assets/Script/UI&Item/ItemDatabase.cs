@@ -9,6 +9,10 @@ public class ItemDatabase : MonoBehaviour
     {
         instance = this; 
     }
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
     public List<Item> itemDB = new List<Item>();
 
     /*

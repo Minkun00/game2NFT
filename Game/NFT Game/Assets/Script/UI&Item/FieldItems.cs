@@ -7,6 +7,10 @@ public class FieldItems : MonoBehaviour
     public Item item;
     public SpriteRenderer image;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
     public void SetItem(Item _item)        // 아이템 드랍되어있는 상태의 메소드
     {
         item.itemName = _item.itemName;    // SetItem 메소드로 전달받은 Item으로 현재 class의 item을 초기화한다.

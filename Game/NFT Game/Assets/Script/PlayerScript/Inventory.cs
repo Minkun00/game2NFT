@@ -41,9 +41,10 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this);
         SlotCnt = 4;
     }
-    
+
     // items리스트에 아이템을 추가할 수 있는 메서드 생성
     public bool AddItem(Item _item) 
     {

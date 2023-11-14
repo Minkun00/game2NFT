@@ -17,6 +17,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this);
         inven = Inventory.Instance;
         slots = slotHolder.GetComponentsInChildren<Slot>();
         inven.onSlotCountChange += SlotChange;    // onSlotCountChange가 참조할 메서드를 정의
@@ -42,12 +43,14 @@ public class InventoryUI : MonoBehaviour
         {
             activeInventory = !activeInventory;
             inventoryPanel.SetActive(activeInventory);
+            Debug.Log("SetActive activeInventory");
         }
     }
 
     public void AddSlot()
     {
         inven.SlotCnt = inven.SlotCnt + 1;
+        Debug.Log("AddSlot");
     }
 
     void RedrawSlotUI()

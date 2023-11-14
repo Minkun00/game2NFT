@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public enum ItemType
 {
     Helmet,
@@ -13,7 +14,7 @@ public enum ItemType
 
 [System.Serializable]
 
-public class Item
+public class Item : MonoBehaviour
 {
     public ItemType itemType;
     public string itemName;
@@ -22,5 +23,10 @@ public class Item
     public bool Use()
     {
         return false;       // 아이템 사용 성공 여부 반환
+    }
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
     }
 }

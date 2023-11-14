@@ -10,7 +10,6 @@ public class TownToRoad1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerOnPortal = true;
-            Debug.Log("Player");
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -18,7 +17,6 @@ public class TownToRoad1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerOnPortal = false;
-            Debug.Log("PlayerOut");
         }
     }
 

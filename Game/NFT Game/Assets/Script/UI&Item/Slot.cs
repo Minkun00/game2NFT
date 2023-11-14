@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour
     public Item item;
     public Image itemIcon;
 
+
     public void UpdateSlotUI()
     {
         itemIcon.sprite = item.itemImage;
