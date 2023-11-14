@@ -1,8 +1,17 @@
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TownToRoad1 : MonoBehaviour
 {
+    public string transferMapName;
+    private PlayerMove thePlayer;
+
+    private void Start()
+    {
+        thePlayer = FindObjectOfType<PlayerMove>();
+    }
+
     private bool isPlayerOnPortal = false;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -29,27 +38,8 @@ public class TownToRoad1 : MonoBehaviour
     {
         if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
         {
-            SceneManager.LoadScene("CaveRoad1");
+            thePlayer.currentMapName = transferMapName;
+            SceneManager.LoadScene(transferMapName);
         }
-    }
-
-    void Start()
-    {
-        // 이벤트 핸들러 등록
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // 이벤트 핸들러 제거
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-        // 씬이 로드되면 오브젝트의 위치를 변경
-        GameObject player = GameObject.FindWithTag("Player");
-
-        if (player != null)
-        {
-            player.transform.position = new Vector3(0f, 0f, 0f);
-        }
-
     }
 }
