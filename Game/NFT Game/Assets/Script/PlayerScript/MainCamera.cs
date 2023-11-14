@@ -10,7 +10,7 @@ public class MainCamera : MonoBehaviour
 
     void Start()
     {
-
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void LateUpdate()
