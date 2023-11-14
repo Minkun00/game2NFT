@@ -7915,6 +7915,8 @@ GameObject:
   - component: {fileID: 244348118}
   - component: {fileID: 244348117}
   - component: {fileID: 244348116}
+  - component: {fileID: 244348120}
+  - component: {fileID: 244348119}
   m_Layer: 0
   m_Name: PortalToRoad2
   m_TagString: Untagged
@@ -8138,6 +8140,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &244348119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244348114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transferMapName: CaveRoad2
+--- !u!114 &244348120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244348114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29276954159bafe449eb9faf967379c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 0, y: 0, z: 0}
+  arriveMap: InCave
 --- !u!1001 &273495957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22833,21 +22862,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDB:
-  - itemType: 0
-    itemName: ArmorHelmet
-    itemImage: {fileID: -4548992743620234918, guid: d582d6052deb7de42938592900305911, type: 3}
-  - itemType: 1
-    itemName: ArmorTop
-    itemImage: {fileID: 1628304451031106407, guid: 7e18e50ef4ea34a4eb02b4c365681d52, type: 3}
-  - itemType: 2
-    itemName: ArmorPants
-    itemImage: {fileID: 3994795293169029437, guid: 1ebc2623228009d4cbf3146645929f7a, type: 3}
-  - itemType: 3
-    itemName: ArmorShoes
-    itemImage: {fileID: 2371641743025836735, guid: 509ed4b94f23bf147b4c98e6bd76e8d6, type: 3}
-  - itemType: 4
-    itemName: Sword
-    itemImage: {fileID: 712035800519618848, guid: 54f4cd9c318163c4188d3291d5c96b6a, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1867935538
 Transform:
   m_ObjectHideFlags: 0

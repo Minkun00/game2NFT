@@ -6,7 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     static public PlayerMove Instance;
 
-    public string currentMapName; // TownToRoad1 스크립트에 있는 transferMapName 변수의 값을 저장.
+    public string playerCurrentMap; // TownToRoad1 스크립트에 있는 transferMapName 변수의 값을 저장.
+    public string playerPreviousMape;
 
     public const float moveSpeed = 10f;
     public const float jumpForce = 25f;
@@ -22,6 +23,7 @@ public class PlayerMove : MonoBehaviour
             Instance = this;
 
             DontDestroyOnLoad(this.gameObject);
+
             rb = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
