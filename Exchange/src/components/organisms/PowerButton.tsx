@@ -19,7 +19,7 @@ const PowerButton: React.FC <PowerButtonProps> = ({ label, onClick }) => {
          // 원하는 클릭 동작을 정의
     };
     return (
-        <StyledAtomButton label = "Power Button" onClick = {handleClick} />
+        <StyledAtomButton label = {label} onClick = {handleClick} />
     );
 };
 

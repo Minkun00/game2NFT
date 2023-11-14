@@ -13,7 +13,12 @@ const MarketActionPanelContainer = styled.div `
 
 `;
 
-const MarketActionPanel: React.FC = () => {
+interface MarketActionPanelProps {
+    label: string;
+    onClick: () => void;
+};
+
+const MarketActionPanel: React.FC <MarketActionPanelProps> = () => {
     const handleButtonClick1 = () => {
         // 원하는 동작
     };

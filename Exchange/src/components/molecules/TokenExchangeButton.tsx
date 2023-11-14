@@ -9,12 +9,9 @@ const StyledAtomButton = styled(Button) `
     height: 50px;
 `;
 
-const TokenExchangeButton: React.FC = () => {
-    const handleClick = () => {
-         // 원하는 클릭 동작을 정의
-    };
+const TokenExchangeButton: React.FC <any> = ({ label, onClick }) => {
     return (
-        <StyledAtomButton label = "Token Exchange Button" onClick = {handleClick} />
+        <StyledAtomButton label = {label} onClick = {onClick} />
     );
 };
 

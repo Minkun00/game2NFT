@@ -9,17 +9,10 @@ const StyledAtomButton = styled(Button) `
     height: 10px;
 `;
 
-interface GameSwitchButtonProps {
-    label: string;
-    onClick: () => void;
-};
 
-const GameSwitchButton: React.FC <GameSwitchButtonProps> = ({ label, onClick }) => {
-    const handleClick = () => {
-         // 원하는 클릭 동작을 정의
-    };
+const GameSwitchButton: React.FC<any> = ({ label, onClick }) => {
     return (
-        <StyledAtomButton label = {label} onClick = {handleClick} />
+        <StyledAtomButton label = {label} onClick = {onClick} />
     );
 };
 

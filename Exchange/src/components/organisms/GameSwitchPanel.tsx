@@ -10,7 +10,12 @@ const GameSwitchPanelContainer = styled.div `
     width: 100%;
 `;
 
-const GameSwitchPanel: React.FC = () => {
+interface GameSwitchPanelProps {
+    label: string;
+    onClick: () => void;
+};
+
+const GameSwitchPanel: React.FC <GameSwitchPanelProps> = () => {
     const handleButtonClick1 = () => {
         // 원하는 동작을 여기에 추가
         // label이나 onClick를 사용해줘야함

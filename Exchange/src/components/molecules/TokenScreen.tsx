@@ -10,7 +10,7 @@ const StyledAtomScreen = styled(Screen) `
     background-color: lightblue;
 `;
 
-const TokenScreen: React.FC = () => {
+const TokenScreen: React.FC <any> = () => {
     return (
         <StyledAtomScreen content = "Token Screen" />
     );

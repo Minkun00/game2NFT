@@ -9,12 +9,9 @@ const StyledAtomButton = styled(Button) `
     height: 20px;
 `;
 
-const NFTCreationButton: React.FC = () => {
-    const handleClick = () => {
-         // 원하는 클릭 동작을 정의
-    };
+const NFTCreationButton: React.FC <any> = ({ label, onClick}) => {
     return (
-        <StyledAtomButton label = "NFT Creation Button" onClick = {handleClick} />
+        <StyledAtomButton label = {label} onClick = {onClick} />
     );
 };
 

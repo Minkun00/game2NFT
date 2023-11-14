@@ -9,17 +9,10 @@ const StyledAtomButton = styled(Button) `
     height: 20px;
 `;
 
-interface MyNFTsButtonProps {
-    label: string;
-    onClick: () => void;
-};
 
-const MyNFTsButton: React.FC <MyNFTsButtonProps> = ({ label, onClick }) => {
-    const handleClick = () => {
-         // 원하는 클릭 동작을 정의
-    };
+const MyNFTsButton: React.FC <any> = ({ label, onClick }) => {
     return (
-        <StyledAtomButton label = {label} onClick = {handleClick} />
+        <StyledAtomButton label = {label} onClick = {onClick} />
     );
 };
 
