@@ -1,33 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FromPreviousScene : MonoBehaviour
 {
-    public Vector3 playerArrivedPoint;
-    public string arriveMap;
-    public string previousMap;
+    public string moveMap;
+    public Vector3 Position;
 
     private PlayerMove thePlayer;
     private MainCamera theCamera;
+
 
     void Start()
     {
         thePlayer = FindAnyObjectByType<PlayerMove>();
         theCamera = FindAnyObjectByType<MainCamera>();
 
-
-        if ((arriveMap == thePlayer.playerCurrentMap) && (previousMap == thePlayer.playerPreviousMape))
+        if (moveMap == thePlayer.playerCurrentMap)
         {
-            Vector3 CameraPoint = new Vector3(playerArrivedPoint.x, playerArrivedPoint.y, -10f);
+            Vector3 CameraPoint = new Vector3(Position.x, Position.y, -10f);
             theCamera.transform.position = CameraPoint;
-            thePlayer.transform.position = playerArrivedPoint;
+            thePlayer.transform.position = Position;
+            Debug.Log("ok " + Position);
         }
         else
         {
-            Debug.Log("else arriveMap: " + arriveMap + ", thePlayer.currentMapName: " + thePlayer.playerCurrentMap);
-            Debug.Log("else previousMap: " + previousMap + ", thePlayer.previousMapName: " + thePlayer.playerPreviousMape);
-            Debug.Log("else playerArrivedPoint : " + playerArrivedPoint);
+            Debug.Log("error");
+            Debug.Log("moveMap : " + moveMap + " / thePlayer.playerCurrentMap : " + thePlayer.playerCurrentMap);
         }
     }
 }

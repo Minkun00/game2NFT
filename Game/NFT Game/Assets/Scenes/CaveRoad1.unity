@@ -217,9 +217,8 @@ GameObject:
   - component: {fileID: 232804419}
   - component: {fileID: 232804418}
   - component: {fileID: 232804421}
-  - component: {fileID: 232804422}
   m_Layer: 0
-  m_Name: PortalToRoad2
+  m_Name: PortalRoad1Road2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,22 +453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextSceneName: CaveRoad2
-  currentSceneName: CaveRoad1
---- !u!114 &232804422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232804416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29276954159bafe449eb9faf967379c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerArrivedPoint: {x: 88, y: 4, z: 0}
-  arriveMap: CaveRoad1
-  previousMap: CaveRoad2
 --- !u!1 &622501990
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,10 +512,9 @@ GameObject:
   - component: {fileID: 1108886757}
   - component: {fileID: 1108886756}
   - component: {fileID: 1108886758}
-  - component: {fileID: 1108886760}
-  - component: {fileID: 1108886761}
+  - component: {fileID: 1108886759}
   m_Layer: 0
-  m_Name: PortalToTown
+  m_Name: PortalTownRoad1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +736,7 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &1108886760
+--- !u!114 &1108886759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -766,23 +748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29276954159bafe449eb9faf967379c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerArrivedPoint: {x: 0, y: 0, z: 0}
-  arriveMap: CaveRoad1
-  previousMap: Town
---- !u!114 &1108886761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1108886754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextSceneName: Town
-  currentSceneName: CaveRoad1
+  moveMap: CaveRoad1
+  Position: {x: 0, y: 0, z: 0}
 --- !u!1 &1722642387
 GameObject:
   m_ObjectHideFlags: 0

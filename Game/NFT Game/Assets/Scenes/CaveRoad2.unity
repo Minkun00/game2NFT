@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 68043120}
   - component: {fileID: 68043119}
   - component: {fileID: 68043117}
-  - component: {fileID: 68043122}
   - component: {fileID: 68043121}
   m_Layer: 0
   m_Name: PortalToInCave
@@ -366,26 +365,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 68043115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29276954159bafe449eb9faf967379c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerArrivedPoint: {x: 0, y: 0, z: 0}
-  arriveMap: CaveRoad2
-  previousMap: 
---- !u!114 &68043122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 68043115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: 
-  currentSceneName: 
+  NextSceneName: InCave
 --- !u!1 &224636180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,9 +2979,8 @@ GameObject:
   - component: {fileID: 876535418}
   - component: {fileID: 876535417}
   - component: {fileID: 876535420}
-  - component: {fileID: 876535421}
   m_Layer: 0
-  m_Name: PortalToRoad1
+  m_Name: PortalRoad1Road2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3232,23 +3214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29276954159bafe449eb9faf967379c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerArrivedPoint: {x: 0, y: 0, z: 0}
-  arriveMap: CaveRoad2
-  previousMap: CaveRoad1
---- !u!114 &876535421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876535414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextSceneName: CaveRoad1
-  currentSceneName: CaveRoad2
+  moveMap: CaveRoad2
+  Position: {x: 0, y: 0, z: 0}
 --- !u!1 &1359283289
 GameObject:
   m_ObjectHideFlags: 0

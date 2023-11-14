@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 public class GoNextScene : MonoBehaviour
 {
     public string NextSceneName;  // 이동할 맵의 이름
-    public string currentSceneName;
+
     private PlayerMove thePlayer;
-    private FromPreviousScene theFromPreviousScene;
 
     private void Start()
     {
         thePlayer = FindAnyObjectByType<PlayerMove>();
-        theFromPreviousScene = FindAnyObjectByType<FromPreviousScene>();
     }
 
     private bool isPlayerOnPortal = false;
@@ -42,10 +40,8 @@ public class GoNextScene : MonoBehaviour
         if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
         {
             thePlayer.playerCurrentMap = NextSceneName;
-            thePlayer.playerPreviousMape = currentSceneName;
+
             SceneManager.LoadScene(NextSceneName);
-            Debug.Log("theFromPreviousScene arriveMap: " + theFromPreviousScene.arriveMap + ", thePlayer.currentMapName: " + thePlayer.playerCurrentMap);
-            Debug.Log("theFromPreviousScene previousMap: " + theFromPreviousScene.previousMap + ", thePlayer.previousMapName: " + thePlayer.playerPreviousMape);
         }
     }
 }
