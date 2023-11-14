@@ -27,6 +27,6 @@ public class Item : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 }

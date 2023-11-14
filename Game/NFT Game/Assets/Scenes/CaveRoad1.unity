@@ -216,7 +216,6 @@ GameObject:
   - component: {fileID: 232804420}
   - component: {fileID: 232804419}
   - component: {fileID: 232804418}
-  - component: {fileID: 232804421}
   m_Layer: 0
   m_Name: PortalToRoad2
   m_TagString: Untagged
@@ -440,23 +439,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &232804421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232804416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fef50349314a9c24da40000ec2cc9ba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextSceneName: CaveRoad2
-  playerDestination: {x: 0, y: 0, z: 0}
-  scene:
-    m_Handle: 0
-  successPortal: 0
 --- !u!1 &622501990
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,8 +498,8 @@ GameObject:
   - component: {fileID: 1108886757}
   - component: {fileID: 1108886756}
   - component: {fileID: 1108886758}
+  - component: {fileID: 1108886759}
   - component: {fileID: 1108886760}
-  - component: {fileID: 1108886761}
   m_Layer: 0
   m_Name: PortalToTown
   m_TagString: Untagged
@@ -741,7 +723,7 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &1108886760
+--- !u!114 &1108886759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -755,7 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {x: 0, y: 0, z: 0}
   arriveMap: CaveRoad1
---- !u!114 &1108886761
+--- !u!114 &1108886760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

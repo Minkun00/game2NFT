@@ -11,7 +11,7 @@ public class ItemDatabase : MonoBehaviour
     }
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
     public List<Item> itemDB = new List<Item>();
 

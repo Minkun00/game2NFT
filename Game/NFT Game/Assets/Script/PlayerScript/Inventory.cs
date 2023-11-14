@@ -8,12 +8,12 @@ public class Inventory : MonoBehaviour
     // 클래스 내부에서 해당 클래스의 인스턴스를 관리한다.
     #region Singleton                          
     public static Inventory Instance;      // 정적 변수 생성
+
     private void Awake()
     {
-        if(Instance != null)               
+        if(Instance != null)
         {
             Destroy(gameObject);        
-            return;
         }
         Instance = this;
     }
@@ -41,7 +41,6 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
         SlotCnt = 4;
     }
 

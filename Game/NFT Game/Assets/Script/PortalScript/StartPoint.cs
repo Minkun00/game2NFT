@@ -16,7 +16,8 @@ public class StartPoint : MonoBehaviour
         
         if (arriveMap == thePlayer.currentMapName)
         {
-            theCamera.transform.position = startPoint;
+            Vector3 newCameraPosition = new Vector3(startPoint.x, startPoint.y, -10f);
+            theCamera.transform.position = newCameraPosition;
             thePlayer.transform.position = startPoint;
         }
     }

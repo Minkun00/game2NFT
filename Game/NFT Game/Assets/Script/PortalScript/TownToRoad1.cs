@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class TownToRoad1 : MonoBehaviour
 {
-    public string transferMapName;
+    public string transferMapName;  // 이동할 맵의 이름
     private PlayerMove thePlayer;
 
     private void Start()

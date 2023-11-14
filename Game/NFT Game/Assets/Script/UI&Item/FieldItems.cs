@@ -9,7 +9,7 @@ public class FieldItems : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
     public void SetItem(Item _item)        // 아이템 드랍되어있는 상태의 메소드
     {

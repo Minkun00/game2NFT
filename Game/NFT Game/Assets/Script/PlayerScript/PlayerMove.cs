@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    static public PlayerMove Instance;
+
     public string currentMapName; // TownToRoad1 스크립트에 있는 transferMapName 변수의 값을 저장.
 
     public const float moveSpeed = 10f;
@@ -15,9 +17,18 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-        rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if(Instance == null)
+        {
+            Instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+            rb = GetComponent<Rigidbody2D>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void Update()

@@ -5,12 +5,22 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
+    static public MainCamera instance;
+
     public Transform target;
     public float speed;
 
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if(instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void LateUpdate()
