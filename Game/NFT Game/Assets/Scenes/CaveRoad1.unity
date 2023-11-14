@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 232804420}
   - component: {fileID: 232804419}
   - component: {fileID: 232804418}
+  - component: {fileID: 232804421}
   m_Layer: 0
   m_Name: PortalRoad1Road2
   m_TagString: Untagged
@@ -439,6 +440,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &232804421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232804416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextSceneName: CaveRoad2
 --- !u!1 &622501990
 GameObject:
   m_ObjectHideFlags: 0
