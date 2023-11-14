@@ -17,3 +17,4 @@ you can see
 Server listening on port 3001
 directory : {~/server}
 ```
+if `server` gets `Code`, `Description` and `Name`, you can see `ipfs url` on terminal
