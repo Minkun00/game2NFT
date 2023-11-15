@@ -7,10 +7,12 @@ public class GoNextScene : MonoBehaviour
     public string NextSceneName;  // 이동할 맵의 이름
 
     private PlayerMove thePlayer;
+    private MainCamera theCamera;
 
-    private void Awake()
+    private void Start()
     {
         thePlayer = FindAnyObjectByType<PlayerMove>();
+        theCamera = FindAnyObjectByType<MainCamera>();
     }
 
     private bool isPlayerOnPortal = false;
@@ -40,8 +42,8 @@ public class GoNextScene : MonoBehaviour
         if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
         {
             thePlayer.playerCurrentMap = NextSceneName;
-
-            SceneManager.LoadScene(NextSceneName);
+            thePlayer.loadingSceneName = NextSceneName;
+            SceneManager.LoadScene("Loading");
         }
     }
 }

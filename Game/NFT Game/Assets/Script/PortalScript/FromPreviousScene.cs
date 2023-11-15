@@ -15,6 +15,8 @@ public class FromPreviousScene : MonoBehaviour
         thePlayer = FindAnyObjectByType<PlayerMove>();
         theCamera = FindAnyObjectByType<MainCamera>();
 
+        theCamera.gameObject.SetActive(true);
+
         if (moveMap == thePlayer.playerCurrentMap)
         {
             theCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10f);

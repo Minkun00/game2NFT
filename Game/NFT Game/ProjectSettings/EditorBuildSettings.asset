@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossRoom.unity
     guid: ed4a3695cc8263e4ca07348daf9ca2b3
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: fb2c8f58537b50a43af2754f66d4ecac
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
