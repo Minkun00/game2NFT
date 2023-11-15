@@ -8,18 +8,15 @@ public class Loading : MonoBehaviour
 {
     public Slider progressBar;
     public GoNextScene goNextScene;
-    private PlayerMove thePlayer;
 
     private void Start()
     {
-        thePlayer = FindAnyObjectByType<PlayerMove>();
-
         StartCoroutine(LoadScene());
     }
     IEnumerator LoadScene()
     {
         yield return null;
-        AsyncOperation operation = SceneManager.LoadSceneAsync(thePlayer.loadingSceneName);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(GlobalControl.Instance.loadingSceneName);
         operation.allowSceneActivation = false;
 
         while (!operation.isDone)
