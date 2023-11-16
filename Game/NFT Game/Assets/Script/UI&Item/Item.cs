@@ -14,7 +14,7 @@ public enum ItemType
 
 [System.Serializable]
 
-public class Item : MonoBehaviour
+public class Item
 {
     public ItemType itemType;
     public string itemName;
@@ -23,10 +23,5 @@ public class Item : MonoBehaviour
     public bool Use()
     {
         return false;       // 아이템 사용 성공 여부 반환
-    }
-
-    private void Start()
-    {
-        //DontDestroyOnLoad(this);
     }
 }

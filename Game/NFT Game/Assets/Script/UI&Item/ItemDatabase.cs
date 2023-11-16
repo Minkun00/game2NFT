@@ -9,13 +9,9 @@ public class ItemDatabase : MonoBehaviour
     {
         instance = this; 
     }
-    private void Start()
-    {
-        //DontDestroyOnLoad(this);
-    }
-    public List<Item> itemDB = new List<Item>();
 
-    /*
+    public List<Item> itemDB = new List<Item>();
+    [Space(20)]    
     public GameObject fieldItemPrefab;   
     public Vector3[] pos;        // 생성되는 위치 정하는 배열    
 
@@ -28,5 +24,5 @@ public class ItemDatabase : MonoBehaviour
             go.GetComponent<FieldItems>().SetItem(itemDB[Random.Range(0,5)]);
         } 
     }
-    */
+    
 }
