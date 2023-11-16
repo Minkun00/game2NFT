@@ -10,7 +10,6 @@ public class PlayerMove : MonoBehaviour
     public string playerCurrentMap; // TownToRoad1 스크립트에 있는 transferMapName 변수의 값을 저장.
     public string loadingSceneName;
 
-
     public const float moveSpeed = 10f;
     public const float jumpForce = 25f;
     
@@ -57,6 +56,16 @@ public class PlayerMove : MonoBehaviour
 
         //Raycast 선 확인
         Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
+    }
+    
+    //finish 태그에 닿았을 시 게임오버
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Finish"))
+        {
+            Debug.Log("OUCH");
+           // GameManager.Instance.GameOver();
+        }
     }
 
     bool IsGrounded()
