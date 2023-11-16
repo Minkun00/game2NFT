@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 30760819}
   - component: {fileID: 30760821}
   m_Layer: 0
-  m_Name: Town
+  m_Name: ToTown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,12 +192,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30760817}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5.052178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 622501992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &30760821
 MonoBehaviour:
@@ -289,12 +289,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220761284}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 58.63, y: 3.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 622501992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232804416
 GameObject:
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 232804418}
   - component: {fileID: 232804421}
   m_Layer: 0
-  m_Name: PortalRoad1Road2
+  m_Name: ToRoad2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,6 +681,9 @@ Transform:
   - {fileID: 1722642388}
   - {fileID: 1108886755}
   - {fileID: 232804417}
+  - {fileID: 30760820}
+  - {fileID: 1261940383}
+  - {fileID: 220761286}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108886754
@@ -697,7 +700,7 @@ GameObject:
   - component: {fileID: 1108886759}
   - component: {fileID: 1108886760}
   m_Layer: 0
-  m_Name: PortalTownRoad1
+  m_Name: FromTown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,7 +946,7 @@ GameObject:
   - component: {fileID: 1261940383}
   - component: {fileID: 1261940382}
   m_Layer: 0
-  m_Name: Road2
+  m_Name: FromRoad2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,12 +973,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261940381}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 88, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 622501992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722642387
 GameObject:
@@ -990,7 +993,7 @@ GameObject:
   - component: {fileID: 1722642389}
   - component: {fileID: 1722642391}
   m_Layer: 10
-  m_Name: Road1Ground
+  m_Name: Cave1Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9263,7 +9266,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 622501992}
-  - {fileID: 220761286}
-  - {fileID: 30760820}
-  - {fileID: 1261940383}
   - {fileID: 614362895}

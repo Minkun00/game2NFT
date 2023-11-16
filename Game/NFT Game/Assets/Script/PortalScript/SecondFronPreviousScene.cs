@@ -20,6 +20,7 @@ public class SecondFromPreviousScene : MonoBehaviour
         GlobalControl.Instance.playerObjectSecond.SetActive(true);
         GlobalControl.Instance.playerObjectSecond = GameObject.FindWithTag("Player");
 
+
         yield return new WaitUntil(() => GlobalControl.Instance.playerObjectSecond.GetComponent<PlayerMove>() != null);
         thePlayerSecond = GlobalControl.Instance.playerObjectSecond.GetComponent<PlayerMove>();
 
