@@ -35,9 +35,11 @@ const TokenScreen = () => {
                                                     tokenContractABI={tokenContractABI} 
                                                     tokenContractAddress={tokenContractAddress} />}  
         </div>
-    )
+    );
 
 
 
 
-}
+};
+
+export default TokenScreen;

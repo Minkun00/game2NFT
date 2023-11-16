@@ -73,3 +73,13 @@ function App() {
 }
 
 export default App;
+
+
+// import React from 'react';
+// import AppTemplate from './templates/index';
+
+// const App = () => {
+//   return <AppTemplate />;
+// };
+
+// export default App;
