@@ -1,19 +1,29 @@
 // GameSwitchButton.tsx
 
-import React from 'react';
-import styled from 'styled-components';
+import React, { memo } from 'react';
 import Button from '../atoms/Button';
 
-const StyledAtomButton = styled(Button) `
-    width: 10px;
-    height: 10px;
-`;
+interface GameSwitchButtonProps {
+    startFirstGame: () => void;
+    startSecondGame: () => void;
+    startThirdGame: () => void;
+    startFourthGame: () => void;
+}
 
-
-const GameSwitchButton: React.FC<any> = ({ label, onClick }) => {
+const GameSwitchButton = ({
+    startFirstGame,
+    startSecondGame,
+    startThirdGame,
+    startFourthGame
+}: GameSwitchButtonProps)=> {
     return (
-        <StyledAtomButton label = {label} onClick = {onClick} />
+        <div>
+            <Button onClick = { startFirstGame }> Game 1 </Button>
+            <Button onClick = { startSecondGame }> Game 2 </Button>
+            <Button onClick = { startThirdGame }> Game 3 </Button>
+            <Button onClick = { startFourthGame }> Game 4 </Button>
+        </div>
     );
 };
 
-export default GameSwitchButton;
+export default memo(GameSwitchButton);
