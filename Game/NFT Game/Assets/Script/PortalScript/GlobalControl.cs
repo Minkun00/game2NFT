@@ -7,7 +7,10 @@ public class GlobalControl : MonoBehaviour
     public static GlobalControl Instance;
 
     public string loadingSceneName;
+    public string loadingSceneNameSecond;
     public GameObject playerObject;
+    public GameObject playerObjectSecond;
+
 
     void Awake()
     {

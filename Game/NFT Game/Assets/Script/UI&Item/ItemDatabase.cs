@@ -18,13 +18,14 @@ public class ItemDatabase : MonoBehaviour
     private void Start()
     {
         // 시작할 때 아이템 몇 개 생성해 놓는 것(연습)
-        for(int i = 0; i < 5; i++)
+        int itemCount = System.Math.Min(5, pos.Length);
+        for (int i = 0; i < itemCount; i++)
         {
             GameObject go = Instantiate(fieldItemPrefab, pos[i], Quaternion.identity);
-            go.GetComponent<FieldItems>().SetItem(itemDB[Random.Range(0,5)]);
-        } 
+            go.GetComponent<FieldItems>().SetItem(itemDB[Random.Range(0, 5)]);
+        }
     }
-    
+
 }
 
 
