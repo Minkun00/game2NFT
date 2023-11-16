@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FromPreviousScene : MonoBehaviour
@@ -9,21 +10,18 @@ public class FromPreviousScene : MonoBehaviour
 
     void Start()
     {
-        theCamera = FindAnyObjectByType<MainCamera>();
+        theCamera = FindObjectOfType<MainCamera>();
+        StartCoroutine(InitializePlayerMove());
+    }
 
-        // GlobalControl 인스턴스의 playerObject를 활성화
-        if (GlobalControl.Instance.playerObject != null)
-        {
-            GlobalControl.Instance.playerObject.SetActive(true);
-            GlobalControl.Instance.playerObject = GameObject.FindWithTag("Player");
+    IEnumerator InitializePlayerMove()
+    {
+        yield return new WaitUntil(() => GlobalControl.Instance.playerObject != null);
+        GlobalControl.Instance.playerObject.SetActive(true);
+        GlobalControl.Instance.playerObject = GameObject.FindWithTag("Player");
 
-            thePlayer = GlobalControl.Instance.playerObject.GetComponent<PlayerMove>();
-
-        }
-        else
-        {
-            Debug.LogError("PlayerMove not found!");
-        }
+        yield return new WaitUntil(() => GlobalControl.Instance.playerObject.GetComponent<PlayerMove>() != null);
+        thePlayer = GlobalControl.Instance.playerObject.GetComponent<PlayerMove>();
 
         // 나머지 코드...
         if (moveMap == thePlayer.playerCurrentMap)
@@ -36,5 +34,4 @@ public class FromPreviousScene : MonoBehaviour
             Debug.Log("error");
         }
     }
-
 }
