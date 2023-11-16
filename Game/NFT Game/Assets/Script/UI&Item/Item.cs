@@ -12,6 +12,15 @@ public enum ItemType
     Sword
 }
 
+public enum ItemGrade
+{
+    Common,
+    Rare,
+    Epic,
+    Legendary
+}
+
+
 [System.Serializable]
 
 public class Item
