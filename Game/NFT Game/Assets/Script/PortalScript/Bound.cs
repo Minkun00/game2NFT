@@ -10,9 +10,9 @@ public class Bound : MonoBehaviour
 
     private void Start()
     {
+        bound = GetComponent<BoxCollider2D>();
         theCamera = FindObjectOfType<MainCamera>();
         theCamera.SetBound(bound);
 
     }
-
 }
