@@ -13,8 +13,6 @@ public class SecondGoNextScene : MonoBehaviour
     {
         thePlayerSecond = PlayerMove.Instance;
         theCameraSecond = FindObjectOfType<MainCamera>();
-        Debug.LogError("thePlayerSecond.playerCurrentMapSecond: " + thePlayerSecond.playerCurrentMapSecond);
-
     }
 
 
@@ -44,22 +42,16 @@ public class SecondGoNextScene : MonoBehaviour
     {
         if (isPlayerOnPortalSecond && Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Attempting to move to next scene...");
-
             thePlayerSecond.playerCurrentMapSecond = NextSceneNameSecond;
-            Debug.LogError("thePlayerSecond.playerCurrentMapSecond: " + thePlayerSecond.playerCurrentMapSecond);
             GlobalControl.Instance.loadingSceneNameSecond = NextSceneNameSecond;
 
             // 플레이어 오브젝트를 찾아서 GlobalControl 인스턴스에 저장
             GameObject playerObjectSecond = GameObject.FindWithTag("Player");
-            Debug.Log("playerObject: " + playerObjectSecond);
             if (playerObjectSecond != null)
             {
                 GlobalControl.Instance.playerObjectSecond = playerObjectSecond;
                 playerObjectSecond.SetActive(false);
             }
-            Debug.Log("Next Scene: " + NextSceneNameSecond);
-
             SceneManager.LoadScene("LoadingSecond");
         }
     }

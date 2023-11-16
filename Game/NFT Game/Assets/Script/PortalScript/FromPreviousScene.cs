@@ -30,12 +30,10 @@ public class FromPreviousScene : MonoBehaviour
         {
             theCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10f);
             thePlayer.transform.position = this.transform.position;
-            Debug.Log("ok " + this.transform.position);
         }
         else
         {
             Debug.Log("error");
-            Debug.Log("moveMap : " + moveMap + " / thePlayer.playerCurrentMap : " + thePlayer.playerCurrentMap);
         }
     }
 
