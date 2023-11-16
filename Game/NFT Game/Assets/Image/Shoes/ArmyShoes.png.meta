@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ArmyShoes_0: 7730233039128842604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,39 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
-{   
-    //다른 스크립트들에서 GameManger에 접근할 수 있도록 하기 위한 정적 변수와 인스턴스
-    private static GameManager instance;
-
-    public static GameManager Instance 
-    {  
-        get 
-        {
-            if (instance == null)
-            {
-                return null;
-            }
-            return instance;
-        } 
-    }
+{
+    public static GameManager gm;
 
     private void Awake()
     {
-
-        if (instance == null)
-        {
-            instance = this;   
-
-            DontDestroyOnLoad(gameObject);
-
-        }
-        else if (instance != this)
-        {
-            //이미 인스턴트 존재시, 새로 생성된 GameManager 파괴
-            Destroy(gameObject);
-        }
+        gm = this;
     }
 
     private bool isGameOver = false;
@@ -44,7 +20,7 @@ public class GameManager : MonoBehaviour
         if (!isGameOver)
         {
             isGameOver = true;
-            Debug.Log("GAME OVER!");
+            SceneManager.LoadScene("GameOver");
 
             //여기에 게임 오버시 처리할 작업 나중에 추가
         }
@@ -61,4 +37,5 @@ public class GameManager : MonoBehaviour
         //게임 완전 종료시 사용
 
     }
+
 }

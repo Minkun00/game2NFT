@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IronPants_0: 2337416156748317707
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

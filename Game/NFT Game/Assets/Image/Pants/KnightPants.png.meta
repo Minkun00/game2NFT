@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      KnightPants_0: -695088669807528872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

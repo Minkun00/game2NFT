@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IronShoes_0: -4808783891540542138
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

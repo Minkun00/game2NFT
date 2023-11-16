@@ -63,8 +63,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.CompareTag("Finish"))
         {
-            Debug.Log("OUCH");
-           // GameManager.Instance.GameOver();
+            GameManager.gm.GameOver();
         }
     }
 
