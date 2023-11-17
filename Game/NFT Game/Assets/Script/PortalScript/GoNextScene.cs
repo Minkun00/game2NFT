@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GoNextScene : MonoBehaviour
 {
     public string NextSceneName;  // 이동할 맵의 이름
+    public int currentStage;
 
     private PlayerMove thePlayer;
     private MainCamera theCamera;
@@ -42,6 +43,7 @@ public class GoNextScene : MonoBehaviour
     {
         if (isPlayerOnPortal && Input.GetKeyDown(KeyCode.UpArrow))
         {
+            GlobalControl.Instance.CurrentPhase = currentStage;
             thePlayer.playerCurrentMap = NextSceneName;
             GlobalControl.Instance.loadingSceneName = NextSceneName;
             GameObject playerObject = GameObject.FindWithTag("Player");

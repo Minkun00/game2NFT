@@ -4,6 +4,7 @@ using UnityEngine;
 public class FromPreviousScene : MonoBehaviour
 {
     public string moveMap;
+    public int previousScene;
 
     private PlayerMove thePlayer;
     private MainCamera theCamera;
@@ -24,7 +25,7 @@ public class FromPreviousScene : MonoBehaviour
         thePlayer = GlobalControl.Instance.playerObject.GetComponent<PlayerMove>();
 
         // 나머지 코드...
-        if (moveMap == thePlayer.playerCurrentMap)
+        if ((moveMap == thePlayer.playerCurrentMap) && (GlobalControl.Instance.CurrentPhase == previousScene))
         {
             theCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10f);
             thePlayer.transform.position = this.transform.position;

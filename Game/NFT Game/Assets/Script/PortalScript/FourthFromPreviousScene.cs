@@ -4,6 +4,7 @@ using UnityEngine;
 public class FourthFromPreviousScene : MonoBehaviour
 {
     public string moveMapFourth;
+    public int previousScene;
 
     private PlayerMove thePlayerFourth;
     private MainCamera theCameraFourth;
@@ -16,10 +17,10 @@ public class FourthFromPreviousScene : MonoBehaviour
             Debug.LogError("MainCamera를 찾을 수 없습니다.");
             return;
         }
-        StartCoroutine(InitializePlayerMove());
+        StartCoroutine(InitializePlayerMoveFourth());
     }
 
-    IEnumerator InitializePlayerMove()
+    IEnumerator InitializePlayerMoveFourth()
     {
         yield return new WaitUntil(() => GlobalControl.Instance.playerObjectFourth != null);
         if (GlobalControl.Instance.playerObjectFourth == null)
@@ -44,16 +45,16 @@ public class FourthFromPreviousScene : MonoBehaviour
         thePlayerFourth = GlobalControl.Instance.playerObjectFourth.GetComponent<PlayerMove>();
 
         // 나머지 코드...
-        if (moveMapFourth == thePlayerFourth.playerCurrentMapFourth)
+        if ((moveMapFourth == thePlayerFourth.playerCurrentMapFourth) && (GlobalControl.Instance.CurrentPhase == previousScene))
         {
             theCameraFourth.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10f);
             thePlayerFourth.transform.position = this.transform.position;
         }
         else
         {
-            Debug.LogError("moveMapSecond가 playerCurrentMapSecond와 일치하지 않습니다.");
-            Debug.LogError("moveMapSecond : " + moveMapFourth);
-            Debug.LogError("playerCurrentMapSecond : " + thePlayerFourth.playerCurrentMapFourth);
+            Debug.LogError("moveMapFourth가 playerCurrentMapFourth와 일치하지 않습니다.");
+            Debug.LogError("moveMapFourth : " + moveMapFourth);
+            Debug.LogError("playerCurrentMapFourth : " + thePlayerFourth.playerCurrentMapFourth);
         }
     }
 }

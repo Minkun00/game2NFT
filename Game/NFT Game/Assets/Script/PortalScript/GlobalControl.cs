@@ -6,12 +6,13 @@ public class GlobalControl : MonoBehaviour
 {
     public static GlobalControl Instance;
 
+    public int CurrentPhase;
     public string loadingSceneName;
+
     public GameObject playerObject;
     public GameObject playerObjectSecond;
     public GameObject playerObjectThird;
     public GameObject playerObjectFourth;
-
 
 
     void Awake()

@@ -16,10 +16,10 @@ public class ThirdFromPreviousScene : MonoBehaviour
             Debug.LogError("MainCamera를 찾을 수 없습니다.");
             return;
         }
-        StartCoroutine(InitializePlayerMove());
+        StartCoroutine(InitializePlayerMoveThird());
     }
 
-    IEnumerator InitializePlayerMove()
+    IEnumerator InitializePlayerMoveThird()
     {
         yield return new WaitUntil(() => GlobalControl.Instance.playerObjectThird != null);
         if (GlobalControl.Instance.playerObjectThird == null)
@@ -51,8 +51,8 @@ public class ThirdFromPreviousScene : MonoBehaviour
         }
         else
         {
-            Debug.LogError("moveMapSecond가 playerCurrentMapSecond와 일치하지 않습니다.");
-            Debug.LogError("moveMapSecond : " + moveMapThird);
+            Debug.LogError("moveMapThird가 playerCurrentMapThird와 일치하지 않습니다.");
+            Debug.LogError("moveMapThird : " + moveMapThird);
             Debug.LogError("playerCurrentMapThird : " + thePlayerThird.playerCurrentMapThird);
         }
     }

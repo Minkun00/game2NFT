@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Loading : MonoBehaviour
 {
     public Slider progressBar;
-    public GoNextScene goNextScene;
 
     private void Start()
     {
