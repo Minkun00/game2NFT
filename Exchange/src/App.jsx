@@ -8,6 +8,7 @@ import myToken from './contracts/Hardhat_abis/MyToken.json';
 import myNFT from './contracts/Hardhat_abis/MyNFT.json';
 import myMarcket from './contracts/Hardhat_abis/MyMarketplace.json';
 import CheckKlaytnAPI from './contracts/checkKlaytnAPI/checkKlaytnAPI_NFT';
+import BuyTokenButton from './contracts/kaikasConnect/BuyTokens/BuyTokens';
 
 function App() {
   const nftContractABI = myNFT.abi;
@@ -21,7 +22,7 @@ function App() {
   return (
     <Router> 
       <div>
-        <h1>Welcome to MyToken DApp</h1>
+        <h1>Exchange</h1>
         <nav>
           <ul>
             <li>
@@ -38,9 +39,11 @@ function App() {
             </li>
           </ul>
         </nav>
-        <KaikasConnect 
-          tokenContractABI={tokenContractABI} 
-          tokenContractAddress={tokenContractAddress} />
+        <KaikasConnect />
+        <BuyTokenButton
+          tokenContractAddress={tokenContractAddress}
+          tokenContractAbi={tokenContractABI}
+        />
         <Routes>
           <Route path="/inputCode" element={
             <ItemToImg 
@@ -68,6 +71,7 @@ function App() {
             <Route path="/klaytnNFT" element={<CheckKlaytnAPI/>}/>
         </Routes>
       </div>
+      <p>ambition</p>
     </Router>
   );
 }
