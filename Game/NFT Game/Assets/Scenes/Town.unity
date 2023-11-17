@@ -333,9 +333,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 51184968}
-  - component: {fileID: 51184969}
   m_Layer: 0
-  m_Name: Road1
+  m_Name: FromRoad1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,19 +355,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 929814519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &51184969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51184966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c2157afcc0e3154ab25be213ca92cbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveMapSecond: Town
 --- !u!1 &70955970
 GameObject:
   m_ObjectHideFlags: 0
@@ -6566,6 +6552,7 @@ Transform:
   - {fileID: 749195328}
   - {fileID: 1904800848}
   - {fileID: 51184968}
+  - {fileID: 1481094537}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &929814520
@@ -11768,12 +11755,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481094535}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 5.5, z: 8.579893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 929814519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1481094538
 MonoBehaviour:
@@ -12791,6 +12778,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCurrentMap: 
   playerCurrentMapSecond: 
+  playerCurrentMapThird: 
+  playerCurrentMapFourth: 
 --- !u!1001 &1610132013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13889,6 +13878,7 @@ GameObject:
   - component: {fileID: 1904800849}
   - component: {fileID: 1904800851}
   - component: {fileID: 1904800854}
+  - component: {fileID: 1904800855}
   m_Layer: 0
   m_Name: PortalTownRoad1
   m_TagString: Untagged
@@ -14245,6 +14235,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextSceneName: CaveRoad1
+--- !u!114 &1904800855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904800847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2157afcc0e3154ab25be213ca92cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveMapSecond: Town
 --- !u!1001 &1922696576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14907,9 +14910,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingSceneName: 
-  loadingSceneNameSecond: 
   playerObject: {fileID: 0}
   playerObjectSecond: {fileID: 0}
+  playerObjectThird: {fileID: 0}
+  playerObjectFourth: {fileID: 0}
 --- !u!4 &2052008494
 Transform:
   m_ObjectHideFlags: 0
@@ -15349,4 +15353,3 @@ SceneRoots:
   - {fileID: 929814519}
   - {fileID: 1076797128}
   - {fileID: 622922787}
-  - {fileID: 1481094537}

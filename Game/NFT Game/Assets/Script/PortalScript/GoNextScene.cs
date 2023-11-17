@@ -44,14 +44,16 @@ public class GoNextScene : MonoBehaviour
         {
             thePlayer.playerCurrentMap = NextSceneName;
             GlobalControl.Instance.loadingSceneName = NextSceneName;
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            
 
             // 플레이어 오브젝트를 찾아서 GlobalControl 인스턴스에 저장
-            GameObject playerObject = GameObject.FindWithTag("Player");
             if (playerObject != null)
             {
                 GlobalControl.Instance.playerObject = playerObject;
                 playerObject.SetActive(false);
             }
+
 
             SceneManager.LoadScene("Loading");
         }

@@ -43,19 +43,17 @@ public class SecondGoNextScene : MonoBehaviour
         if (isPlayerOnPortalSecond && Input.GetKeyDown(KeyCode.UpArrow))
         {
             thePlayerSecond.playerCurrentMapSecond = NextSceneNameSecond;
-            GlobalControl.Instance.loadingSceneNameSecond = NextSceneNameSecond;
+            GlobalControl.Instance.loadingSceneName = NextSceneNameSecond;
 
             // 플레이어 오브젝트를 찾아서 GlobalControl 인스턴스에 저장
             GameObject playerObjectSecond = GameObject.FindWithTag("Player");
-            Debug.Log("thePlayerSecond.playerCurrentMapSecond: " + thePlayerSecond.playerCurrentMapSecond);
 
             if (playerObjectSecond != null)
             {
                 GlobalControl.Instance.playerObjectSecond = playerObjectSecond;
                 playerObjectSecond.SetActive(false);
-                Debug.Log("thePlayerSecond.playerCurrentMapSecond: " + thePlayerSecond.playerCurrentMapSecond);
             }
-            SceneManager.LoadScene("LoadingSecond");
+            SceneManager.LoadScene("Loading");
         }
     }
 

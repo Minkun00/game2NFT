@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224583388}
   - component: {fileID: 224583387}
-  - component: {fileID: 224583386}
+  - component: {fileID: 224583389}
   m_Layer: 0
   m_Name: ToRoad1
   m_TagString: Untagged
@@ -138,19 +138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &224583386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 224583385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c4598291356b34389773e1fdb7673a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextSceneNameSecond: CaveRoad1
 --- !u!61 &224583387
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -212,6 +199,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1690844089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &224583389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224583385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34e858669efb8f4fab3791670f6d3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextSceneNameFourth: CaveRoad1
 --- !u!1 &224636180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,10 +3124,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 876535414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29276954159bafe449eb9faf967379c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 18fd7a45fb81bcb49a67c9e6f1ade380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveMap: CaveRoad2
+  moveMapThird: CaveRoad2
 --- !u!1 &1190034394
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,7 +3228,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1233452670}
-  - component: {fileID: 1233452671}
   m_Layer: 0
   m_Name: FromInCave
   m_TagString: Untagged
@@ -3251,19 +3250,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1690844089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1233452671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233452669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c2157afcc0e3154ab25be213ca92cbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveMapSecond: InCave
 --- !u!1 &1359283289
 GameObject:
   m_ObjectHideFlags: 0

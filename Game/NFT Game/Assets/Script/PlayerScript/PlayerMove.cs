@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
 
     public string playerCurrentMap; // TownToRoad1 스크립트에 있는 transferMapName 변수의 값을 저장.
     public string playerCurrentMapSecond;
+    public string playerCurrentMapThird;
+    public string playerCurrentMapFourth;
 
     public const float moveSpeed = 10f;
     public const float jumpForce = 25f;
