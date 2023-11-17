@@ -2787,6 +2787,52 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &867789101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 867789102}
+  - component: {fileID: 867789103}
+  m_Layer: 0
+  m_Name: FrominCave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &867789102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867789101}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1690844089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867789103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867789101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c2157afcc0e3154ab25be213ca92cbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveMapSecond: CaveRoad2
+  previousScene: 4
 --- !u!1 &876535414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2801,7 +2847,7 @@ GameObject:
   - component: {fileID: 876535417}
   - component: {fileID: 876535420}
   m_Layer: 0
-  m_Name: PortalRoad1
+  m_Name: FromRoad1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3032,10 +3078,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 876535414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18fd7a45fb81bcb49a67c9e6f1ade380, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c2157afcc0e3154ab25be213ca92cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveMapThird: CaveRoad2
+  moveMapSecond: CaveRoad2
+  previousScene: 2
 --- !u!1 &1190034394
 GameObject:
   m_ObjectHideFlags: 0
@@ -10360,9 +10407,11 @@ Transform:
   - {fileID: 609718202}
   - {fileID: 224636181}
   - {fileID: 876535415}
+  - {fileID: 2125177037}
   - {fileID: 758621677}
   - {fileID: 560278442}
   - {fileID: 1740585076}
+  - {fileID: 867789102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1740585074
@@ -10376,8 +10425,9 @@ GameObject:
   - component: {fileID: 1740585076}
   - component: {fileID: 1740585075}
   - component: {fileID: 1740585078}
+  - component: {fileID: 1740585079}
   m_Layer: 0
-  m_Name: PortalInCave
+  m_Name: ToInCave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10487,6 +10537,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.2, y: -1.14}
   m_Size: {x: 2.55, y: 3.04}
   m_Direction: 0
+--- !u!114 &1740585079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740585074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextSceneName: InCave
+  currentStage: 3
 --- !u!1 &2125177035
 GameObject:
   m_ObjectHideFlags: 0
@@ -10496,8 +10560,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125177037}
-  - component: {fileID: 2125177036}
   - component: {fileID: 2125177038}
+  - component: {fileID: 2125177039}
   m_Layer: 0
   m_Name: ToRoad1
   m_TagString: Untagged
@@ -10505,20 +10569,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2125177036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125177035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34e858669efb8f4fab3791670f6d3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextSceneNameFourth: CaveRoad1
-  currentStage: 3
 --- !u!4 &2125177037
 Transform:
   m_ObjectHideFlags: 0
@@ -10527,12 +10577,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125177035}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1690844089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2125177038
 CapsuleCollider2D:
@@ -10569,12 +10619,25 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.31, y: 1.77}
+  m_Size: {x: 1.27, y: 1.77}
   m_Direction: 0
+--- !u!114 &2125177039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125177035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextSceneName: CaveRoad1
+  currentStage: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1690844089}
   - {fileID: 1190034396}
-  - {fileID: 2125177037}
+  - {fileID: 1690844089}

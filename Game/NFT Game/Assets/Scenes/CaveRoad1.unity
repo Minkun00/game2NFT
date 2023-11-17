@@ -129,28 +129,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 177433280}
-  - component: {fileID: 177433279}
+  - component: {fileID: 177433281}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FromRoad2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &177433279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177433278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 747429730377e1241a45efd0561e5572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveMapFourth: CaveRoad1
-  previousScene: 3
 --- !u!4 &177433280
 Transform:
   m_ObjectHideFlags: 0
@@ -166,6 +152,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &177433281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177433278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29276954159bafe449eb9faf967379c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveMap: CaveRoad1
+  previousScene: 3
 --- !u!1 &220761284
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,10 +495,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 232804416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a76157fd384664aae5b5c0e1f3c4dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 30c4598291356b34389773e1fdb7673a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneNameThird: CaveRoad2
+  NextSceneNameSecond: CaveRoad2
+  currentStage: 2
 --- !u!1 &614362892
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,8 +899,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1376210038}
-  - component: {fileID: 1376210037}
   - component: {fileID: 1376210039}
+  - component: {fileID: 1376210040}
   m_Layer: 0
   m_Name: ToTown
   m_TagString: Untagged
@@ -907,20 +908,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1376210037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376210036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c4598291356b34389773e1fdb7673a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextSceneNameSecond: Town
-  currentStage: 2
 --- !u!4 &1376210038
 Transform:
   m_ObjectHideFlags: 0
@@ -973,6 +960,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.42, y: 1.92}
   m_Direction: 0
+--- !u!114 &1376210040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376210036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c4598291356b34389773e1fdb7673a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextSceneNameSecond: Town
+  currentStage: 2
 --- !u!1 &1722642387
 GameObject:
   m_ObjectHideFlags: 0

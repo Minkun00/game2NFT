@@ -4,6 +4,8 @@ using UnityEngine;
 public class ThirdFromPreviousScene : MonoBehaviour
 {
     public string moveMapThird;
+    public int previousScene;
+
 
     private PlayerMove thePlayerThird;
     private MainCamera theCameraThird;
@@ -44,7 +46,7 @@ public class ThirdFromPreviousScene : MonoBehaviour
         thePlayerThird = GlobalControl.Instance.playerObjectThird.GetComponent<PlayerMove>();
 
         // 나머지 코드...
-        if (moveMapThird == thePlayerThird.playerCurrentMapThird)
+        if ((moveMapThird == thePlayerThird.playerCurrentMapThird) && (GlobalControl.Instance.CurrentPhase == previousScene))
         {
             theCameraThird.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10f);
             thePlayerThird.transform.position = this.transform.position;
