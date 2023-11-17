@@ -12,11 +12,14 @@ public class PlayerMove : MonoBehaviour
     public string playerCurrentMapThird;
     public string playerCurrentMapFourth;
 
-    public const float moveSpeed = 10f;
+    public const float moveSpeed = 7f;
     public const float jumpForce = 25f;
     
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    public Animator anim;
+
+
 
 
     void Start()
@@ -33,6 +36,9 @@ public class PlayerMove : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        anim = GetComponent<Animator>();
+        anim.SetBool("isWalking", false);
     }
 
     void Update()
@@ -48,16 +54,29 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftAlt) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            anim.SetBool("isJumping", true);
+        }
+
+        // 착지 후 점프 애니메이션 종료
+        if (!IsJumping() && anim.GetBool("isJumping") && IsGrounded())
+        {
+            anim.SetBool("isJumping", false);
         }
 
         // 방향 전환
         if (Input.GetButton("Horizontal"))
         {
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;  // Input.GetAxisRaw : 방향키 입력 받아옴. 왼쪽 -1 오른쪽 1
+            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;  // Input.GetAxisRaw : 방향키 입력 받아옴. 왼쪽 -1 오른쪽 1
         }
 
         //Raycast 선 확인
         Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
+
+        // Walkiing animation
+        if (Mathf.Abs(rb.velocity.x) < 0.3)
+            anim.SetBool("isWalking", false);
+        else
+            anim.SetBool("isWalking", true);
     }
     
     //finish 태그에 닿았을 시 게임오버
@@ -69,9 +88,15 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+
     bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 2, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 0.7f, LayerMask.GetMask("Ground"));
         return hit.collider != null;
+    }
+
+    bool IsJumping()
+    {
+        return rb.velocity.y > 0.01f;
     }
 }
