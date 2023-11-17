@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1ebc2623228009d4cbf3146645929f7a
+guid: 38a7a1c0378bafb44a6b1d38672f9b34
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3994795293169029437
-    second: ArmorPants_0
+      213: 6092950366074925984
+    second: grey_button06_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ArmorPants_0
+      name: grey_button06_0
       rect:
         serializedVersion: 2
-        x: 95
-        y: 63
-        width: 322
-        height: 386
+        x: 0
+        y: 0
+        width: 191
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d311ebf572d507730800000000000000
-      internalID: 3994795293169029437
+      spriteID: 0a37bfb73128e8450800000000000000
+      internalID: 6092950366074925984
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ArmorPants_0: 3994795293169029437
+      grey_button06_0: 6092950366074925984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d582d6052deb7de42938592900305911
+guid: 965b8fadc8438ed44adf52f3597a4bf5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4548992743620234918
-    second: helmet_0
+      213: -7796260205100228549
+    second: red_button12_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: helmet_0
+      name: red_button12_0
       rect:
         serializedVersion: 2
-        x: 63
-        y: 111
-        width: 386
-        height: 258
+        x: 0
+        y: 0
+        width: 190
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a51bfa6833bbed0c0800000000000000
-      internalID: -4548992743620234918
+      spriteID: b30ac7a56ae1ec390800000000000000
+      internalID: -7796260205100228549
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      helmet_0: -4548992743620234918
+      red_button12_0: -7796260205100228549
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

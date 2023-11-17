@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7e18e50ef4ea34a4eb02b4c365681d52
+guid: 95f6352bd3c001149b4e3ff61eb8fd48
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1628304451031106407
-    second: ArmorTop_0
+      213: -6283482747586014345
+    second: grey_box_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ArmorTop_0
+      name: grey_box_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 47
-        width: 418
-        height: 402
+        x: 0
+        y: 0
+        width: 38
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 76385e56546e89610800000000000000
-      internalID: 1628304451031106407
+      spriteID: 77317dd7bb59cc8a0800000000000000
+      internalID: -6283482747586014345
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ArmorTop_0: 1628304451031106407
+      grey_box_0: -6283482747586014345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

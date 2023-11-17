@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 1277155240}
-  goNextScene: {fileID: 0}
 --- !u!114 &48827748
 MonoBehaviour:
   m_ObjectHideFlags: 0
