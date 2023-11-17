@@ -1580,6 +1580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 560278442}
+  - component: {fileID: 560278443}
   m_Layer: 0
   m_Name: FromHidden
   m_TagString: Untagged
@@ -1596,12 +1597,26 @@ Transform:
   m_GameObject: {fileID: 560278441}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 98, y: -12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1690844089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &560278443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 560278441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747429730377e1241a45efd0561e5572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveMapFourth: CaveRoad2
+  previousScene: 6
 --- !u!1 &609718201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,6 +2579,7 @@ GameObject:
   - component: {fileID: 758621681}
   - component: {fileID: 758621680}
   - component: {fileID: 758621678}
+  - component: {fileID: 758621682}
   m_Layer: 0
   m_Name: ToHidden
   m_TagString: Untagged
@@ -2787,6 +2803,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &758621682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758621676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a76157fd384664aae5b5c0e1f3c4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextSceneNameThird: HiddenMap
+  currentStage: 3
 --- !u!1 &867789101
 GameObject:
   m_ObjectHideFlags: 0
