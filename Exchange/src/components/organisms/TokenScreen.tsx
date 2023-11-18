@@ -1,9 +1,10 @@
 // TokenScreen.tsx
 
 import React, { useState } from 'react';
-import TokenExchangeButton from '../molecules/TokenExchangeButton';
+import TokenExchangeButton from '../molecules/TokenExchangeButton.tsx';
 import KaikasConnect from '../../contracts/kaikasConnect/KaikasConnect';
 import myToken from '../../contracts/Hardhat_abis/MyToken.json';
+import BuyTokenButton from '../../contracts/kaikasConnect/BuyTokens/BuyTokens';
 
 const TokenScreen = () => {
 
@@ -32,8 +33,12 @@ const TokenScreen = () => {
             />
 
             {currentScreen == 'connectKaikas' && <KaikasConnect 
-                                                    tokenContractABI={tokenContractABI} 
-                                                    tokenContractAddress={tokenContractAddress} />}  
+                                                     />}  
+
+            {currentScreen == 'exchangeToken' && <BuyTokenButton
+                                                    tokenContractAddress={tokenContractAddress}
+                                                    tokenContractAbi={tokenContractABI} 
+                                                    />}
         </div>
     );
 

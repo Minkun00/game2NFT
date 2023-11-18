@@ -1,10 +1,10 @@
-// index.tsx
+// pages/templates/index.tsx
 import React from 'react';
-import AppName from '../../components/organisms/AppName';
-import ArcadeMarketScreen from '../../components/organisms/ArcadeMarketScreen';
-import TokenScreen from '../../components/organisms/TokenScreen';
+import AppName from '../../components/organisms/AppName.tsx';
+import ArcadeMarketScreen from '../../components/organisms/ArcadeMarketScreen.tsx';
+import TokenScreen from '../../components/organisms/TokenScreen.tsx';
 
-const index = () => {
+const IndexTemplate = () => {
   
   return (
     <div>
@@ -16,5 +16,5 @@ const index = () => {
   );
 };
 
-export default index;
+export default IndexTemplate;
 

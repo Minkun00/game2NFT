@@ -1,7 +1,7 @@
 // AppName.tsx
 
 import React, { memo } from 'react';
-import Span from '../atoms/Span';
+import Span from '../atoms/Span.tsx';
 
 interface AppNameProps {
     spanContent: string;

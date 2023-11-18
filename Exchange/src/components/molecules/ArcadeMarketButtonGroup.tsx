@@ -1,7 +1,7 @@
 // ArcadeMarketButtonGroup.tsx
 
 import React, { memo } from 'react';
-import Button from '../atoms/Button';
+import Button from '../atoms/Button.tsx';
 
 interface ArcadeMarketButtonGroupProps {
     onPower: () => void;

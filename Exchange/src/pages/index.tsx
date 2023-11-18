@@ -1,10 +1,17 @@
-// index.tsx
+// pages/index.tsx
 
 import React from 'react';
-import AppTemplate from './templates/index';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AppTemplate from './templates/index.tsx';
 
-const index = () => {
-  return <AppTemplate />;
+const Index = (): React.JSX.Element => {
+  return ( 
+    <Router>
+      <Routes>
+        <Route path = "/" element = { <AppTemplate/> } />
+      </Routes>
+    </Router>
+  )
 };
 
-export default index;
+export default Index;

@@ -1,7 +1,7 @@
 // ArcadeMarketSreen.tsx
 
 import React, { useState } from 'react';
-import ArcadeMarketButtonGroup from '../molecules/ArcadeMarketButtonGroup';
+import ArcadeMarketButtonGroup from '../molecules/ArcadeMarketButtonGroup.tsx';
 import CheckKlaytnAPI from '../../contracts/checkKlaytnAPI/checkKlaytnAPI_NFT';
 import ItemToImg from '../../contracts/itemToIMG/itemToImg';
 import Marketplace from '../../contracts/buyItem/market';

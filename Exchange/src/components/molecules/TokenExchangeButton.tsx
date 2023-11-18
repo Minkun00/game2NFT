@@ -1,7 +1,7 @@
 // TokenExchangeButton.jsx
 
 import React, { memo } from 'react';
-import Button from '../atoms/Button';
+import Button from '../atoms/Button.tsx';
 
 interface TokenExchangeButtonProps {
     onConnectKaikas: () => void;
