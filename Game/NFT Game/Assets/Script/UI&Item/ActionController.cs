@@ -18,17 +18,69 @@ public class ActionController : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask;
 
+    // 포탈 레이어에만 반응하도록 레이어 마스크 설정.
+    [SerializeField]
+    private LayerMask layerMaskPortal;
+
     // 필요한 컴포넌트.
     [SerializeField]
     public TextMeshProUGUI actionText;
-
     [SerializeField]
     public Image actionTextPanel;
+
+    [SerializeField]
+    public TextMeshProUGUI actionTextPortal;
+    [SerializeField]
+    public Image actionTextPanelPortal;
+
+    [SerializeField]
+    private Inventory theInventory;
 
     void Update()
     {
         CheckItem();
-        TryAction();   
+        TryAction();
+
+        CheckPortal();
+    }
+
+    private void CheckPortal()
+    {
+        Vector2 direction;
+
+        if (transform.localScale.x > 0)
+        {
+            direction = Vector2.right;  // 오른쪽 방향
+        }
+        else
+        {
+            direction = Vector2.left;  // 왼쪽 방향
+        }
+
+        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
+        hitInfo = Physics2D.Raycast(transform.position, direction, range, layerMaskPortal);
+        if (hitInfo)
+        {
+            if (hitInfo.transform.tag == "Portal")
+            {
+                PortalInfoAppear();
+            }
+        }
+        else
+            PortalInfoDisappear();
+    }
+
+    private void PortalInfoDisappear()
+    {
+        actionTextPortal.gameObject.SetActive(false);
+        actionTextPanelPortal.gameObject.SetActive(false);
+    }
+
+    private void PortalInfoAppear()
+    {
+        actionTextPortal.gameObject.SetActive(true);
+        actionTextPanelPortal.gameObject.SetActive(true);
+        actionTextPortal.text = " Move : " + "<color=orange>" +  "UpArrow " + "</color>";
     }
 
     private void TryAction()
@@ -47,6 +99,7 @@ public class ActionController : MonoBehaviour
             if(hitInfo.transform != null)
             {
                 Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " 획득했습니다 ");
+                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
                 Destroy(hitInfo.transform.gameObject);
                 InfoDisappear();
             }

@@ -9,6 +9,7 @@ public class GoNextScene : MonoBehaviour
 
     private PlayerMove thePlayer;
     private MainCamera theCamera;
+    private ActionController controller;
 
     void Start()
     {

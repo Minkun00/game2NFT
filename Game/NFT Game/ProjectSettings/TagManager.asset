@@ -8,6 +8,7 @@ TagManager:
   - Damage
   - AddSlot
   - Item
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - Item
   - Ground
-  - 
+  - Portal
   - 
   - 
   - 
