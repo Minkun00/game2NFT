@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -24,26 +23,26 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.sceneLoaded += (scene, mode) =>
+        // 버튼이 포함된 UI 객체를 찾음
+        GameObject uiObject = GameObject.Find(yourButtonName);
+        if (uiObject != null)
         {
-            GameObject uiObject = GameObject.Find(yourButtonName);
-            if (uiObject != null)
+            // UI 객체에서 버튼 컴포넌트를 찾음
+            yourButton = uiObject.GetComponent<Button>();
+            if (yourButton != null)
             {
-                yourButton = uiObject.GetComponent<Button>();
-                if (yourButton != null)
-                {
-                    yourButton.onClick.AddListener(AddSlot);
-                }
-                else
-                {
-                    Debug.LogError("Button component not found");
-                }
+                // 버튼의 클릭 이벤트에 메서드를 연결함
+                yourButton.onClick.AddListener(AddSlot);
             }
             else
             {
-                Debug.LogError("UI object not found");
+                Debug.LogError("Button component not found");
             }
-        };
+        }
+        else
+        {
+            Debug.LogError("UI object not found");
+        }
     }
 
     public void AddSlot()

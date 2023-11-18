@@ -66,8 +66,17 @@ public class PlayerMove : MonoBehaviour
         // 방향 전환
         if (Input.GetButton("Horizontal"))
         {
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;  // Input.GetAxisRaw : 방향키 입력 받아옴. 왼쪽 -1 오른쪽 1
+            float direction = Input.GetAxisRaw("Horizontal");
+            if (direction == -1) // 왼쪽으로 이동
+            {
+                transform.localScale = new Vector3(-3.625789f, 3.625789f, 3.625789f);
+            }
+            else if (direction == 1) // 오른쪽으로 이동
+            {
+                transform.localScale = new Vector3(3.625789f, 3.625789f, 3.625789f);
+            }
         }
+
 
         //Raycast 선 확인
         Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));

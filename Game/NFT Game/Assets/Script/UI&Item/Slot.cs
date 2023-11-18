@@ -5,19 +5,38 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public Item item;
-    public Image itemIcon;
+    public Item item;           // 획득한 아이템
+    public int itemCount;       // 획득한 아이템의 개수
+    public Image itemImage;     // 아이템의 이미지
 
+    // 필요한 컴포넌트
+    [SerializeField]
+    private Text text_Count;
+    [SerializeField]
+    private GameObject go_CountImage;
 
-    public void UpdateSlotUI()
+    private void SetColor(float _alpha)
     {
-        itemIcon.sprite = item.itemImage;
-        itemIcon.gameObject.SetActive(true);
+        Color color = itemImage.color;
+        color.a = _alpha;
+        itemImage.color = color; ;
     }
 
-    public void RemoveSlot()
+    public void AddItem(Item _item, int _count = 1)
     {
-        item = null;
-        itemIcon.gameObject.SetActive(false);
+        item = _item;
+        itemCount = _count;
+        itemImage.sprite = item.itemImage;
+
+        if (item.itemType != Item.ItemType.Used)
+        {
+
+        }
+
+        go_CountImage.SetActive(true);
+        text_Count.text = itemCount.ToString();
+
+        SetColor(1);
     }
+
 }

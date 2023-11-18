@@ -3,35 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum ItemType
+[CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
+public class Item : ScriptableObject    // ScriptableObject는 굳이 게임 오브젝트에 붙일 필요 없음
 {
-    Helmet,
-    Top,
-    Pants,
-    Shoes,
-    Sword
-}
-
-public enum ItemGrade
-{
-    Common,
-    Rare,
-    Epic,
-    Legendary
-}
-
-
-[System.Serializable]
-
-public class Item
-{
+    public string itemName;         // 아이템의 이름
     public ItemType itemType;
-    public ItemGrade grade;
-    public string itemName;
-    public Sprite itemImage;
+    public Sprite itemImage;        // 아이템의 이미지
+    public GameObject itemPrefab;   // 아이템의 프리펨
 
-    public bool Use()
+    public string weaponType;       // 무기 유형
+
+    public enum ItemType
     {
-        return false;       // 아이템 사용 성공 여부 반환
+        Equipment,
+        Used,
+        ETC
     }
 }
