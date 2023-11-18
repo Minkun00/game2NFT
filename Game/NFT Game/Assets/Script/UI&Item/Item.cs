@@ -26,6 +26,7 @@ public enum ItemGrade
 public class Item
 {
     public ItemType itemType;
+    public ItemGrade grade;
     public string itemName;
     public Sprite itemImage;
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
@@ -41,6 +42,11 @@ public class InventoryUI : MonoBehaviour
             Debug.LogError("No slots found!");
             return;
         }
+
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            RedrawSlotUI();
+        };
 
         inven.onSlotCountChange += SlotChange;    // onSlotCountChange가 참조할 메서드를 정의
         inven.onChangeItem += RedrawSlotUI;       // OnChangeItem이 참조할 메서드 정의

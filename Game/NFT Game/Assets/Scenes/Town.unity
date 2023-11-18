@@ -1193,6 +1193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7950904556690211258, guid: 33eaf82d55c8151469479ea33600ca00, type: 3}
+      propertyPath: item.grade
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11822,18 +11826,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDB:
   - itemType: 0
+    grade: 0
     itemName: Helmet
     itemImage: {fileID: -5697405367592101602, guid: 9010bb67b8476dd4ca9b3a5cd09d0909, type: 3}
   - itemType: 1
+    grade: 0
     itemName: Top
     itemImage: {fileID: -2198501206769771814, guid: 0f0d9a236ed68c8418a44ea1470efdfc, type: 3}
   - itemType: 2
+    grade: 0
     itemName: Pants
     itemImage: {fileID: -8921375225736108624, guid: a92d8ae3ef9cd05409d10a6ff4633d6a, type: 3}
   - itemType: 3
+    grade: 0
     itemName: Shoes
     itemImage: {fileID: -4808783891540542138, guid: e5e3e829c1b777f4f8a145bb38e7d723, type: 3}
   - itemType: 4
+    grade: 0
     itemName: Sword
     itemImage: {fileID: -7592935724253850164, guid: 1f754585a50e60043a71fcd69464a257, type: 3}
   fieldItemPrefab: {fileID: 3605148081851045582, guid: 61063388ac37df541bcfde48a9c23abd, type: 3}
