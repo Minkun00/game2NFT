@@ -16,7 +16,7 @@ const TokenScreen = () => {
 
     const handleConnectionKaikasButtonClick = () => {
         setIsPowerOn(!isPowerOn);
-        // setCurrentScreen('connectKaikas');
+        setCurrentScreen('connectKaikas');
 
     };
 
