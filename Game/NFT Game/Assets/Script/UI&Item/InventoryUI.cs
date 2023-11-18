@@ -70,22 +70,6 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    /*public void AddSlot()
-    {
-        if (inven == null)
-        {
-            inven = FindObjectOfType<Inventory>();
-        }
-        if (inven != null)
-        {
-            inven.SlotCnt = inven.SlotCnt + 1;
-        }
-        else
-        {
-            Debug.LogError("Inventory instance not found");
-        }
-    }*/
-
 
     void RedrawSlotUI()
     {
@@ -99,8 +83,6 @@ public class InventoryUI : MonoBehaviour
         {
             slots[i].item = inven.items[i];
             slots[i].UpdateSlotUI();
-        }    
-
-
+        }        
     }
 }
