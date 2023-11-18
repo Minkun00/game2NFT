@@ -13,7 +13,8 @@ public class Inventory : MonoBehaviour
     {
         if(Instance != null)
         {
-            Destroy(gameObject);        
+            Destroy(gameObject);
+            return;
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);  // 씬이 변경되어도 파괴되지 않도록 설정
@@ -36,9 +37,11 @@ public class Inventory : MonoBehaviour
         set
         {
             slotCnt = value;
-            onSlotCountChange.Invoke(slotCnt);
+            if (onSlotCountChange != null)
+                onSlotCountChange.Invoke(slotCnt);
         }
     }
+
 
     private void Start()
     {

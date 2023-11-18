@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class ItemDatabase : MonoBehaviour
 {
-    public static ItemDatabase instance;    // 다른 class에서 접근할 수 있게
+    public static ItemDatabase Instance;
+
     private void Awake()
     {
-        instance = this; 
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public List<Item> itemDB = new List<Item>();

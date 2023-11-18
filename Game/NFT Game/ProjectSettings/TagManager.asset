@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FieldItem
   - Damage
+  - AddSlot
   layers:
   - Default
   - TransparentFX

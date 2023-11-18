@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    Inventory inven;
+    public Inventory inven;
 
     public GameObject inventoryPanel;
     public bool activeInventory = false;
@@ -14,15 +14,40 @@ public class InventoryUI : MonoBehaviour
     public Slot[] slots;
     public Transform slotHolder;
 
+    public static InventoryUI Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
         inven = Inventory.Instance;
+        if (inven == null)
+        {
+            Debug.LogError("Inventory instance is null!");
+            return;
+        }
+
         slots = slotHolder.GetComponentsInChildren<Slot>();
+        if (slots.Length == 0)
+        {
+            Debug.LogError("No slots found!");
+            return;
+        }
+
         inven.onSlotCountChange += SlotChange;    // onSlotCountChange가 참조할 메서드를 정의
         inven.onChangeItem += RedrawSlotUI;       // OnChangeItem이 참조할 메서드 정의
-        inventoryPanel.SetActive(activeInventory);    
+        inventoryPanel.SetActive(activeInventory);
     }
+
+
 
 
     private void SlotChange(int val)
@@ -45,10 +70,22 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void AddSlot()
+    /*public void AddSlot()
     {
-        inven.SlotCnt = inven.SlotCnt + 1;
-    }
+        if (inven == null)
+        {
+            inven = FindObjectOfType<Inventory>();
+        }
+        if (inven != null)
+        {
+            inven.SlotCnt = inven.SlotCnt + 1;
+        }
+        else
+        {
+            Debug.LogError("Inventory instance not found");
+        }
+    }*/
+
 
     void RedrawSlotUI()
     {

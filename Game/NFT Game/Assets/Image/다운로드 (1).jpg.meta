@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 1f754585a50e60043a71fcd69464a257
+guid: d32fc59e929815e41bfda1effe99d615
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7592935724253850164
-    second: KnightShoes_0
-  - first:
-      213: -8295118081776946470
-    second: KnightShoes_1
+      213: 2509031894683348256
+    second: "\uB2E4\uC6B4\uB85C\uB4DC (1)_0"
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -101,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KnightShoes_0
+      name: "\uB2E4\uC6B4\uB85C\uB4DC (1)_0"
       rect:
         serializedVersion: 2
-        x: 111
-        y: 31
-        width: 114
-        height: 450
+        x: 0
+        y: 0
+        width: 799
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,29 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc5d979103970a690800000000000000
-      internalID: -7592935724253850164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KnightShoes_1
-      rect:
-        serializedVersion: 2
-        x: 303
-        y: 31
-        width: 114
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad2f3c5dd02d1ec80800000000000000
-      internalID: -8295118081776946470
+      spriteID: 02de9bcf63fd1d220800000000000000
+      internalID: 2509031894683348256
       vertices: []
       indices: 
       edges: []
@@ -152,9 +128,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      KnightShoes_0: -7592935724253850164
-      KnightShoes_1: -8295118081776946470
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
