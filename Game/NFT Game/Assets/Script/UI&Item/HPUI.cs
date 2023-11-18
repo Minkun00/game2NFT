@@ -15,10 +15,5 @@ public class HPUI : MonoBehaviour
             hpbar.value -= 0.1f;
         }
     }
+}*/
 
-    private void HandleHp()
-    {
-        hpbar.value = (float)curHp / (float)maxHp;
-    }
-}
-*/
