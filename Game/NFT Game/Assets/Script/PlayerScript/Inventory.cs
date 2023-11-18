@@ -27,10 +27,9 @@ public class Inventory : MonoBehaviour
     public delegate void OnChangeItem();
     public OnChangeItem onChangeItem;
 
-
     public List<Item> items = new List<Item>();       // 획득한 아이템을 담을 List를 한 개 생성
+    private int slotCnt;                              // slot의 개수
 
-    private int slotCnt;
     public int SlotCnt
     {
         get => slotCnt;
