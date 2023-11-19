@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
+    private Vector3 initialPosition;
+    private float health;
+    //private int score; //스코어 사용할 경우 
 
     private void Awake()
     {
         gm = this;
+        initialPosition = transform.position;
     }
 
     private bool isGameOver = false;
@@ -21,9 +25,18 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = true;
             SceneManager.LoadScene("GameOver");
-
             //여기에 게임 오버시 처리할 작업 나중에 추가
         }
+    }
+
+    //플레이어 상태 초기화
+    public void ResetPlayerState()
+    {
+        Debug.Log("reset");
+        transform.position = initialPosition; //플레이어 위치 초기화
+        health = 100f;
+        Debug.Log(transform.position);
+        Debug.Log(health);
     }
 
     //게임 종료 메서드
