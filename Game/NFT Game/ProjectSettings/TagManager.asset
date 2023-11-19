@@ -9,6 +9,7 @@ TagManager:
   - AddSlot
   - Item
   - Portal
+  - Die
   layers:
   - Default
   - TransparentFX
