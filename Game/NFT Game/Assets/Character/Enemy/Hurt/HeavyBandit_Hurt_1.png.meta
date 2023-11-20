@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HeavyBandit_Hurt_1_0: 2614238662432255012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
