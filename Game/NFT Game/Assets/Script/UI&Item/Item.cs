@@ -20,4 +20,9 @@ public class Item : ScriptableObject
         Equipment,
         ETC
     }
+
+    void Start()
+    {
+
+    }
 }
