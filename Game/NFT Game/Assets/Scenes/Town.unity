@@ -1949,7 +1949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1177484550}
-  speed: 1
+  speed: 2
   bound: {fileID: 1481094536}
 --- !u!1001 &528600081
 PrefabInstance:
@@ -6239,6 +6239,7 @@ Transform:
   - {fileID: 1904800848}
   - {fileID: 1481094537}
   - {fileID: 238630127}
+  - {fileID: 1655107392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &929814520
@@ -12029,6 +12030,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1655107391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655107392}
+  - component: {fileID: 1655107393}
+  m_Layer: 0
+  m_Name: RespawnSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1655107392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655107391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 929814519}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1655107393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655107391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3a1abda16084b4e9f9be4b6b121bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveMap: 
 --- !u!1001 &1714183729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13748,7 +13794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5691952619351542234, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
       propertyPath: m_Name
-      value: ArmyHelmet_0 (1)
+      value: ArmyHelmet_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13880,6 +13926,7 @@ MonoBehaviour:
   playerObjectSecond: {fileID: 0}
   playerObjectThird: {fileID: 0}
   playerObjectFourth: {fileID: 0}
+  GameOverPlayer: {fileID: 0}
 --- !u!4 &2052008494
 Transform:
   m_ObjectHideFlags: 0
@@ -14288,7 +14335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5691952619351542234, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
       propertyPath: m_Name
-      value: ArmyHelmet_0
+      value: ArmyHelmet_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

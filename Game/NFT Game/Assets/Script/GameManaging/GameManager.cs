@@ -5,16 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gm;
+    public static GameManager Instance;
     private Vector3 initialPosition;
     private float health;
     //private int score; //스코어 사용할 경우 
 
     private void Awake()
     {
-        gm = this;
+        if (Instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         initialPosition = transform.position;
     }
+
 
     private bool isGameOver = false;
 
