@@ -94,7 +94,6 @@ public class PlayerMove : MonoBehaviour
         if (other.CompareTag("Finish"))
         {
             GameManager.Instance.GameOver();
-            GameManager.Instance.ResetPlayerState();
         }
     }
 

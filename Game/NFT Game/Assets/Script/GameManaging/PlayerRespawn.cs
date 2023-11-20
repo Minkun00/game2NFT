@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    public string moveMap;
-
     private PlayerMove thePlayer;
     private MainCamera theCamera;
 

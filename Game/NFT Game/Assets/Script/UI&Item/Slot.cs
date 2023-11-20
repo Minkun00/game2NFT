@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IPointerClickHandler  // 인터페이스의 장점은 여러개가 상속이 가능하다는 것.
 {
     public Item item;           // 획득한 아이템
     public int itemCount;       // 획득한 아이템의 개수
@@ -65,5 +66,10 @@ public class Slot : MonoBehaviour
 
         text_Count.text = "0";
         go_CountImage.SetActive(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        
     }
 }

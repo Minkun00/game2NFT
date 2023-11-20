@@ -27,6 +27,11 @@ public class ActionController : MonoBehaviour
     [SerializeField]
     private Inventory theInventory;
 
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         CheckItem();
@@ -94,6 +99,6 @@ public class ActionController : MonoBehaviour
         pickActivated = true;
         actionText.gameObject.SetActive(true);
         actionTextPanel.gameObject.SetActive(true);
-        actionText.text = hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " Pick it up " + "<color=yellow>" + "(Z)" + "</color>";
+        actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "]" + " Pick it up" + "<color=yellow>" + " (Z)" + "</color>";
     }
 }

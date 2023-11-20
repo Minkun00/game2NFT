@@ -39,16 +39,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //플레이어 상태 초기화
-    public void ResetPlayerState()
-    {
-        Debug.Log("reset");
-        transform.position = initialPosition; //플레이어 위치 초기화
-        health = 100f;
-        Debug.Log(transform.position);
-        Debug.Log(health);
-    }
-
     //게임 종료 메서드
     public void EndGame()
     {

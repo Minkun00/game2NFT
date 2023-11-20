@@ -16,6 +16,20 @@ public class Inventory : MonoBehaviour
     // ½½·Ôµé
     private Slot[] slots;
 
+    public static Inventory Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+
     private void Start()
     {
         slots = go_SlotsParent.GetComponentsInChildren<Slot>();
