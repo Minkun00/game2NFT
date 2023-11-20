@@ -1,156 +1,156 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//using TMPro;
+//using UnityEngine;
+//using UnityEngine.UI;
 
-public class ActionController : MonoBehaviour
-{
-    [SerializeField]
-    private float range;  // 습득 가능한 최대 거리
+//public class ActionController : MonoBehaviour
+//{
+//    [SerializeField]
+//    private float range;  // 습득 가능한 최대 거리
 
-    private bool pickActivated = false;  // 습득 가능할 시 true
+//    private bool pickActivated = false;  // 습득 가능할 시 true
 
-    private RaycastHit2D hitInfo;  // 충돌체 정보 저장
+//    private RaycastHit2D hitInfo;  // 충돌체 정보 저장
 
-    // 아이템 레이어에만 반응하도록 레이어 마스크 설정.
-    [SerializeField]
-    private LayerMask layerMask;
+//    // 아이템 레이어에만 반응하도록 레이어 마스크 설정.
+//    [SerializeField]
+//    private LayerMask layerMask;
 
-    // 포탈 레이어에만 반응하도록 레이어 마스크 설정.
-    [SerializeField]
-    private LayerMask layerMaskPortal;
+//    // 포탈 레이어에만 반응하도록 레이어 마스크 설정.
+//    [SerializeField]
+//    private LayerMask layerMaskPortal;
 
-    // 필요한 컴포넌트.
-    [SerializeField]
-    public TextMeshProUGUI actionText;
-    [SerializeField]
-    public Image actionTextPanel;
+//    // 필요한 컴포넌트.
+//    [SerializeField]
+//    public TextMeshProUGUI actionText;
+//    [SerializeField]
+//    public Image actionTextPanel;
 
-    [SerializeField]
-    public TextMeshProUGUI actionTextPortal;
-    [SerializeField]
-    public Image actionTextPanelPortal;
+//    [SerializeField]
+//    public TextMeshProUGUI actionTextPortal;
+//    [SerializeField]
+//    public Image actionTextPanelPortal;
 
-    [SerializeField]
-    private Inventory theInventory;
+//    [SerializeField]
+//    private Inventory theInventory;
 
-    void Update()
-    {
-        CheckItem();
-        //CheckPortal();
-        TryAction();
-    }
+//    void Update()
+//    {
+//        CheckItem();
+//        //CheckPortal();
+//        TryAction();
+//    }
 
-    /*
-    #region Portal_UI
-    private void CheckPortal()
-    {
-        Vector2 direction;
+//    /*
+//    #region Portal_UI
+//    private void CheckPortal()
+//    {
+//        Vector2 direction;
 
-        if (transform.localScale.x > 0)
-        {
-            direction = Vector2.right;  // 오른쪽 방향
-        }
-        else
-        {
-            direction = Vector2.left;  // 왼쪽 방향
-        }
+//        if (transform.localScale.x > 0)
+//        {
+//            direction = Vector2.right;  // 오른쪽 방향
+//        }
+//        else
+//        {
+//            direction = Vector2.left;  // 왼쪽 방향
+//        }
 
-        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
-        hitInfo = Physics2D.Raycast(transform.position, direction, range, layerMaskPortal);
-        if (hitInfo)
-        {
-            if (hitInfo.transform.tag == "Portal")
-            {
-                PortalInfoAppear();
-            }
-        }
-        else
-            PortalInfoDisappear();
-    }
+//        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
+//        hitInfo = Physics2D.Raycast(transform.position, direction, range, layerMaskPortal);
+//        if (hitInfo)
+//        {
+//            if (hitInfo.transform.tag == "Portal")
+//            {
+//                PortalInfoAppear();
+//            }
+//        }
+//        else
+//            PortalInfoDisappear();
+//    }
 
-    public void PortalInfoDisappear()
-    {
-        actionTextPortal.gameObject.SetActive(false);
-        actionTextPanelPortal.gameObject.SetActive(false);
-    }
+//    public void PortalInfoDisappear()
+//    {
+//        actionTextPortal.gameObject.SetActive(false);
+//        actionTextPanelPortal.gameObject.SetActive(false);
+//    }
 
-    public void PortalInfoAppear()
-    {
-        actionTextPortal.gameObject.SetActive(true);
-        actionTextPanelPortal.gameObject.SetActive(true);
-        actionTextPortal.text = " Move : " + "<color=orange>" +  "UpArrow " + "</color>";
-    }
-    #endregion
-    */
+//    public void PortalInfoAppear()
+//    {
+//        actionTextPortal.gameObject.SetActive(true);
+//        actionTextPanelPortal.gameObject.SetActive(true);
+//        actionTextPortal.text = " Move : " + "<color=orange>" +  "UpArrow " + "</color>";
+//    }
+//    #endregion
+//    */
 
-    #region Item_UI
-    private void CheckItem()
-    {
-        Vector2 direction;
+//    #region Item_UI
+//    private void CheckItem()
+//    {
+//        Vector2 direction;
 
-        if (transform.localScale.x > 0)
-        {
-            direction = Vector2.right;  // 오른쪽 방향
-        }
-        else
-        {
-            direction = Vector2.left;  // 왼쪽 방향
-        }
+//        if (transform.localScale.x > 0)
+//        {
+//            direction = Vector2.right;  // 오른쪽 방향
+//        }
+//        else
+//        {
+//            direction = Vector2.left;  // 왼쪽 방향
+//        }
 
-        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
-        hitInfo = Physics2D.Raycast(transform.position, direction, range, layerMask);
-        if (hitInfo)
-        {
-            if (hitInfo.transform.tag == "Item")
-            {
-                ItemInfoAppear();
-            }
-        }
-        else
-            InfoDisappear();
-    }
+//        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
+//        hitInfo = Physics2D.Raycast(transform.position, direction, range, layerMask);
+//        if (hitInfo)
+//        {
+//            if (hitInfo.transform.tag == "Item")
+//            {
+//                ItemInfoAppear();
+//            }
+//        }
+//        else
+//            InfoDisappear();
+//    }
 
-    private void InfoDisappear()
-    {
-        pickActivated = false;
-        actionText.gameObject.SetActive(false);
-        actionTextPanel.gameObject.SetActive(false);
-    }
+//    private void InfoDisappear()
+//    {
+//        pickActivated = false;
+//        actionText.gameObject.SetActive(false);
+//        actionTextPanel.gameObject.SetActive(false);
+//    }
 
-    private void ItemInfoAppear()
-    {
-        pickActivated = true;
-        actionText.gameObject.SetActive(true);
-        actionTextPanel.gameObject.SetActive(true);
-        actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "] Pick up " + "<color=yellow>" + "(Z)" + "</color>";
-    }
-    #endregion
+//    private void ItemInfoAppear()
+//    {
+//        pickActivated = true;
+//        actionText.gameObject.SetActive(true);
+//        actionTextPanel.gameObject.SetActive(true);
+//        actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "] Pick up " + "<color=yellow>" + "(Z)" + "</color>";
+//    }
+//    #endregion
 
-    private void TryAction()
-    {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            CheckItem();
-            CanPickUp();
-        }
-    }
+//    private void TryAction()
+//    {
+//        if(Input.GetKeyDown(KeyCode.Z))
+//        {
+//            CheckItem();
+//            CanPickUp();
+//        }
+//    }
 
-    private void CanPickUp()
-    {
-        if(pickActivated)
-        {
-            if(hitInfo.transform != null)
-            {
-                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " 획득했습니다 ");
-                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
-                Destroy(hitInfo.transform.gameObject);
-                InfoDisappear();
-            }
-        }
-    }
+//    private void CanPickUp()
+//    {
+//        if(pickActivated)
+//        {
+//            if(hitInfo.transform != null)
+//            {
+//                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " 획득했습니다 ");
+//                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
+//                Destroy(hitInfo.transform.gameObject);
+//                InfoDisappear();
+//            }
+//        }
+//    }
 
     
-}
+//}

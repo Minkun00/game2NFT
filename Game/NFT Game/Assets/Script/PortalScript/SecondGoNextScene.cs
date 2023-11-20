@@ -9,7 +9,7 @@ public class SecondGoNextScene : MonoBehaviour
 
     private PlayerMove thePlayerSecond;
     private MainCamera theCameraSecond;
-    private ActionController theActionControllerSecond;
+    //private ActionController theActionControllerSecond;
 
     void Awake()
     {

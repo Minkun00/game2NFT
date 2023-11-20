@@ -1,22 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-
-[CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
-public class Item : ScriptableObject    // ScriptableObject는 굳이 게임 오브젝트에 붙일 필요 없음
+[System.Serializable]
+public class Item
 {
-    public string itemName;         // 아이템의 이름
+    public int itemID;              // 아이템의 고유 ID값. 중복 불가능. (50001, 50002)
+    public string itemName;         // 아이템의 이름. 중복 가능. (고대유물, 고대유물)
+    public string itemDescription;  // 아이템 설명
+    public int itemCount;           // 소지 개수
+    public Sprite itemIcon;         // 아이템의 아이콘
     public ItemType itemType;
-    public Sprite itemImage;        // 아이템의 이미지
-    public GameObject itemPrefab;   // 아이템의 프리펨
-
-    public string weaponType;       // 무기 유형
 
     public enum ItemType
     {
+        Use,
         Equipment,
-        Used,
         ETC
+    }
+
+    public Item(int _itemID, string _itemName, string _itemDes, ItemType _itemType, int _itemCount = 1)
+    {
+        itemID = _itemID;
+        itemName = _itemName;
+        itemDescription = _itemDes;
+        itemType = _itemType;
+        itemCount = _itemCount;
+
+        itemIcon = Resources.Load("ItemIcon/" + _itemID.ToString(), typeof(Sprite)) as Sprite;
     }
 }
