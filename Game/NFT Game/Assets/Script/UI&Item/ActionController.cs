@@ -39,11 +39,12 @@ public class ActionController : MonoBehaviour
     void Update()
     {
         CheckItem();
+        //CheckPortal();
         TryAction();
-
-        CheckPortal();
     }
 
+    /*
+    #region Portal_UI
     private void CheckPortal()
     {
         Vector2 direction;
@@ -70,42 +71,22 @@ public class ActionController : MonoBehaviour
             PortalInfoDisappear();
     }
 
-    private void PortalInfoDisappear()
+    public void PortalInfoDisappear()
     {
         actionTextPortal.gameObject.SetActive(false);
         actionTextPanelPortal.gameObject.SetActive(false);
     }
 
-    private void PortalInfoAppear()
+    public void PortalInfoAppear()
     {
         actionTextPortal.gameObject.SetActive(true);
         actionTextPanelPortal.gameObject.SetActive(true);
         actionTextPortal.text = " Move : " + "<color=orange>" +  "UpArrow " + "</color>";
     }
+    #endregion
+    */
 
-    private void TryAction()
-    {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            CheckItem();
-            CanPickUp();
-        }
-    }
-
-    private void CanPickUp()
-    {
-        if(pickActivated)
-        {
-            if(hitInfo.transform != null)
-            {
-                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " »πµÊ«ﬂΩ¿¥œ¥Ÿ ");
-                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
-                Destroy(hitInfo.transform.gameObject);
-                InfoDisappear();
-            }
-        }
-    }
-
+    #region Item_UI
     private void CheckItem()
     {
         Vector2 direction;
@@ -146,4 +127,30 @@ public class ActionController : MonoBehaviour
         actionTextPanel.gameObject.SetActive(true);
         actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "] Pick up " + "<color=yellow>" + "(Z)" + "</color>";
     }
+    #endregion
+
+    private void TryAction()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            CheckItem();
+            CanPickUp();
+        }
+    }
+
+    private void CanPickUp()
+    {
+        if(pickActivated)
+        {
+            if(hitInfo.transform != null)
+            {
+                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " »πµÊ«ﬂΩ¿¥œ¥Ÿ ");
+                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
+                Destroy(hitInfo.transform.gameObject);
+                InfoDisappear();
+            }
+        }
+    }
+
+    
 }
