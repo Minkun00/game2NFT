@@ -13,5 +13,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private float changeWeaponEndDelayTime;
 
+    void ChangeWeaponcoroutine()
+    {
 
+    }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IPointerClickHandler  // 인터페이스의 장점은 여러개가 상속이 가능하다는 것.
+public class Slot : MonoBehaviour, IPointerClickHandler // 인터페이스의 장점은 여러개가 상속이 가능하다는 것.
 {
     public Item item;           // 획득한 아이템
     public int itemCount;       // 획득한 아이템의 개수
@@ -17,6 +17,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler  // 인터페이스의 장점은 
     private TextMeshProUGUI text_Count;
     [SerializeField]
     private GameObject go_CountImage;
+
+    private WeaponManager theWeaponManager;
 
     // 이미지의 투명도 조절
     private void SetColor(float _alpha)
@@ -70,6 +72,20 @@ public class Slot : MonoBehaviour, IPointerClickHandler  // 인터페이스의 장점은 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        if(eventData.button == PointerEventData.InputButton.Right)
+        {
+            if(item != null)
+            {
+                if(item.itemType == Item.ItemType.Equipment)
+                {
+                    StartCoroutine(theWeaponManager.ChangeWeaponcoroutine(item.weaponType, item.itemName));
+                }
+                else
+                {
+                    Debug.Log(item.itemName + " 을 사용했습니다.");
+                    SetSlotCount(-1);
+                }
+            }
+        }
     }
 }
