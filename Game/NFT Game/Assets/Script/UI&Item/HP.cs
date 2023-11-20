@@ -9,13 +9,14 @@ public class HP : MonoBehaviour
     float maxHealth = 100f;
     public static float health;
 
-    void Start()
+    void Awake()
     {
         health = maxHealth;
     }
 
     void Update()
     {
+        Debug.Log(health);
         slider.value = health / maxHealth;
     }
 }

@@ -14,17 +14,14 @@ public class PlayerMove : MonoBehaviour
 
     public const float moveSpeed = 7f;
     public const float jumpForce = 25f;
-    
+
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     public Animator anim;
 
-
-
-
     void Start()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(this.gameObject);
             rb = GetComponent<Rigidbody2D>();
@@ -87,16 +84,6 @@ public class PlayerMove : MonoBehaviour
         else
             anim.SetBool("isWalking", true);
     }
-    
-    //finish 태그에 닿았을 시 게임오버
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Finish"))
-        {
-            GameManager.Instance.GameOver();
-        }
-    }
-
 
     bool IsGrounded()
     {
@@ -107,5 +94,87 @@ public class PlayerMove : MonoBehaviour
     bool IsJumping()
     {
         return rb.velocity.y > 0.01f;
+    }
+
+
+    //피격시 효과
+    bool isHurt;
+    bool isknockback = false;
+    Color halfA = new Color(1, 1, 1, 0.5f);
+    Color fullA = new Color(1, 1, 1, 1);
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //finish 태그에 닿았을 시 게임오버
+        if (collision.CompareTag("Finish"))
+        {
+            GameManager.Instance.GameOver();
+        }
+        else
+        {
+            Hurt(collision.GetComponentInParent<Enemy>().damage, collision.transform.position);
+        }
+    }
+
+    public void Hurt(float damage, Vector2 pos)
+    {
+        if (!isHurt)
+        {   
+            float health = HP.health;
+            isHurt = true;
+            health -= damage;
+
+            if (health <= 0)
+            {
+                GameManager.Instance.GameOver();
+            }
+            else
+            {
+                anim.SetTrigger("hurt");
+                float x = transform.position.x - pos.x;
+                if (x < 0)
+                    x = 1;
+                else
+                    x = -1;
+
+                StartCoroutine(Knockback(x));
+                StartCoroutine(HurtRoutine());
+                StartCoroutine(alphablink());
+            }
+        }
+    }
+
+    IEnumerator Knockback(float dir) // 피격 시 밀쳐지는 효과
+    {
+        isknockback = true;
+        float ctime = 0;
+        while (ctime < 0.2f)
+        {
+            if (transform.rotation.y == 0)
+                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime * dir);
+            else
+                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime * -1f * dir);
+
+            ctime += Time.deltaTime;
+            yield return null;
+        }
+        isknockback = false;
+    }
+
+    IEnumerator alphablink() //피격 시 깜빡이는 효과
+    {
+        while (isHurt)
+        {
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = halfA;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = fullA;
+        }
+    }
+
+    IEnumerator HurtRoutine() //피격시 3초 동안 무적
+    {
+        yield return new WaitForSeconds(3f);
+        isHurt = false;
     }
 }

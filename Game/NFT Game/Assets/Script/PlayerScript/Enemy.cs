@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        HP.health -= 10f;
-    }
+    public float damage = 10f;
 }
