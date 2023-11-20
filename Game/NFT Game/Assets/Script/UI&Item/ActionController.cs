@@ -20,7 +20,12 @@ public class ActionController : MonoBehaviour
 
     // ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ®.
     [SerializeField]
-    public TextMeshProUGUI actionText;
+    private TextMeshProUGUI actionText;
+    [SerializeField]
+    private Image actionTextPanel;
+
+    [SerializeField]
+    private Inventory theInventory;
 
     void Update()
     {
@@ -44,6 +49,7 @@ public class ActionController : MonoBehaviour
             if (hitInfo.transform != null)
             {
                 Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " È¹µæÇß½À´Ï´Ù ");
+                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
                 Destroy(hitInfo.transform.gameObject);
                 InfoDisappear();
             }
@@ -80,12 +86,14 @@ public class ActionController : MonoBehaviour
     {
         pickActivated = false;
         actionText.gameObject.SetActive(false);
+        actionTextPanel.gameObject.SetActive(false);
     }
 
     private void ItemInfoAppear()
     {
         pickActivated = true;
         actionText.gameObject.SetActive(true);
+        actionTextPanel.gameObject.SetActive(true);
         actionText.text = hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " Pick it up " + "<color=yellow>" + "(Z)" + "</color>";
     }
 }

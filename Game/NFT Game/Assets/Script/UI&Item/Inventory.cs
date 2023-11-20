@@ -1,94 +1,81 @@
-//using System;
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class Inventory : MonoBehaviour
-//{
-//    public static bool inventoryActivated;
+public class Inventory : MonoBehaviour
+{
+    public static bool inventoryActivated;
 
-//    // ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ®
-//    [SerializeField]
-//    private GameObject go_InventoryBase;
-//    [SerializeField]
-//    private GameObject go_SlotsParent;
+    // ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ®
+    [SerializeField]
+    private GameObject go_InventoryBase;
+    [SerializeField]
+    private GameObject go_SlotsParent;
 
-//    // ½½·Ôµé
-//    private Slot[] slots;
+    // ½½·Ôµé
+    private Slot[] slots;
 
-//    public static Inventory Instance;
+    private void Start()
+    {
+        slots = go_SlotsParent.GetComponentsInChildren<Slot>();
+    }
 
-//    private void Awake()
-//    {
-//        if (Instance != null)
-//        {
-//            Destroy(gameObject);
-//            return;
-//        }
-//        Instance = this;
-//        DontDestroyOnLoad(gameObject);
-//    }
+    private void Update()
+    {
+        TryOpenInventory();
+    }
 
-//    private void Start()
-//    {
-//        slots = go_SlotsParent.GetComponentsInChildren<Slot>();
-//    }
+    private void TryOpenInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryActivated = !inventoryActivated;
 
-//    private void Update()
-//    {
-//        TryOpenInventory();
-//    }
+            if (inventoryActivated)
+                OpenInventory();
+            else
+                CloseInventory();
+        }
+    }
 
-//    private void TryOpenInventory()
-//    {
-//        if(Input.GetKeyDown(KeyCode.I))
-//        {
-//            inventoryActivated = !inventoryActivated;
+    private void OpenInventory()
+    {
+        go_InventoryBase.SetActive(true);
+    }
 
-//            if (inventoryActivated)
-//                OpenInventory();
-//            else
-//                CloseInventory();
-//        }
-//    }
+    private void CloseInventory()
+    {
+        go_InventoryBase.SetActive(false);
+    }
 
-//    private void OpenInventory()
-//    {
-//        go_InventoryBase.SetActive(true);
-//    }
+    public void AcquireItem(Item _item, int _count = 1)
+    {
+        if (Item.ItemType.Equipment != _item.itemType)
+        {
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (slots[i].item != null)
+                {
+                    if (slots[i].item.itemName == _item.itemName)
+                    {
+                        slots[i].SetSlotCount(_count);
+                        return;
+                    }
+                }
 
-//    private void CloseInventory()
-//    {
-//        go_InventoryBase.SetActive(false);
-//    }
+            }
+        }
 
-//    public void AcquireItem(Item _item, int _count = 1)
-//    {
-//        if(Item.ItemType.Equipment != _item.itemType)
-//        {
-//            for (int i = 0; i < slots.Length; i++)
-//            {
-//                if (slots[i].item != null)
-//                {
-//                    if (slots[i].item.itemName == _item.itemName)
-//                    {
-//                        slots[i].SetSlotCount(_count);
-//                        return;
-//                    }
-//                }
-                
-//            }
-//        }
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item == null)
+            {
+                slots[i].AddItem(_item, _count);
+                return;
+            }
+        }
+    }
 
-//        for (int i = 0; i < slots.Length; i++)
-//        {
-//            if (slots[i].item == null)
-//            {
-//                slots[i].AddItem(_item, _count);
-//                return;
-//            }
-//        }
-//    }
 
-    
-//}
+}

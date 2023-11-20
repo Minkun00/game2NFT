@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArmyHelmet
   m_EditorClassIdentifier: 
   itemName: ArmyHelmet
-  itemType: 0
+  itemType: 1
   itemImage: {fileID: -5697405367592101602, guid: 9010bb67b8476dd4ca9b3a5cd09d0909, type: 3}
   itemPrefab: {fileID: 5691952619351542234, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
   weaponType: 

@@ -21,8 +21,4 @@ public class Item : ScriptableObject
         ETC
     }
 
-    void Start()
-    {
-
-    }
 }
