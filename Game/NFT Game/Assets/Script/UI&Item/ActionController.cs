@@ -8,21 +8,21 @@
 //public class ActionController : MonoBehaviour
 //{
 //    [SerializeField]
-//    private float range;  // ½Àµæ °¡´ÉÇÑ ÃÖ´ë °Å¸®
+//    private float range;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Å¸ï¿½
 
-//    private bool pickActivated = false;  // ½Àµæ °¡´ÉÇÒ ½Ã true
+//    private bool pickActivated = false;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ true
 
-//    private RaycastHit2D hitInfo;  // Ãæµ¹Ã¼ Á¤º¸ ÀúÀå
+//    private RaycastHit2D hitInfo;  // ï¿½æµ¹Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-//    // ¾ÆÀÌÅÛ ·¹ÀÌ¾î¿¡¸¸ ¹ÝÀÀÇÏµµ·Ï ·¹ÀÌ¾î ¸¶½ºÅ© ¼³Á¤.
+//    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½.
 //    [SerializeField]
 //    private LayerMask layerMask;
 
-//    // Æ÷Å» ·¹ÀÌ¾î¿¡¸¸ ¹ÝÀÀÇÏµµ·Ï ·¹ÀÌ¾î ¸¶½ºÅ© ¼³Á¤.
+//    // ï¿½ï¿½Å» ï¿½ï¿½ï¿½Ì¾î¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½.
 //    [SerializeField]
 //    private LayerMask layerMaskPortal;
 
-//    // ÇÊ¿äÇÑ ÄÄÆ÷³ÍÆ®.
+//    // ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®.
 //    [SerializeField]
 //    public TextMeshProUGUI actionText;
 //    [SerializeField]
@@ -36,6 +36,13 @@
 //    [SerializeField]
 //    private Inventory theInventory;
 
+    void Update()
+    {
+        CheckItem();
+        TryAction();
+
+        CheckPortal();
+    }
 //    void Update()
 //    {
 //        CheckItem();
@@ -43,6 +50,9 @@
 //        TryAction();
 //    }
 
+    private void CheckPortal()
+    {
+        Vector2 direction;
 //    /*
 //    #region Portal_UI
 //    private void CheckPortal()
@@ -51,11 +61,11 @@
 
 //        if (transform.localScale.x > 0)
 //        {
-//            direction = Vector2.right;  // ¿À¸¥ÂÊ ¹æÇâ
+//            direction = Vector2.right;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //        }
 //        else
 //        {
-//            direction = Vector2.left;  // ¿ÞÂÊ ¹æÇâ
+//            direction = Vector2.left;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //        }
 
 //        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
@@ -71,12 +81,50 @@
 //            PortalInfoDisappear();
 //    }
 
+    private void PortalInfoDisappear()
+    {
+        actionTextPortal.gameObject.SetActive(false);
+        actionTextPanelPortal.gameObject.SetActive(false);
+    }
 //    public void PortalInfoDisappear()
 //    {
 //        actionTextPortal.gameObject.SetActive(false);
 //        actionTextPanelPortal.gameObject.SetActive(false);
 //    }
 
+    private void PortalInfoAppear()
+    {
+        actionTextPortal.gameObject.SetActive(true);
+        actionTextPanelPortal.gameObject.SetActive(true);
+        actionTextPortal.text = " Move : " + "<color=orange>" +  "UpArrow " + "</color>";
+    }
+
+    private void TryAction()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            CheckItem();
+            CanPickUp();
+        }
+    }
+
+    private void CanPickUp()
+    {
+        if(pickActivated)
+        {
+            if(hitInfo.transform != null)
+            {
+                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " È¹ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½ ");
+                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
+                Destroy(hitInfo.transform.gameObject);
+                InfoDisappear();
+            }
+        }
+    }
+
+    private void CheckItem()
+    {
+        Vector2 direction;
 //    public void PortalInfoAppear()
 //    {
 //        actionTextPortal.gameObject.SetActive(true);
@@ -93,11 +141,11 @@
 
 //        if (transform.localScale.x > 0)
 //        {
-//            direction = Vector2.right;  // ¿À¸¥ÂÊ ¹æÇâ
+//            direction = Vector2.right;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //        }
 //        else
 //        {
-//            direction = Vector2.left;  // ¿ÞÂÊ ¹æÇâ
+//            direction = Vector2.left;  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //        }
 
 //        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
@@ -120,6 +168,14 @@
 //        actionTextPanel.gameObject.SetActive(false);
 //    }
 
+    private void ItemInfoAppear()
+    {
+        pickActivated = true;
+        actionText.gameObject.SetActive(true);
+        actionTextPanel.gameObject.SetActive(true);
+        actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "] Pick up " + "<color=yellow>" + "(Z)" + "</color>";
+    }
+}
 //    private void ItemInfoAppear()
 //    {
 //        pickActivated = true;
@@ -144,7 +200,7 @@
 //        {
 //            if(hitInfo.transform != null)
 //            {
-//                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " È¹µæÇß½À´Ï´Ù ");
+//                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " È¹ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½ ");
 //                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
 //                Destroy(hitInfo.transform.gameObject);
 //                InfoDisappear();
