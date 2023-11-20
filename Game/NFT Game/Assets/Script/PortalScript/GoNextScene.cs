@@ -9,7 +9,8 @@ public class GoNextScene : MonoBehaviour
 
     private PlayerMove thePlayer;
     private MainCamera theCamera;
-    //private ActionController controller;
+
+    private ActionController controller;
 
     void Start()
     {
@@ -48,13 +49,14 @@ public class GoNextScene : MonoBehaviour
             thePlayer.playerCurrentMap = NextSceneName;
             GlobalControl.Instance.loadingSceneName = NextSceneName;
             GameObject playerObject = GameObject.FindWithTag("Player");
-            
+
 
             // 플레이어 오브젝트를 찾아서 GlobalControl 인스턴스에 저장
             if (playerObject != null)
             {
                 GlobalControl.Instance.playerObject = playerObject;
                 playerObject.SetActive(false);
+
             }
 
 

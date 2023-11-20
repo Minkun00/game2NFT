@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
     private GameObject go_InventoryBase;
     [SerializeField]
     private GameObject go_SlotsParent;
+    [SerializeField]
+    private GameObject go_ShowText;
 
     // ½½·Ôµé
     private Slot[] slots;
