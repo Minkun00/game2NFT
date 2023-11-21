@@ -16,7 +16,6 @@ public class HP : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(health);
         slider.value = health / maxHealth;
     }
 }

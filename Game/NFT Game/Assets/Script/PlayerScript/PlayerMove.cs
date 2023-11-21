@@ -120,17 +120,19 @@ public class PlayerMove : MonoBehaviour
     {
         if (!isHurt)
         {   
-            float health = HP.health;
+            float currentHealth = HP.health;
+            Debug.Log(currentHealth);
             isHurt = true;
-            health -= damage;
+            currentHealth -= damage;
+            HP.health = currentHealth;
 
-            if (health <= 0)
+            if (currentHealth <= 0)
             {
                 GameManager.Instance.GameOver();
             }
             else
             {
-                anim.SetTrigger("hurt");
+                //anim.SetTrigger("hurt");
                 float x = transform.position.x - pos.x;
                 if (x < 0)
                     x = 1;

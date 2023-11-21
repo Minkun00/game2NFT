@@ -18,7 +18,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler // 인터페이스의 장점은 �
     [SerializeField]
     private GameObject go_CountImage;
 
-    private WeaponManager theWeaponManager;
+  //  private WeaponManager theWeaponManager;
 
     // 이미지의 투명도 조절
     private void SetColor(float _alpha)
@@ -78,7 +78,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler // 인터페이스의 장점은 �
             {
                 if(item.itemType == Item.ItemType.Equipment)
                 {
-                    StartCoroutine(theWeaponManager.ChangeWeaponcoroutine(item.weaponType, item.itemName));
+  //                  StartCoroutine(theWeaponManager.ChangeWeaponcoroutine(item.weaponType, item.itemName));
                 }
                 else
                 {
