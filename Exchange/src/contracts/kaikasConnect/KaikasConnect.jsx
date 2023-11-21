@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Caver from 'caver-js';
-import BuyTokenButton from './BuyTokens/BuyTokens';
 
-const KaikasConnect = ({tokenContractABI, tokenContractAddress}) => {
+const KaikasConnect = () => {
   const [account, setAccount] = useState('');
-  const [caver, setCaver] = useState(null);
 
   useEffect(() => {
     if (window.klaytn) {
       const caverInstance = new Caver(window.klaytn);
-      setCaver(caverInstance);
       loadBlockchainData(caverInstance);
     } else {
       alert('Please install Kaikas!');
@@ -40,11 +37,6 @@ const KaikasConnect = ({tokenContractABI, tokenContractAddress}) => {
         <p>Connected account: {account}</p>
       ) : (
         <button onClick={connectWalletHandler}>Connect to Kaikas</button>
-      )}
-      {caver && (
-        <div>
-          <BuyTokenButton caver={caver} tokenContractAddress={tokenContractAddress} tokenAbi={tokenContractABI}/>
-        </div>
       )}
     </div>
   );

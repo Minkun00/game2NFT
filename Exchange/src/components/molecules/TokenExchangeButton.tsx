@@ -1,18 +1,21 @@
 // TokenExchangeButton.jsx
 
-import React from 'react';
-import styled from 'styled-components';
+import React, { memo } from 'react';
 import Button from '../atoms/Button';
 
-const StyledAtomButton = styled(Button) `
-    width: 50px;
-    height: 50px;
-`;
+interface TokenExchangeButtonProps {
+    onConnectKaikas: () => void;
+    onConvertKlayToToken: () => void;
+}
 
-const TokenExchangeButton: React.FC <any> = ({ label, onClick }) => {
+const TokenExchangeButton = ({ onConnectKaikas, onConvertKlayToToken }: TokenExchangeButtonProps) => {
     return (
-        <StyledAtomButton label = {label} onClick = {onClick} />
+        <div>
+            <Button onClick = { onConnectKaikas }> ConnectKaikas </Button>
+            <Button onClick = { onConvertKlayToToken }> KlayToToken </Button>
+        </div>
+        
     );
 };
 
-export default TokenExchangeButton;
+export default memo(TokenExchangeButton);

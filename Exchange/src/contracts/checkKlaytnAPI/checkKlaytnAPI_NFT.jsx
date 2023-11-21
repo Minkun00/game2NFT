@@ -76,7 +76,7 @@ const CheckKlaytnAPI = () => {
       <h2>Images</h2>
       <div>
         {images.map((image, index) => (
-          <img key={index} src={image} alt={`Item ${index}`} />
+           <img key={index} src={image} alt={`Item ${index}`} style={{ maxWidth: '10%', height: 'auto' }} />
         ))}
       </div>
     </div>

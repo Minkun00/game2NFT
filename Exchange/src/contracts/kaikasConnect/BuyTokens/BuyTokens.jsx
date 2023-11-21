@@ -1,14 +1,16 @@
 import React from 'react';
+import Caver from 'caver-js';
 
-const BuyTokenButton = ({ caver, tokenContractAddress, tokenAbi }) => {
+const BuyTokenButton = ({ tokenContractAddress, tokenContractAbi }) => {
+  
   const buyTokens = async (klayValue) => {
     try {
+      const caver = new Caver(window.klaytn);
       const accounts = await caver.klay.getAccounts();
       const account = accounts[0];
 
-      const tokenContract = new caver.klay.Contract(tokenAbi, tokenContractAddress);
+      const tokenContract = new caver.klay.Contract(tokenContractAbi, tokenContractAddress);
       
-      // Klay를 토큰 구매 함수로 전송
       tokenContract.methods.purchase().send({
         from: account,
         value: caver.utils.toPeb(klayValue, 'KLAY'),

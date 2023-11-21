@@ -1,11 +1,21 @@
 // AppName.tsx
 
-import React from 'react';
+import React, { memo } from 'react';
+import Span from '../atoms/Span';
 
-const AppName = ({ span }) => {
+interface AppNameProps {
+    spanContent: string;
+};
+
+
+const AppName = ({ spanContent }: AppNameProps) => {
     return (
-        <span> {span} </span>
+        <div>
+            <Span>
+                {spanContent}
+            </Span>
+        </div>
     );
 };
 
-export default AppName;
+export default memo(AppName);

@@ -95,7 +95,7 @@ export default function Marcketplace({ tokenContractABI, tokenContractAddress, n
   return (
     <div>
       <h2>Listed NFTs</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridGap: '10px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gridGap: '10px' }}>
         {listedNfts.map((nft) => (
           <div key={nft.tokenId} style={{ border: '1px solid #ddd', padding: '10px', borderRadius: '5px' }}>
             <img src={nft.imageUrl} alt={`NFT ${nft.tokenId}`} style={{ maxWidth: '100%', display: 'block', marginBottom: '5px' }} />
