@@ -10,6 +10,7 @@ TagManager:
   - Item
   - Portal
   - Die
+  - Prepare
   layers:
   - Default
   - TransparentFX

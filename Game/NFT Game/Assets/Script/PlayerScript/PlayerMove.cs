@@ -121,7 +121,6 @@ public class PlayerMove : MonoBehaviour
         if (!isHurt)
         {   
             float currentHealth = HP.health;
-            Debug.Log(currentHealth);
             isHurt = true;
             currentHealth -= damage;
             HP.health = currentHealth;
