@@ -110,7 +110,7 @@ public class PlayerMove : MonoBehaviour
         {
             GameManager.Instance.GameOver();
         }
-        else
+        else if(collision.CompareTag("Damage"))
         {
             Hurt(collision.GetComponentInParent<Enemy>().damage, collision.transform.position);
         }
