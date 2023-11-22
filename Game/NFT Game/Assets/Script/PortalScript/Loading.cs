@@ -15,26 +15,56 @@ public class Loading : MonoBehaviour
     IEnumerator LoadScene()
     {
         yield return null;
-        AsyncOperation operation = SceneManager.LoadSceneAsync(GlobalControl.Instance.loadingSceneName);
-        operation.allowSceneActivation = false;
-
-        while (!operation.isDone)
+        if (GlobalControl.Instance.loadingSceneName != null)
         {
-            yield return null;
+            AsyncOperation operation = SceneManager.LoadSceneAsync(GlobalControl.Instance.loadingSceneName);
+            operation.allowSceneActivation = false;
 
-            if (progressBar.value < 0.9f)
+            while (!operation.isDone)
             {
-                progressBar.value = Mathf.MoveTowards(progressBar.value, 0.9f, Time.deltaTime);
-            }
-            else if (operation.progress >= 0.9f)
-            {
-                progressBar.value = Mathf.MoveTowards(progressBar.value, 1f, Time.deltaTime);
-            }
+                yield return null;
 
-            if ((progressBar.value >= 1f) && (operation.progress >= 0.9f))
-            {
-                operation.allowSceneActivation = true;
+                if (progressBar.value < 0.9f)
+                {
+                    progressBar.value = Mathf.MoveTowards(progressBar.value, 0.9f, Time.deltaTime);
+                }
+                else if (operation.progress >= 0.9f)
+                {
+                    progressBar.value = Mathf.MoveTowards(progressBar.value, 1f, Time.deltaTime);
+                }
+
+                if ((progressBar.value >= 1f) && (operation.progress >= 0.9f))
+                {
+                    operation.allowSceneActivation = true;
+                }
             }
         }
+
+        else  // Start화면에서 넘어갈 때
+        {
+            AsyncOperation operation = SceneManager.LoadSceneAsync("Town");
+            operation.allowSceneActivation = false;
+
+            while (!operation.isDone)
+            {
+                yield return null;
+
+                if (progressBar.value < 0.9f)
+                {
+                    progressBar.value = Mathf.MoveTowards(progressBar.value, 0.9f, Time.deltaTime);
+                }
+                else if (operation.progress >= 0.9f)
+                {
+                    progressBar.value = Mathf.MoveTowards(progressBar.value, 1f, Time.deltaTime);
+                }
+
+                if ((progressBar.value >= 1f) && (operation.progress >= 0.9f))
+                {
+                    operation.allowSceneActivation = true;
+                }
+            }
+        }
+
+        
     }
 }

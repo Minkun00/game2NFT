@@ -11,8 +11,12 @@ public class FromPreviousScene : MonoBehaviour
 
     void Start()
     {
-        theCamera = FindObjectOfType<MainCamera>();
-        StartCoroutine(InitializePlayerMove());
+        if(GlobalControl.Instance.playerObject != null)
+        {
+            theCamera = FindObjectOfType<MainCamera>();
+            StartCoroutine(InitializePlayerMove());
+        }
+        
     }
 
     IEnumerator InitializePlayerMove()

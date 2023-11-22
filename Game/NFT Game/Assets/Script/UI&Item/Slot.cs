@@ -83,7 +83,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right/*(Time.time - lastClickTime) < doubleClickTime*/)
+        if (/*eventData.button == PointerEventData.InputButton.Right*/(Time.time - lastClickTime) < doubleClickTime)
         {
             if (item != null)
             {
