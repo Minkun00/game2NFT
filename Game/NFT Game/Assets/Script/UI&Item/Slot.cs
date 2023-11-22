@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
@@ -14,7 +15,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     // 필요한 컴포넌트.
     [SerializeField]
-    private Text text_Count;
+    private TextMeshProUGUI text_Count;
     [SerializeField]
     private GameObject go_CountImage;
 
@@ -44,7 +45,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             go_CountImage.SetActive(true);
             text_Count.text = itemCount.ToString();
-        }
+        }   
         else
         {
             text_Count.text = "0";
@@ -76,15 +77,20 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         go_CountImage.SetActive(false);
     }
 
+
+    private float lastClickTime = 0;
+    private const float doubleClickTime = 0.2f;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Right/*(Time.time - lastClickTime) < doubleClickTime*/)
         {
             if (item != null)
             {
                 if (item.itemType == Item.ItemType.Equipment)
                 {
-                    //StartCoroutine(theWeaponManager.ChangeWeaponCoroutine(item.weaponType, item.itemName));
+                    // 장비 장착 스크립트 코루틴으로!
+                    Debug.Log(item.name + "장착");
                 }
                 else
                 {
@@ -118,6 +124,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         DragSlot.instance.SetColor(0);
         DragSlot.instance.dragSlot = null;
+        Debug.Log("OnEndDrag");
+
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -125,6 +133,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
         if (DragSlot.instance.dragSlot != null)
             ChangeSlot();
+        Debug.Log("OnDrop");
     }
 
     private void ChangeSlot()
