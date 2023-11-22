@@ -1715,13 +1715,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312047393}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08888823, y: -0.029629398, z: 0.12432779}
-  m_LocalScale: {x: 9.453644, y: 9.453644, z: 9.453644}
+  m_LocalRotation: {x: -0.9205033, y: -0.360813, z: -0.13303149, w: 0.06921299}
+  m_LocalPosition: {x: 0, y: -0.195554, z: 0.12432779}
+  m_LocalScale: {x: 9.453644, y: 9.4536495, z: 9.45365}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 868238422}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -12.91, y: 168.462, z: -221.498}
 --- !u!114 &312047395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2392,6 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  nextMove: 0
 --- !u!224 &337373123 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4172889515834107161, guid: 33eaf82d55c8151469479ea33600ca00, type: 3}
@@ -3014,6 +3015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  nextMove: 0
 --- !u!70 &454437365
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4835,6 +4837,7 @@ GameObject:
   - component: {fileID: 868238421}
   - component: {fileID: 868238423}
   - component: {fileID: 868238427}
+  - component: {fileID: 868238429}
   - component: {fileID: 868238428}
   - component: {fileID: 868238426}
   m_Layer: 0
@@ -4905,7 +4908,7 @@ Transform:
   m_GameObject: {fileID: 868238420}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 0.33, z: 0}
+  m_LocalPosition: {x: 8, y: 0.26, z: 0}
   m_LocalScale: {x: 1.6875135, y: 1.6875135, z: 1.6875135}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4948,6 +4951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  nextMove: 0
 --- !u!70 &868238427
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4958,7 +4962,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: eb5b1ef864e0ecf4699275e91a9818db, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4978,12 +4982,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: -0.12, y: 0}
-  m_Size: {x: 1.71, y: 1.6666665}
+  m_Size: {x: 1.08, y: 1.6666665}
   m_Direction: 0
 --- !u!114 &868238428
 MonoBehaviour:
@@ -4997,6 +5001,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d061367155d314caeecce348e5b582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &868238429
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868238420}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 4
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &876142080
 GameObject:
   m_ObjectHideFlags: 0
@@ -5770,6 +5801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  nextMove: 0
 --- !u!224 &1085515655 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4172889515834107161, guid: 33eaf82d55c8151469479ea33600ca00, type: 3}
@@ -6056,13 +6088,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134697721}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08888823, y: -0.029629398, z: 0.12432779}
+  m_LocalRotation: {x: -0, y: -0, z: -0.8612245, w: 0.50822484}
+  m_LocalPosition: {x: 0, y: -0.195554, z: 0.12432779}
   m_LocalScale: {x: 5.0977, y: 5.0977, z: 5.0977}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 868238422}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -118.909}
 --- !u!114 &1134697723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9387,7 +9419,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 2
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4
   m_Material: {fileID: 0}
@@ -9862,6 +9894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  nextMove: 0
 --- !u!70 &1510258515
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
