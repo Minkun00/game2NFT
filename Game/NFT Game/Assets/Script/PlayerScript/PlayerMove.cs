@@ -112,6 +112,7 @@ public class PlayerMove : MonoBehaviour
         }
         else if(collision.CompareTag("Damage"))
         {
+            Debug.Log("enemy");
             Hurt(collision.GetComponentInParent<Enemy>().damage, collision.transform.position);
         }
     }

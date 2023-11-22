@@ -10,7 +10,8 @@ TagManager:
   - Item
   - Portal
   - Die
-  - Prepare
+  - Combat
+  - Attack
   layers:
   - Default
   - TransparentFX
