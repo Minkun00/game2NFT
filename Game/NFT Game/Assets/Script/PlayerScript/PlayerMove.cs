@@ -103,6 +103,7 @@ public class PlayerMove : MonoBehaviour
     Color halfA = new Color(1, 1, 1, 0.5f);
     Color fullA = new Color(1, 1, 1, 1);
 
+    //도적 제외한 obstacle script를 가진 장애물 피격(non rigidbody2D)
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //finish 태그에 닿았을 시 게임오버
@@ -112,9 +113,23 @@ public class PlayerMove : MonoBehaviour
         }
         else if(collision.CompareTag("Damage"))
         {
-            Debug.Log("enemy");
-            Hurt(collision.GetComponentInParent<Enemy>().damage, collision.transform.position);
+            Hurt(collision.GetComponentInParent<Obstacle>().damage, collision.transform.position);
         }
+    }
+
+    //도적과 충돌시 피격(rigidbody2D)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
+        if(enemyScript != null)
+        {
+            if(collision.gameObject.tag == "Enemy")
+            {
+                float e_damage = enemyScript.damage;
+                Hurt(e_damage, collision.transform.position);
+            }
+        }
+
     }
 
     public void Hurt(float damage, Vector2 pos)

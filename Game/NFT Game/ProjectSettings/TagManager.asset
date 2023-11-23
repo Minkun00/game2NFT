@@ -12,6 +12,7 @@ TagManager:
   - Die
   - Combat
   - Attack
+  - Enemy
   layers:
   - Default
   - TransparentFX
