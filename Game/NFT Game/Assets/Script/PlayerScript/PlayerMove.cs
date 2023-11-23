@@ -95,7 +95,7 @@ public class PlayerMove : MonoBehaviour
     {
         return rb.velocity.y > 0.01f;
     }
-
+  
 
     //피격시 효과
     bool isHurt;
@@ -117,9 +117,9 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    //도적과 충돌시 피격(rigidbody2D)
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //도적과 충돌시 피격(rigidbody2D)
         Enemy enemyScript = collision.gameObject.GetComponent<Enemy>();
         if(enemyScript != null)
         {
@@ -129,7 +129,6 @@ public class PlayerMove : MonoBehaviour
                 Hurt(e_damage, collision.transform.position);
             }
         }
-
     }
 
     public void Hurt(float damage, Vector2 pos)
@@ -147,7 +146,6 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                //anim.SetTrigger("hurt");
                 float x = transform.position.x - pos.x;
                 if (x < 0)
                     x = 1;

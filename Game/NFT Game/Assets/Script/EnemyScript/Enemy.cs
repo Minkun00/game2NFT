@@ -18,8 +18,6 @@ public class Enemy : MonoBehaviour
 
         Invoke("Think", 5);
         anim.SetBool("isRunning", false);
-        Debug.Log(nextMove);
-        Debug.Log(anim.GetBool("isRunning"));
     }
 
     void FixedUpdate()
@@ -50,7 +48,6 @@ public class Enemy : MonoBehaviour
     void Think()
     {
         nextMove = Random.Range(-1, 2);
-        Debug.Log(nextMove);
 
         //πÊ«‚
         if (nextMove != 0)
@@ -68,7 +65,6 @@ public class Enemy : MonoBehaviour
         }
 
         float nextThinkTime = Random.Range(2f, 5f);
-        Debug.Log(nextThinkTime);
         Invoke("Think", nextThinkTime);
     }
 
@@ -83,7 +79,6 @@ public class Enemy : MonoBehaviour
 
     public void Combat()
     {
-        //anim.SetInteger("RunSpeed", 0);
         anim.SetBool("isCombating", true);
         anim.SetBool("isRunning", false);
         anim.SetBool("isAttacking", false);
@@ -91,7 +86,6 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        //anim.SetInteger("RunSpeed", 0);
         anim.SetBool("isAttacking", true);
         anim.SetBool("isRunning", false);
         anim.SetBool("isCombating", false);
@@ -100,7 +94,6 @@ public class Enemy : MonoBehaviour
 
     public void Idle()
     {
-        //anim.SetInteger("RunSpeed", nextMove);
         if (nextMove == 0)
             anim.SetBool("isRunning", false);
         else
