@@ -66,3 +66,27 @@ react상의 코드와 관련해서는 [여기](https://github.com/Minkun00/gameE
 ## config
 
 `npm run eject`해가지고 생겼다. `buffer`를 react상에서 쓰고 싶었는데, 그거 때문에 고치다가 어쩔 수 없이 `eject`해서 그렇다. 그리고 자질구레한 오류들을 고치기 위해서..
+
+## Contracts Directory Hierarchy
+
+- Contracts Directory Hierarchy
+  - Hardhat_abis
+    - MyMarketplace.json
+    - MyMarketplace.json:Zone.Identifier
+    - MyNFT.json
+    - MyNFT.json:Zone.Identifier
+    - MyToken.json
+    - MyToken.json:Zone.Identifier
+  - buyItem
+    - market.jsx
+  - checkKlaytnAPI
+    - checkKlaytnAPI_NFT.jsx
+  - createAuction
+    - createAuction.jsx
+  - itemToIMG
+    - itemToImg.jsx
+    - useImageGenerator.jsx
+  - kaikasConnect
+    - BuyTokens
+      - BuyTokens.jsx
+    - KaikasConnect.jsx

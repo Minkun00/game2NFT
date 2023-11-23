@@ -99,8 +99,8 @@ export default function Marcketplace({ tokenContractABI, tokenContractAddress, n
         {listedNfts.map((nft) => (
           <div key={nft.tokenId} style={{ border: '1px solid #ddd', padding: '10px', borderRadius: '5px' }}>
             <img src={nft.imageUrl} alt={`NFT ${nft.tokenId}`} style={{ maxWidth: '100%', display: 'block', marginBottom: '5px' }} />
-            <p>Token ID: {nft.tokenId}</p>
-            <button onClick={() => approveToken(nft.price, nft.tokenId)}>
+            <p className="account-info">Token ID: {nft.tokenId}</p>
+            <button className="input-button" onClick={() => approveToken(nft.price, nft.tokenId)}>
               Buy for {caver.utils.convertFromPeb(caver.utils.toBN(nft.price), 'KLAY')} MTK
             </button>
           </div>

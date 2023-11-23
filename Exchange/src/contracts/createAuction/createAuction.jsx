@@ -105,12 +105,12 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
                  onClick={() => selectNFT(tokenDetail.tokenId)}
             >
               <img src={tokenDetail.imageUrl} alt="NFT" style={{ maxWidth: '100%', display: 'block', marginBottom: '5px', }} />
-              <p>Token ID: {tokenDetail.tokenId}</p>
+              <p className="account-info"> Token ID: {tokenDetail.tokenId}</p>
             </div>
           ))}
         </div>
         <input type="text" placeholder="Price in KLAY" value={price} onChange={handlePriceChange} />
-        <button onClick={listNFT}>List NFT for Sale</button>
+        <button className="input-button"onClick={listNFT}>List NFT for Sale</button>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ function App() {
     <Router> 
       <div className="app-container">
         <h1>Welcome to "Game Item Market Place"</h1>
-        <nav>
+        <nav className = "nav">
           <ul>
             <li>
               <NavLink to="/inputCode">Item to Image</NavLink>
