@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     private float health;
     //private int score; //스코어 사용할 경우 
 
+
+    // 아이템 코드
+    public TextAsset txt;
+    string[,] ItemCode;
+    int lineSize, rowSize;
+
     private void Awake()
     {
         if (Instance == null)
@@ -25,9 +31,27 @@ public class GameManager : MonoBehaviour
         initialPosition = transform.position;
     }
 
+    public void Start()
+    {
+        string currentText = txt.text.Substring(0, txt.text.Length - 1);
+        string[] line = currentText.Split('\n');
+        lineSize = line.Length;
+        rowSize = line[0].Split('\t').Length;
+        ItemCode = new string[lineSize, rowSize];
+
+        for(int i = 0; i < lineSize; i++)
+        {
+            string[] row = line[i].Split("\t");
+            for(int j = 0; j < rowSize; j++)
+            {
+                ItemCode[i, j] = row[j];
+                print(i + ", " + j + ", " + ItemCode[i, j]);
+            }
+        }
+
+    }
 
     private bool isGameOver = false;
-
     // 게임 오버 상태로 전환하는 메서드 
     public void GameOver()
     {
@@ -50,5 +74,6 @@ public class GameManager : MonoBehaviour
         //게임 완전 종료시 사용
 
     }
+
 
 }
