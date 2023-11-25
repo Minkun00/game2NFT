@@ -83,18 +83,20 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (/*eventData.button == PointerEventData.InputButton.Right*/(Time.time - lastClickTime) < doubleClickTime)
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
             if (item != null)
             {
                 if (item.itemType == Item.ItemType.Equipment)
                 {
                     // 장비 장착 스크립트 코루틴으로!
+                    // Equip스크립트 따로.
                     Debug.Log(item.name + "장착");
                 }
                 else
                 {
                     Debug.Log(item.itemName + " 을 사용했습니다");
+                    // Heal 메소드 짜야할 듯. -> HP스크립트에서 작업.
                     SetSlotCount(-1);
                 }
             }
