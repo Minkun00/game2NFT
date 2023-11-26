@@ -8,6 +8,7 @@ const baseUrl = "https://gateway.pinata.cloud/ipfs/";
 const { ACCESS_KEY, SECRET_ACCESS_KEY } = process.env;
 
 const usePinata = async (code, _name, _description) => {   // code : item code, _name : name of the item, _description : description of the item
+  console.log(`got code : ${code}`);
   const codeObj = await disolveCode(code);
   const combinedImageBuffer = await combineImages(codeObj);
 
