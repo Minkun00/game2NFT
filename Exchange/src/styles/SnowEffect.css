@@ -1,0 +1,25 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #9DB9BB;
+  }
+
+.snow-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+  }
+  
+  .snowflake {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+  

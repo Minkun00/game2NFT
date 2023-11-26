@@ -7,9 +7,9 @@ import Marketplace from './contracts/buyItem/market';
 import myToken from './contracts/Hardhat_abis/MyToken.json';
 import myNFT from './contracts/Hardhat_abis/MyNFT.json';
 import myMarcket from './contracts/Hardhat_abis/MyMarketplace.json';
-import CheckKlaytnAPI from './contracts/checkKlaytnAPI/checkKlaytnAPI_NFT';
 import BuyTokenButton from './contracts/kaikasConnect/BuyTokens/BuyTokens';
 import './App.css';
+import SnowEffect from './SnowEffect';
 
 function App() {
   const nftContractABI = myNFT.abi;
@@ -22,9 +22,14 @@ function App() {
 
   return (
     <Router> 
+      <SnowEffect />
       <div className="app-container">
+    
+
+
+      
         <h1>Welcome to "Game Item Market Place"</h1>
-        <nav>
+        <nav className = "nav">
           <ul>
             <li>
               <NavLink to="/inputCode">Item to Image</NavLink>
@@ -42,6 +47,7 @@ function App() {
           tokenContractAddress={tokenContractAddress}
           tokenContractAbi={tokenContractABI}
         />
+         
         <Routes>
           <Route path="/inputCode" element={
             <ItemToImg 

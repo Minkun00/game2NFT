@@ -35,8 +35,13 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
   }, [imgUri, tokenUri]);
 
   return (
+
     <div>
-      <h1>Enter Your Code</h1>
+      <h2>Enter Your Code</h2>
+
+
+      <div className="item-form">
+      
       <input
         type="text"
         placeholder="Code"
@@ -55,11 +60,14 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
         value={description}
         onChange={e => setDescription(e.target.value)}
       />
-      <button onClick={handleSubmit}>Generate</button>
+      <button className="input-button"onClick={handleSubmit}>Generate</button>
 
       {imgUri && <div>
         <img src={imgUri.replace('ipfs://', 'https://ipfs.io/ipfs/')} alt="Generated" />
       </div>}
     </div>
+      
+    </div>
+  
   );
 }

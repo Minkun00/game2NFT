@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Caver from 'caver-js';
+import "../../App.css";
+
 
 const KaikasConnect = () => {
   const [account, setAccount] = useState('');
@@ -34,9 +36,9 @@ const KaikasConnect = () => {
   return (
     <div>
       {account ? (
-        <p>Connected account: {account}</p>
+        <p className="account-info">Connected account: {account}</p>
       ) : (
-        <button onClick={connectWalletHandler}>Connect to Kaikas</button>
+        <button className = "button" onClick={connectWalletHandler}>Connect to Kaikas</button>
       )}
     </div>
   );

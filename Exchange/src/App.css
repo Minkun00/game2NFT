@@ -1,8 +1,8 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Karla', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #bce9f8;
+    background-color: #9DB9BB;
   }
   
   .app-container {
@@ -10,17 +10,24 @@ body {
     margin: auto;
     padding: 20px;
     background-color: #f8f9fa;
+
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   h1 {
     text-align: center;
-    color: #343a40;
+    color: #000000;
+  }
+
+  h2 {
+    text-align: center;
+    color: #000000;
+
   }
   
   nav {
-    background-color: #007bff;
+    background-color: #15565A;
     color: white;
     padding: 10px 0;
     border-radius: 5px;
@@ -48,7 +55,70 @@ body {
   }
   
   nav ul li a:hover {
-    background-color: #0056b3;
+    background-color: #0e3235;
   }
   
 
+
+  .button {
+    border-radius: 5px;
+    background-color: #188D93;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: none;
+    margin-top: 10px;
+    border: none;
+    
+  }
+  
+  .button:hover {
+    background-color: #106368;
+   
+  }
+
+  .input-button {
+    border-radius: 5px;
+    background-color: #00AAB9;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: none;
+    margin-top: 10px;
+    border: none;
+
+  }
+
+  .input-button:hover {
+    background-color: #017a85;
+   
+
+  }
+  
+
+  .account-info {
+    color: #000000;
+    margin-top: 10px;
+    font-family: sans-serif; 
+    font-weight: 300;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+
+  .item-form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .item-form input {
+    width: calc(33.33% - 10px);
+    margin-right: 10px; 
+    margin-bottom: 10px;
+  }

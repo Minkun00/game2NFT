@@ -1,5 +1,6 @@
 import React from 'react';
 import Caver from 'caver-js';
+import "../../../App.css"
 
 const BuyTokenButton = ({ tokenContractAddress, tokenContractAbi }) => {
   
@@ -29,7 +30,7 @@ const BuyTokenButton = ({ tokenContractAddress, tokenContractAbi }) => {
   };
 
   return (
-    <button onClick={() => buyTokens('5')}>Buy Tokens with 5 KLAY</button>
+    <button className="button" onClick={() => buyTokens('5')}>Buy Tokens with 5 KLAY</button>
   );
 };
 

@@ -1,0 +1,8 @@
+.bitcoin-logo {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('../../public/bitcoinlogo1.png') no-repeat center center;
+    background-size: cover;
+    z-index: 9999; /* Ensure it's on top of other elements */
+  }
