@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -10,11 +12,8 @@ public class GameManager : MonoBehaviour
     private float health;
     //private int score; //스코어 사용할 경우 
 
-
-    // 아이템 코드
-    public TextAsset txt;
-    string[,] ItemCode;
-    int lineSize, rowSize;
+    public List<Item> itemList; // 아이템 리스트
+    public float minX, maxX, minY, maxY; // 아이템을 드롭할 수 있는 영역
 
     private void Awake()
     {
@@ -29,25 +28,10 @@ public class GameManager : MonoBehaviour
         }
 
         initialPosition = transform.position;
-    }
 
-    public void Start()
-    {
-        string currentText = txt.text.Substring(0, txt.text.Length - 1);
-        string[] line = currentText.Split('\n');
-        lineSize = line.Length;
-        rowSize = line[0].Split('\t').Length;
-        ItemCode = new string[lineSize, rowSize];
 
-        for(int i = 0; i < lineSize; i++)
-        {
-            string[] row = line[i].Split("\t");
-            for(int j = 0; j < rowSize; j++)
-            {
-                ItemCode[i, j] = row[j];
-                print(i + ", " + j + ", " + ItemCode[i, j]);
-            }
-        }
+        SpawnRandomItem();
+
 
     }
 
@@ -74,6 +58,34 @@ public class GameManager : MonoBehaviour
         //게임 완전 종료시 사용
 
     }
+
+    void SpawnRandomItem()
+    {
+        // 아이템 리스트에서 무작위로 아이템을 선택
+        if (itemList.Count > 0)
+        {
+            Item newItem = itemList[Random.Range(0, itemList.Count)];
+
+            // 아이템의 위치를 결정
+            Vector3 dropPosition = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), 0);
+
+            // 아이템을 인스턴스화
+            if (newItem.itemPrefab != null)
+            {
+                ItemPickUp droppedItem = Instantiate(newItem.itemPrefab, dropPosition, Quaternion.identity).GetComponent<ItemPickUp>();
+                droppedItem.item = newItem;
+            }
+            else
+            {
+                Debug.LogError("Item prefab is null. Please check the item prefab.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Item list is empty. Please add items to the item list.");
+        }
+    }
+
 
 
 }

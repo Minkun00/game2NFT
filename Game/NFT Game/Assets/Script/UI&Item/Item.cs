@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
 public class Item : ScriptableObject
 {
+    // 아이템의 기본 정보
     public string itemName;          // 아이템의 이름
     public ItemType itemType;        // 아이템의 유형
     public Sprite itemImage;         // 아이템의 이미지
     public GameObject itemPrefab;    // 아이템의 프리팹
+    public string itemCode;          // 아이템의 코드
+
+    // 아이템 코드의 각 부분에 대응하는 이미지
+    public Sprite equipmentImage;
+    public Sprite colorImage;
+    public Sprite rankedImage;
 
     public string weaponType;        // 무기 유형
-
 
     public enum ItemType
     {
@@ -21,4 +24,16 @@ public class Item : ScriptableObject
         ETC
     }
 
+    // 아이템 코드를 생성하는 별도의 메서드를 만듭니다.
+    public void GenerateCode()
+    {
+        if (ItemList.Instance != null)
+        {
+            this.itemCode = ItemList.Instance.GenerateItemCode(this);
+        }
+        else
+        {
+            Debug.LogError("ItemList.Instance is not initialized");
+        }
+    }
 }

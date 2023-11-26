@@ -93,7 +93,7 @@ public class PlayerMove : MonoBehaviour
 
     bool IsJumping()
     {
-        return rb.velocity.y > 0.01f;
+        return rb.velocity.y > 0.01f || rb.velocity.y < -0.01f;
     }
   
 

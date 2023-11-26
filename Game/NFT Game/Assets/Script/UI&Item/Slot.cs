@@ -12,6 +12,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public int itemCount; // 획득한 아이템의 개수.
     public Image itemImage; // 아이템의 이미지.
 
+    // 아이템 코드를 표시할 Text UI
+    public TextMeshProUGUI itemCodeText;
 
     // 필요한 컴포넌트.
     [SerializeField]
@@ -24,6 +26,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     void Start()
     {
         //theWeaponManager = FindObjectOfType<WeaponManager>();
+    }
+
+    // 아이템에 마우스가 진입했을 때 아이템 코드를 표시합니다.
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (item != null)
+        {
+            itemCodeText.text = item.itemCode;
+            itemCodeText.gameObject.SetActive(true);
+        }
+    }
+
+    // 아이템에서 마우스가 빠져나갈 때 아이템 코드를 숨깁니다.
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        itemCodeText.gameObject.SetActive(false);
     }
 
     // 이미지의 투명도 조절.

@@ -44,16 +44,18 @@ public class Inventory : MonoBehaviour
 
     private void TryOpenInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && !inventoryActivated)
         {
-            inventoryActivated = !inventoryActivated;
-
-            if (inventoryActivated)
-                OpenInventory();
-            else
-                CloseInventory();
+            inventoryActivated = true;
+            OpenInventory();
+        }
+        else if (Input.GetKeyDown(KeyCode.I) && inventoryActivated)
+        {
+            inventoryActivated = false;
+            CloseInventory();
         }
     }
+
 
     private void OpenInventory()
     {
