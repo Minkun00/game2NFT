@@ -18,6 +18,10 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     public Animator anim;
+    
+    bool wasGrounded = false;
+    float airborneTime = 0f;
+    float maxairborneTime = 0f;
 
     void Start()
     {
@@ -74,15 +78,57 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-
-        //Raycast 선 확인
         Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
 
-        // Walkiing animation
+        //Walking animation
         if (Mathf.Abs(rb.velocity.x) < 0.3)
             anim.SetBool("isWalking", false);
         else
             anim.SetBool("isWalking", true);
+
+        bool isGrounded = IsGrounded();
+
+        if(isGrounded)
+        {
+            if(!wasGrounded)
+            {
+                wasGrounded = true;
+                airborneTime = 0f;
+            }
+        }
+        else
+        {
+            wasGrounded = false;
+            airborneTime += Time.deltaTime;
+        }
+
+        if (airborneTime > 1f)
+        {
+            maxairborneTime = airborneTime;
+            if (airborneTime > maxairborneTime)
+                maxairborneTime = airborneTime;
+        }
+
+        if (maxairborneTime > 1f && !isGrounded)
+        {
+            Hurt(10f, transform.position);
+            maxairborneTime = 0f;
+        //    RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 0.9f, LayerMask.GetMask("Ground"));
+        //    string layername = LayerMask.LayerToName(hit.collider.gameObject.layer);
+        //    if (layername != "NULL")
+        //    {
+        //        Debug.Log(layername);
+        //    }
+        //    else
+        //        Debug.Log("NULL");
+        //    Debug.Log(maxairborneTime);
+        //    Debug.Log("Ouch");
+
+        }
+        //if(airborneTime != 0f)
+        //{
+        //    Debug.Log("Airborne Tiem: " + airborneTime);  ///del
+        //}
     }
 
     bool IsGrounded()
@@ -95,7 +141,6 @@ public class PlayerMove : MonoBehaviour
     {
         return rb.velocity.y > 0.01f || rb.velocity.y < -0.01f;
     }
-  
 
     //피격시 효과
     bool isHurt;
@@ -147,32 +192,40 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 float x = transform.position.x - pos.x;
+                float y = transform.position.y - pos.y;
+
                 if (x < 0)
                     x = 1;
                 else
                     x = -1;
 
-                StartCoroutine(Knockback(x));
+                if (y < 0)
+                    y = 1;
+                else
+                    y = -1;
+
+                StartCoroutine(Knockback(x,y));
                 StartCoroutine(HurtRoutine());
                 StartCoroutine(alphablink());
             }
         }
     }
 
-    IEnumerator Knockback(float dir) // 피격 시 밀쳐지는 효과
+    IEnumerator Knockback(float x_dir, float y_dir) // 피격 시 밀쳐지는 효과
     {
         isknockback = true;
+        Vector2 knockbackVelocity = new Vector2(x_dir, y_dir) * 0.2f;
+
+        rb.velocity = knockbackVelocity;
+
         float ctime = 0;
+
         while (ctime < 0.2f)
         {
-            if (transform.rotation.y == 0)
-                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime * dir);
-            else
-                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime * -1f * dir);
-
             ctime += Time.deltaTime;
             yield return null;
         }
+        rb.velocity = Vector2.zero;
         isknockback = false;
     }
 
