@@ -144,8 +144,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         DragSlot.instance.SetColor(0);
         DragSlot.instance.dragSlot = null;
-        Debug.Log("OnEndDrag");
-
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -153,7 +151,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
         if (DragSlot.instance.dragSlot != null)
             ChangeSlot();
-        Debug.Log("OnDrop");
     }
 
     private void ChangeSlot()

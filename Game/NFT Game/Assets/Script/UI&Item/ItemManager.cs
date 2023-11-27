@@ -1,34 +1,69 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
+using System.IO;
 
 [System.Serializable]
 public class ItemList
 {
-    public ItemList(string _Modifier, string _Equipment, string _Color, string _Rank, string _ItemCode)
-    { Modifier = _Modifier; Equipment = _Equipment; Color = _Color; Rank = _Rank; ItemCode = _ItemCode; }
+    public ItemList(string _Modifier, string _Equipment, string _Color, string _Rank, string _ItemCode, Sprite _EquipmentImage, Sprite _ColorImage, Sprite _RankImage)
+    { 
+        Modifier = _Modifier; 
+        Equipment = _Equipment; 
+        Color = _Color; 
+        Rank = _Rank; 
+        ItemCode = _ItemCode; 
+        EquipmentImage = _EquipmentImage;
+        ColorImage = _ColorImage;
+        RankImage = _RankImage;
+    }
 
     public string Modifier, Equipment, Color, Rank, ItemCode;
+    public Sprite EquipmentImage, ColorImage, RankImage;
 }
+
+
+
+[System.Serializable]
+public class ImageLink
+{
+    public string name;
+    public Sprite image;
+
+    public ImageLink(string _name, Sprite _image)
+    {
+        name = _name;
+        image = _image;
+    }
+}
+
 
 public class ItemManager : MonoBehaviour
 {
     public TextAsset ItemDatabase;
     public List<ItemList> AllItemList;
 
+    public List<ImageLink> EquipmentImages;
+    public List<ImageLink> ColorImages;
+    public List<ImageLink> RankImages;
+
     private void Start()
     {
         // 전체 아이템 리스트 불러오기
         string[] line = ItemDatabase.text.Substring(0, ItemDatabase.text.Length - 1).Split('\n');
 
+        // 아이템 이름 리스트
         List<string> EquipmentList = new List<string>();
         List<string> ModifierList = new List<string>();
         List<string> ColorList = new List<string>();
         List<string> RankList = new List<string>();
 
+        // 아이템 코드 리스트
         List<string> EquipmentCodeList = new List<string>();
         List<string> ModifierCodeList = new List<string>();
         List<string> ColorCodeList = new List<string>();
         List<string> RankCodeList = new List<string>();
+
 
         for (int i = 0; i < line.Length; i++)
         {
@@ -71,10 +106,39 @@ public class ItemManager : MonoBehaviour
                     for (int r = 0; r < RankList.Count; r++)
                     {
                         string itemCode = ModifierCodeList[m] + EquipmentCodeList[e] + ColorCodeList[c] + RankCodeList[r];
-                        AllItemList.Add(new ItemList(ModifierList[m], EquipmentList[e], ColorList[c], RankList[r], itemCode));
+
+                        ImageLink equipmentLink = EquipmentImages.Find(img => img.name == EquipmentList[e]);
+                        ImageLink colorLink = ColorImages.Find(img => img.name == ColorList[c]);
+                        ImageLink rankLink = RankImages.Find(img => img.name == RankList[r]);
+
+                        //Debug.Log($"[Debug] m: {m}, e: {e}, c: {c}, r: {r}");
+                        //Debug.Log($"[Debug] Equipment: {EquipmentList[e]}, Color: {ColorList[c]}, Rank: {RankList[r]}");
+                        //Debug.Log($"[Debug] Equipment Image: {equipmentLink?.image}, Color Image: {colorLink?.image}, Rank Image: {rankLink?.image}");
+
+                        //if (equipmentLink == null )
+                        //{
+                        //    Debug.LogError("[Error] equipmentLink ImageLink not found.");
+                        //    continue;
+                        //}
+                        //else if (colorLink == null)
+                        //{
+                        //    Debug.LogError("[Error] colorLink ImageLink not found.");
+                        //    continue;
+                        //}
+                        //else if (rankLink == null)
+                        //{
+                        //    Debug.LogError("[Error] rankLink ImageLink not found.");
+                        //    continue;
+                        //}
+
+                        Sprite equipmentImage = equipmentLink.image;
+                        Sprite colorImage = colorLink.image;
+                        Sprite rankImage = rankLink.image;
+                        AllItemList.Add(new ItemList(ModifierList[m], EquipmentList[e], ColorList[c], RankList[r], itemCode, equipmentImage, colorImage, rankImage));
                     }
                 }
             }
         }
+
     }
 }

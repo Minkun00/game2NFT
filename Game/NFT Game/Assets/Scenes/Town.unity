@@ -12943,6 +12943,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemDatabase: {fileID: 4900000, guid: 292d116e64fbbe84eb22a243bfa2d38e, type: 3}
   AllItemList: []
+  EquipmentImages:
+  - name: ArmyHelmet
+    image: {fileID: -5697405367592101602, guid: 9010bb67b8476dd4ca9b3a5cd09d0909, type: 3}
+  - name: 'KnightHelmet '
+    image: {fileID: -8921375225736108624, guid: a92d8ae3ef9cd05409d10a6ff4633d6a, type: 3}
+  - name: AbsoluteHelmet
+    image: {fileID: -2198501206769771814, guid: 0f0d9a236ed68c8418a44ea1470efdfc, type: 3}
+  - name: ArmyTop
+    image: {fileID: 1628304451031106407, guid: b0308eda1dbac2e428eeab92c4451b08, type: 3}
+  - name: KnightTop
+    image: {fileID: -6780683861841681208, guid: 242db6db3d5adeb4da6ebf4779780997, type: 3}
+  - name: AbsoluteTop
+    image: {fileID: -4708669636496918435, guid: a625c363480d34c4a986e44722e448e3, type: 3}
+  - name: ArmyPants
+    image: {fileID: 3994795293169029437, guid: 0c5f2b574a1b9ea4dae35913f130ff72, type: 3}
+  - name: KnightPants
+    image: {fileID: -695088669807528872, guid: ab527d0ff44697a488363a907ba0c7ca, type: 3}
+  - name: AbsolutePants
+    image: {fileID: 2337416156748317707, guid: d298535a933f35e429b2172c697d77bb, type: 3}
+  - name: ArmyShoes
+    image: {fileID: 7730233039128842604, guid: c6618672fad755243821ba909586250f, type: 3}
+  - name: KnightShoes
+    image: {fileID: -7592935724253850164, guid: 1f754585a50e60043a71fcd69464a257, type: 3}
+  - name: AbsoluteShoes
+    image: {fileID: -4808783891540542138, guid: e5e3e829c1b777f4f8a145bb38e7d723, type: 3}
+  - name: ArmySword
+    image: {fileID: -1341287276824440265, guid: 7d5bbf116e78d9744846c99d5fc8557e, type: 3}
+  - name: KnightSword
+    image: {fileID: 2370355454625071448, guid: 866f787507002ff4581baa3a950cd333, type: 3}
+  - name: AbsoluteSword
+    image: {fileID: -3455089740371052150, guid: 334150df997068d41baa527eef8f1d47, type: 3}
+  ColorImages:
+  - name: Red
+    image: {fileID: 6286595657586805340, guid: 6fc3bd7c3f228284e88f41f0ef7b6edc, type: 3}
+  - name: Orange
+    image: {fileID: 4121880872312635667, guid: de08cdc4b1f61a146b65ad6a95a8f81c, type: 3}
+  - name: Yellow
+    image: {fileID: 6358040702757662528, guid: 967792c8139c36149b29d4d796f70014, type: 3}
+  - name: Green
+    image: {fileID: -4987337320017983735, guid: 0fe57f9391ffb4d49909b4e632ca9504, type: 3}
+  - name: SkyBlue
+    image: {fileID: -7781637403611988417, guid: dba82ea79d016fd4a82d156656f324ac, type: 3}
+  - name: Blue
+    image: {fileID: -6429493399158520243, guid: 3ef9456071e110a4099af94ce25d0177, type: 3}
+  - name: Purple
+    image: {fileID: -8923911374754931897, guid: 0418b40f79e851142ad1189e8833144b, type: 3}
+  RankImages:
+  - name: Normal
+    image: {fileID: 9095853184155359625, guid: 9618244fa174e8d4d99581bd545958d6, type: 3}
+  - name: Epic
+    image: {fileID: -103892641176029460, guid: 11a91d2548e5b4640803c299d4dcad40, type: 3}
+  - name: Unique
+    image: {fileID: 3633700975376794489, guid: e4d0248a4a7dc6a46a897ac4f1eed087, type: 3}
+  - name: Legendry
+    image: {fileID: 574644335803195889, guid: 4cc8c5692fa86d24f9558741e483c26d, type: 3}
 --- !u!4 &1782143432
 Transform:
   m_ObjectHideFlags: 0
