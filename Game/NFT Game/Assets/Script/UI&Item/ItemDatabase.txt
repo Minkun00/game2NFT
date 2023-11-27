@@ -1,0 +1,15 @@
+ArmyHelmet	30100	낭만있는	101	Red	FF0000	Normal	123
+ArmyTop	30200	쾌속의	202	Orange	FF5E00	Epic	234
+ArmyPants	30300	벽력일섬의	303	Yellow	FFE400	Unique	345
+ArmyShoes	30400	음주가무의	404	Green	1DDB16	Legendry	456
+ArmySword	30500	불굴의	505	SkyBlue	00D8FF		
+KnightHelmet	40100	진격의	606	Blue	0100FF		
+KnightTop	40200			Purple	3F0099		
+KnightPants	40300						
+KnightShoes	40400						
+KnightSword	40500						
+AbsoluteHelmet	50100						
+AbsoluteTop	50200						
+AbsolutePants	50300						
+AbsoluteShoes	50400						
+AbsoluteSword	50500						

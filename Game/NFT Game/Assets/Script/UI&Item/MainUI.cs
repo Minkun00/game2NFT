@@ -13,19 +13,3 @@ public enum btnType
     Quit
 }
 
-public class MainUI : MonoBehaviour
-{
-
-    
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}

@@ -23,17 +23,4 @@ public class Item : ScriptableObject
         Equipment,
         ETC
     }
-
-    // 아이템 코드를 생성하는 별도의 메서드를 만듭니다.
-    public void GenerateCode()
-    {
-        if (ItemList.Instance != null)
-        {
-            this.itemCode = ItemList.Instance.GenerateItemCode(this);
-        }
-        else
-        {
-            Debug.LogError("ItemList.Instance is not initialized");
-        }
-    }
 }

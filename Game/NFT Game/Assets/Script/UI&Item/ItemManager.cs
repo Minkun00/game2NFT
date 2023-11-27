@@ -1,109 +1,80 @@
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class ItemManager : MonoBehaviour
-//{
-//    public Dictionary<string, Item> equipmentDict = new Dictionary<string, Item>();
-//    public Dictionary<string, Type> typeDict = new Dictionary<string, Type>();
-//    public Dictionary<string, Color> colorDict = new Dictionary<string, Color>();
-//    public Dictionary<string, Ranked> rankDict = new Dictionary<string, Ranked>();
+[System.Serializable]
+public class ItemList
+{
+    public ItemList(string _Modifier, string _Equipment, string _Color, string _Rank, string _ItemCode)
+    { Modifier = _Modifier; Equipment = _Equipment; Color = _Color; Rank = _Rank; ItemCode = _ItemCode; }
 
-//    void Start()
-//    {
-//        // Equipment Initialization
-//        equipmentDict.Add("ArmyHelmet", new Item("ArmyHelmet", 30100, "ArmyHelmet_Sprite"));
-//        equipmentDict.Add("ArmyTop", new Item("ArmyTop", 30200, "ArmyTop_Sprite"));
-//        equipmentDict.Add("ArmyPants", new Item("ArmyPants", 30300, "ArmyPants_Sprite"));
-//        equipmentDict.Add("ArmyShoes", new Item("ArmyShoes", 30400, "ArmyShoes_Sprite"));
-//        equipmentDict.Add("ArmySword", new Item("ArmySword", 30500, "ArmySword_Sprite"));
-//        equipmentDict.Add("ArmyGun", new Item("ArmyGun", 30600, "ArmyGun_Sprite"));
+    public string Modifier, Equipment, Color, Rank, ItemCode;
+}
 
-//        equipmentDict.Add("KnightHelmet", new Item("KnightHelmet", 40100, "KnightHelmet_Sprite"));
-//        equipmentDict.Add("KnightTop", new Item("KnightTop", 40200, "KnightTop_Sprite"));
-//        equipmentDict.Add("KnightPants", new Item("KnightPants", 40300, "KnightPants_Sprite"));
-//        equipmentDict.Add("KnightShoes", new Item("KnightShoes", 40400, "KnightShoes_Sprite"));
-//        equipmentDict.Add("KnightSword", new Item("KnightSword", 40500, "KnightSword_Sprite"));
-//        equipmentDict.Add("KnightGun", new Item("KnightGun", 40600, "KnightGun_Sprite"));
+public class ItemManager : MonoBehaviour
+{
+    public TextAsset ItemDatabase;
+    public List<ItemList> AllItemList;
 
-//        equipmentDict.Add("AbsoluteHelmet", new Item("AbsoluteHelmet", 50100, "AbsoluteHelmet_Sprite"));
-//        equipmentDict.Add("AbsoluteTop", new Item("AbsoluteTop", 50200, "AbsoluteTop_Sprite"));
-//        equipmentDict.Add("AbsolutePants", new Item("AbsolutePants", 50300, "AbsolutePants_Sprite"));
-//        equipmentDict.Add("AbsoluteShoes", new Item("AbsoluteShoes", 50400, "AbsoluteShoes_Sprite"));
-//        equipmentDict.Add("AbsoluteSword", new Item("AbsoluteSword", 50500, "AbsoluteSword_Sprite"));
-//        equipmentDict.Add("AbsoluteGun", new Item("AbsoluteGun", 50600, "AbsoluteGun_Sprite"));
+    private void Start()
+    {
+        // 전체 아이템 리스트 불러오기
+        string[] line = ItemDatabase.text.Substring(0, ItemDatabase.text.Length - 1).Split('\n');
 
-//        // Type Initialization
-//        typeDict.Add("낭만있는", new Type("낭만있는", 1, "Romantic_Sprite"));
-//        typeDict.Add("쾌속의", new Type("쾌속의", 2, "Fast_Sprite"));
-//        typeDict.Add("벽력일섬의", new Type("벽력일섬의", 3, "Powerful_Sprite"));
-//        typeDict.Add("음주가무의", new Type("음주가무의", 4, "DrinkingDancing_Sprite"));
-//        typeDict.Add("불굴의", new Type("불굴의", 5, "Indomitable_Sprite"));
-//        typeDict.Add("진격의", new Type("진격의", 6, "Advancing_Sprite"));
+        List<string> EquipmentList = new List<string>();
+        List<string> ModifierList = new List<string>();
+        List<string> ColorList = new List<string>();
+        List<string> RankList = new List<string>();
 
-//        // Color Initialization
-//        colorDict.Add("빨강", new Color("빨강", "FF0000", "Red_Sprite"));
-//        colorDict.Add("주황", new Color("주황", "FF5E00", "Orange_Sprite"));
-//        colorDict.Add("노랑", new Color("노랑", "FFE400", "Yellow_Sprite"));
-//        colorDict.Add("초록", new Color("초록", "1DDB16", "Green_Sprite"));
-//        colorDict.Add("파랑", new Color("파랑", "00D8FF", "Blue_Sprite"));
-//        colorDict.Add("남색", new Color("남색", "0100FF", "DeepBlue_Sprite"));
-//        colorDict.Add("보라", new Color("보라", "3F0099", "Purple_Sprite"));
+        List<string> EquipmentCodeList = new List<string>();
+        List<string> ModifierCodeList = new List<string>();
+        List<string> ColorCodeList = new List<string>();
+        List<string> RankCodeList = new List<string>();
 
-//        // Rank Initialization
-//        rankDict.Add("Normal", new Ranked("Normal", 100, "Normal_Sprite"));
-//        rankDict.Add("Epic", new Ranked("Epic", 200, "Epic_Sprite"));
-//        rankDict.Add("Unique", new Ranked("Unique", 300, "Unique_Sprite"));
-//        rankDict.Add("Legendry", new Ranked("Legendry", 400, "Legendry_Sprite"));
+        for (int i = 0; i < line.Length; i++)
+        {
+            string[] row = line[i].Split('\t');
 
-//        // Create a random item
-//        string randomEquipment = GetRandomKey(equipmentDict);
-//        string randomType = GetRandomKey(typeDict);
-//        string randomColor = GetRandomKey(colorDict);
-//        string randomRank = GetRandomKey(rankDict);
+            // 각 요소가 비어있지 않으면 리스트에 추가
+            if (row.Length > 1 && !string.IsNullOrEmpty(row[0]) && !EquipmentList.Contains(row[0]))
+            {
+                EquipmentList.Add(row[0]);
+                EquipmentCodeList.Add(row[1]);
+            }
 
-//        Item createdItem = CreateItem(randomEquipment, randomType, randomColor, randomRank);
-//    }
+            if (row.Length > 3 && !string.IsNullOrEmpty(row[2]) && !ModifierList.Contains(row[2]))
+            {
+                ModifierList.Add(row[2]);
+                ModifierCodeList.Add(row[3]);
+            }
+
+            if (row.Length > 5 && !string.IsNullOrEmpty(row[4]) && !ColorList.Contains(row[4]))
+            {
+                ColorList.Add(row[4]);
+                ColorCodeList.Add(row[5]);
+            }
+
+            if (row.Length > 7 && !string.IsNullOrEmpty(row[6]) && !RankList.Contains(row[6]))
+            {
+                RankList.Add(row[6]);
+                RankCodeList.Add(row[7]);
+            }
+        }
 
 
-//    string GetRandomKey<T>(Dictionary<string, T> dict)
-//    {
-//        List<string> keys = new List<string>(dict.Keys);
-//        return keys[Random.Range(0, keys.Count)];
-//    }
-
-//    Item CreateItem(string equipment, string type, string color, string rank)
-//    {
-//        int code = equipmentDict[equipment].code + typeDict[type].code + colorDict[color].code + rankDict[rank].code;
-//        string spriteName = equipment + type + color + rank; // Assuming the combined sprite is pre-made
-//        return new Item(equipment + type + color + rank, code, spriteName);
-//    }
-//}
-
-//public class Item
-//{
-//    public string name;
-//    public int code;
-//    public Sprite sprite;
-
-//    public Item(string name, int code, string spriteName)
-//    {
-//        this.name = name;
-//        this.code = code;
-//        this.sprite = Resources.Load<Sprite>(spriteName);
-//    }
-//}
-
-//public class Type : Item
-//{
-//    public Type(string name, int code, string spriteName) : base(name, code, spriteName) { }
-//}
-
-//public class Color : Item
-//{
-//    public Color(string name, string code, string spriteName) : base(name, code, spriteName) { }
-//}
-
-//public class Ranked : Item
-//{
-//    public Ranked(string name, int code, string spriteName) : base(name, code, spriteName) { }
-//}
+        // 모든 경우의 수를 고려하여 아이템 생성
+        for (int m = 0; m < ModifierList.Count; m++)
+        {
+            for (int e = 0; e < EquipmentList.Count; e++)
+            {
+                for (int c = 0; c < ColorList.Count; c++)
+                {
+                    for (int r = 0; r < RankList.Count; r++)
+                    {
+                        string itemCode = ModifierCodeList[m] + EquipmentCodeList[e] + ColorCodeList[c] + RankCodeList[r];
+                        AllItemList.Add(new ItemList(ModifierList[m], EquipmentList[e], ColorList[c], RankList[r], itemCode));
+                    }
+                }
+            }
+        }
+    }
+}
