@@ -16,12 +16,6 @@ public class Database : MonoBehaviour
 
         string equip = "ArmyHelmet";
         int equipCode = 30100;
-        string modifier 
-        int modifierCode
-        string    color
-        int    colorCode
-        string    rank
-        int    rankCode
 
 
         string tableName = "Database";
