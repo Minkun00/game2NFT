@@ -23,12 +23,8 @@ function App() {
   return (
     <Router> 
       <SnowEffect />
-      <div className="app-container">
-    
-
-
-      
-        <h1>Welcome to "Game Item Market Place"</h1>
+      <div className="app-container">    
+        <h1>EXCHANGE</h1>
         <nav className = "nav">
           <ul>
             <li>
