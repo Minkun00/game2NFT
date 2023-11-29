@@ -7,7 +7,6 @@ public class Item : ScriptableObject
     public string itemName;          // 아이템의 이름
     public ItemType itemType;        // 아이템의 유형
     public Sprite itemImage;         // 아이템의 이미지
-    public GameObject itemPrefab;    // 아이템의 프리팹
     public string itemCode;          // 아이템의 코드
 
     // 아이템 코드의 각 부분에 대응하는 이미지

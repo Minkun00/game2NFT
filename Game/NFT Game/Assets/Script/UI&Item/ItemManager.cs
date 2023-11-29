@@ -147,15 +147,40 @@ public class ItemManager : MonoBehaviour
         // 선택된 아이템의 스프라이트를 게임 오브젝트로 생성
         Sprite[] sprites = new Sprite[] { randomItem.EquipmentImage, randomItem.ColorImage, randomItem.RankImage };
         int[] sortingOrders = new int[] { 2, 1, 0 };
-        GameObject itemObject = CreateObjectWithMultipleSprites(sprites, sortingOrders);
-        itemObject.name = "Dropped_Item";
+        GameObject itemObject = CreateObjectWithMultipleSprites(sprites, sortingOrders, "Dropped_Item", "Item");
+
+        // 아이템 오브젝트에 ItemPickUp 컴포넌트 추가
+        ItemPickUp itemPickUp = itemObject.AddComponent<ItemPickUp>();
+
+        // 아이템 정보 설정
+        itemPickUp.itemInfo = randomItem;  // randomItem 정보를 itemInfo에 저장
+
+        // 아이템 정보를 Item 스크립트 오브젝트로 생성
+        Item item = ScriptableObject.CreateInstance<Item>();
+        item.itemName = randomItem.Equipment;
+        item.itemImage = randomItem.EquipmentImage;  // 스프라이트를 아이템 이미지로 설정
+        item.itemCode = randomItem.ItemCode;
+        item.equipmentImage = randomItem.EquipmentImage;
+        item.colorImage = randomItem.ColorImage;
+        item.rankedImage = randomItem.RankImage;
+        // item.itemType, item.weaponType 등 다른 필드도 필요에 따라 설정
+
+        // ItemPickUp 컴포넌트에 Item 정보 저장
+        itemPickUp.item = item;
+
     }
 
     // 여러 스프라이트를 가진 게임 오브젝트 생성 함수
-    GameObject CreateObjectWithMultipleSprites(Sprite[] sprites, int[] sortingOrders)
+    GameObject CreateObjectWithMultipleSprites(Sprite[] sprites, int[] sortingOrders, string objectName, string objectTag)
     {
         // 빈 GameObject 생성
         GameObject obj = new GameObject();
+        obj.name = objectName;  // GameObject의 이름 설정
+        obj.tag = objectTag;  // GameObject의 태그 설정
+
+        // BoxCollider2D 컴포넌트 추가
+        BoxCollider2D collider = obj.AddComponent<BoxCollider2D>();
+        collider.isTrigger = true;  // isTrigger 설정
 
         for (int i = 0; i < sprites.Length; i++)
         {
@@ -172,6 +197,7 @@ public class ItemManager : MonoBehaviour
 
         return obj;
     }
+
 
 
 }

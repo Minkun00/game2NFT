@@ -61,6 +61,7 @@ public class ActionController : MonoBehaviour
         }
     }
 
+
     private void CheckItem()
     {
         Vector2 direction;
