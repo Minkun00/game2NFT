@@ -5,7 +5,6 @@
 
 ## How to run?
 [env - server, for pinata api](https://github.com/Minkun00/gameExchange/blob/master/server/.env.example), [env - React, for Klaytn API](https://github.com/Minkun00/gameExchange/blob/master/src/.env.example)에 해당하는 내용 추가 후,
-- 참고로, [env - React, for Klaytn API](https://github.com/Minkun00/gameExchange/blob/master/src/.env.example)이거 처음에 내가 할 때 root directory에 있어야 됬던거 같기도 한데 뭐 그정도는 실행하시는 분이 한 번만 수고 좀 부탁드리겠습니다..
 
 ```bash
 user~/exchanges$ npm i
@@ -90,3 +89,5 @@ react상의 코드와 관련해서는 [여기](https://github.com/Minkun00/gameE
     - BuyTokens
       - BuyTokens.jsx
     - KaikasConnect.jsx
+
+> FOR FUN.
