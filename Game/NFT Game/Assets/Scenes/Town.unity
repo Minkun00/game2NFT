@@ -1483,63 +1483,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &386951214
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1966743942436148181, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5691952619351542234, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
-      propertyPath: m_Name
-      value: ArmyHelmet_0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c8846e870f2aec740b6ecd4873705bf3, type: 3}
 --- !u!224 &401776867 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4172889515834107161, guid: 33eaf82d55c8151469479ea33600ca00, type: 3}
@@ -12946,7 +12889,7 @@ MonoBehaviour:
   EquipmentImages:
   - name: ArmyHelmet
     image: {fileID: -5697405367592101602, guid: 9010bb67b8476dd4ca9b3a5cd09d0909, type: 3}
-  - name: 'KnightHelmet '
+  - name: KnightHelmet
     image: {fileID: -8921375225736108624, guid: a92d8ae3ef9cd05409d10a6ff4633d6a, type: 3}
   - name: AbsoluteHelmet
     image: {fileID: -2198501206769771814, guid: 0f0d9a236ed68c8418a44ea1470efdfc, type: 3}
@@ -12996,7 +12939,7 @@ MonoBehaviour:
     image: {fileID: -103892641176029460, guid: 11a91d2548e5b4640803c299d4dcad40, type: 3}
   - name: Unique
     image: {fileID: 3633700975376794489, guid: e4d0248a4a7dc6a46a897ac4f1eed087, type: 3}
-  - name: Legendry
+  - name: Legendary
     image: {fileID: 574644335803195889, guid: 4cc8c5692fa86d24f9558741e483c26d, type: 3}
 --- !u!4 &1782143432
 Transform:
@@ -15255,5 +15198,4 @@ SceneRoots:
   - {fileID: 1076797128}
   - {fileID: 622922787}
   - {fileID: 1636027539}
-  - {fileID: 386951214}
   - {fileID: 1782143432}
