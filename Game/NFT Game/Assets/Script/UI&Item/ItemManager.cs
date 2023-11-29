@@ -111,25 +111,25 @@ public class ItemManager : MonoBehaviour
                         ImageLink colorLink = ColorImages.Find(img => img.name == ColorList[c]);
                         ImageLink rankLink = RankImages.Find(img => img.name == RankList[r]);
 
-                        Debug.Log($"[Debug] m: {m}, e: {e}, c: {c}, r: {r}");
-                        Debug.Log($"[Debug] Equipment: {EquipmentList[e]}, Color: {ColorList[c]}, Rank: {RankList[r]}");
-                        Debug.Log($"[Debug] Equipment Image: {equipmentLink?.image}, Color Image: {colorLink?.image}, Rank Image: {rankLink?.image}");
+                        //Debug.Log($"[Debug] m: {m}, e: {e}, c: {c}, r: {r}");
+                        //Debug.Log($"[Debug] Equipment: {EquipmentList[e]}, Color: {ColorList[c]}, Rank: {RankList[r]}");
+                        //Debug.Log($"[Debug] Equipment Image: {equipmentLink?.image}, Color Image: {colorLink?.image}, Rank Image: {rankLink?.image}");
 
-                        if (equipmentLink == null)
-                        {
-                            Debug.LogError("[Error] equipmentLink ImageLink not found." + equipmentLink);
-                            continue;
-                        }
-                        else if (colorLink == null)
-                        {
-                            Debug.LogError("[Error] colorLink ImageLink not found.");
-                            continue;
-                        }
-                        else if (rankLink == null)
-                        {
-                            Debug.LogError("[Error] rankLink ImageLink not found.");
-                            continue;
-                        }
+                        //if (equipmentLink == null)
+                        //{
+                        //    Debug.LogError("[Error] equipmentLink ImageLink not found." + equipmentLink);
+                        //    continue;
+                        //}
+                        //else if (colorLink == null)
+                        //{
+                        //    Debug.LogError("[Error] colorLink ImageLink not found.");
+                        //    continue;
+                        //}
+                        //else if (rankLink == null)
+                        //{
+                        //    Debug.LogError("[Error] rankLink ImageLink not found.");
+                        //    continue;
+                        //}
 
                         Sprite equipmentImage = equipmentLink.image;
                         Sprite colorImage = colorLink.image;
@@ -145,29 +145,33 @@ public class ItemManager : MonoBehaviour
         ItemList randomItem = AllItemList[randomIndex];
 
         // 선택된 아이템의 스프라이트를 게임 오브젝트로 생성
-        GameObject equipmentObject = CreateObjectWithSprite(randomItem.EquipmentImage, 2);
-        GameObject colorObject = CreateObjectWithSprite(randomItem.ColorImage);
-        GameObject rankObject = CreateObjectWithSprite(randomItem.RankImage);
-
+        Sprite[] sprites = new Sprite[] { randomItem.EquipmentImage, randomItem.ColorImage, randomItem.RankImage };
+        int[] sortingOrders = new int[] { 2, 1, 0 };
+        GameObject itemObject = CreateObjectWithMultipleSprites(sprites, sortingOrders);
+        itemObject.name = "Dropped_Item";
     }
 
-    // 스프라이트를 가진 게임 오브젝트 생성 함수
-    GameObject CreateObjectWithSprite(Sprite sprite, int sortingOrder = 0)
+    // 여러 스프라이트를 가진 게임 오브젝트 생성 함수
+    GameObject CreateObjectWithMultipleSprites(Sprite[] sprites, int[] sortingOrders)
     {
         // 빈 GameObject 생성
         GameObject obj = new GameObject();
 
-        // SpriteRenderer 컴포넌트를 가진 자식 GameObject 생성
-        GameObject child = new GameObject();
-        child.transform.parent = obj.transform;  // 부모 설정
-        SpriteRenderer spriteRenderer = child.AddComponent<SpriteRenderer>();  // SpriteRenderer 컴포넌트 추가
-        spriteRenderer.sprite = sprite;  // 스프라이트 설정
-        spriteRenderer.sortingOrder = sortingOrder;  // Layer Order 설정
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            // SpriteRenderer 컴포넌트를 가진 자식 GameObject 생성
+            GameObject child = new GameObject();
+            child.transform.parent = obj.transform;  // 부모 설정
+            SpriteRenderer spriteRenderer = child.AddComponent<SpriteRenderer>();  // SpriteRenderer 컴포넌트 추가
+            spriteRenderer.sprite = sprites[i];  // 스프라이트 설정
+            spriteRenderer.sortingOrder = sortingOrders[i];  // Layer Order 설정
 
-        // 스케일 조절
-        child.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);  // 크기를 절반으로 줄임
+            // 스케일 조절
+            child.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);  // 크기를 절반으로 줄임
+        }
 
         return obj;
     }
+
 
 }

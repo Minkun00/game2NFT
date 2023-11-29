@@ -81,6 +81,7 @@ public class ActionController : MonoBehaviour
             if (hitInfo.transform.tag == "Item")
             {
                 ItemInfoAppear();
+                Debug.Log("Helmet");
             }
         }
         else
