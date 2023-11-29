@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,9 +28,17 @@ public class ActionController : MonoBehaviour
     [SerializeField]
     private Inventory theInventory;
 
+    public List<string> curItemModifyList = new List<string>();
+    public List<string> curItemNameList = new List<string>();
+    public List<string> curItemRankList = new List<string>();
+    public List<string> curItemCodeList = new List<string>();
+    public List<Sprite> curItemImageList = new List<Sprite>();
+
+
     private void Start()
     {
-        
+        actionText.gameObject.SetActive(false);
+        actionTextPanel.gameObject.SetActive(false);
     }
 
     void Update()
@@ -44,7 +53,17 @@ public class ActionController : MonoBehaviour
         {
             CheckItem();
             CanPickUp();
+            AddItemList();
         }
+    }
+
+    public void AddItemList()
+    {
+        curItemNameList.Add(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName);
+        curItemModifyList.Add(hitInfo.transform.GetComponent<ItemPickUp>().item.itemModify);
+        curItemRankList.Add(hitInfo.transform.GetComponent<ItemPickUp>().item.itemRank);
+        curItemCodeList.Add(hitInfo.transform.GetComponent<ItemPickUp>().item.itemCode);
+        curItemImageList.Add(hitInfo.transform.GetComponent<ItemPickUp>().item.itemImage);
     }
 
     private void CanPickUp()
@@ -82,18 +101,10 @@ public class ActionController : MonoBehaviour
             if (hitInfo.transform.tag == "Item")
             {
                 ItemInfoAppear();
-                Debug.Log("Helmet");
             }
         }
         else
             InfoDisappear();
-    }
-
-    private void InfoDisappear()
-    {
-        pickActivated = false;
-        actionText.gameObject.SetActive(false);
-        actionTextPanel.gameObject.SetActive(false);
     }
 
     private void ItemInfoAppear()
@@ -103,4 +114,13 @@ public class ActionController : MonoBehaviour
         actionTextPanel.gameObject.SetActive(true);
         actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "]" + " Pick it up" + "<color=yellow>" + " (Z)" + "</color>";
     }
+
+    private void InfoDisappear()
+    {
+        pickActivated = false;
+        actionText.gameObject.SetActive(false);
+        actionTextPanel.gameObject.SetActive(false);
+    }
+
+    
 }

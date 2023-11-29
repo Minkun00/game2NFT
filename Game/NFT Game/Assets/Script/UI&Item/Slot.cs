@@ -5,44 +5,29 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public Item item; // 획득한 아이템.
     public int itemCount; // 획득한 아이템의 개수.
     public Image itemImage; // 아이템의 이미지.
 
-    // 아이템 코드를 표시할 Text UI
-    public TextMeshProUGUI itemCodeText;
+    // 아이템 정보를 표시할 Text UI
+    [SerializeField]
+    private GameObject itemInfoPanel;
+    [SerializeField]
+    private TextMeshProUGUI itemInfoText;
+    [SerializeField]
+    private TextMeshProUGUI itemNameText;
+    [SerializeField]
+    private Image itemExplainImage;
 
     // 필요한 컴포넌트.
     [SerializeField]
     private TextMeshProUGUI text_Count;
     [SerializeField]
     private GameObject go_CountImage;
-
-    //private WeaponManager theWeaponManager;
-
-    void Start()
-    {
-        //theWeaponManager = FindObjectOfType<WeaponManager>();
-    }
-
-    // 아이템에 마우스가 진입했을 때 아이템 코드를 표시합니다.
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (item != null)
-        {
-            itemCodeText.text = item.itemCode;
-            itemCodeText.gameObject.SetActive(true);
-        }
-    }
-
-    // 아이템에서 마우스가 빠져나갈 때 아이템 코드를 숨깁니다.
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        itemCodeText.gameObject.SetActive(false);
-    }
+    
 
     // 이미지의 투명도 조절.
     private void SetColor(float _alpha)
@@ -94,10 +79,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         text_Count.text = "0";
         go_CountImage.SetActive(false);
     }
-
-
-    private float lastClickTime = 0;
-    private const float doubleClickTime = 0.2f;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -165,4 +146,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         else
             DragSlot.instance.dragSlot.ClearSlot();
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (item != null)
+        {
+            itemInfoPanel.SetActive(true);
+            itemNameText.text = item.itemModify + " " + item.itemName;
+            itemExplainImage.sprite = item.itemImage;
+            itemInfoText.text = "등급 : " + item.itemRank + "\n" + "공격력 : " + item.itemAttack + "\n" + "방어력 : " + item.itemDefence + "\n" + "Code : " + item.itemCode;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        itemInfoPanel.SetActive(false);
+        itemInfoText.text = "";
+    }
+
 }
