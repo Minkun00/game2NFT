@@ -3,6 +3,7 @@ const itemABI = require('./itemCode.json').Code;
 
 const axios = require("axios");
 const FormData = require("form-data");
+const fs = require("fs");
 const sharp = require("sharp");
 const { Readable } = require('stream');
 const baseUrl = "https://gateway.pinata.cloud/ipfs/";
@@ -90,14 +91,24 @@ const combineImages = async (codeObj) => {
   const rankEdgePath = `./Pinata/Images/RankEdge/${codeObj.rank}.png`;
 
   let combinedImage = sharp(backgroundPath);
+  combinedImage = await checkImagesTest(combinedImage, 1);
 
-  combinedImage = combinedImage.composite([{ input: rankEdgePath }]);
+  let combinedImageEdge = combinedImage.composite([{ input: rankEdgePath }]);
+  combinedImageEdge = await checkImagesTest(combinedImageEdge, 2);
 
-  combinedImage = combinedImage.composite([{ input: itemPath }]);
+  let combinedImageFin = combinedImageEdge.composite([{ input: itemPath }]);
+  combinedImageFin = await checkImagesTest(combinedImageFin, 3);
 
-  const outputBuffer = await combinedImage.toBuffer();
+  const outputBuffer = await combinedImageFin.toBuffer();
   return outputBuffer;
 };
+
+const checkImagesTest = async (imageBuffer, _int) => {
+  const outputBuffer = await imageBuffer.toBuffer();
+  // fs.writeFileSync(`./combinedImage_${_int}.png`, outputBuffer);
+  return sharp(outputBuffer);
+};
+
 
 
 const uploadImgToPinata = async (data) => {
