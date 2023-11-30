@@ -14,7 +14,7 @@ const usePinata = async (code, _name, _description) => {
   // console.log("itemABI : ", itemABI);
 
   const codeObj = await disolveCode(code);
-  const _itemName = `[${codeObj.rank}] ${codeObj.adjective} ${codeObj.itemName} ${codeObj.item} (${codeObj.background})`;
+  const _itemName = `[${codeObj.rank}] ${codeObj.adjective} ${codeObj.itemName} ${codeObj.item}`;
   console.log(`itemName : ${_itemName}`);
   if (Object.values(codeObj).includes('Unknown')) {
     console.log(`!ERROR! : Unknown code`);

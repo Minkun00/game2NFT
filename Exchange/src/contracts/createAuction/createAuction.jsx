@@ -60,11 +60,12 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
       const tokenURI = await nftContract.methods.tokenURI(tokenId).call();
       const metadata = await fetchMetadata(tokenURI);
       const imageUrl = metadata.image.replace('ipfs://', 'https://ipfs.io/ipfs/');
+      const imageName = metadata.name;
       tokenDetails.push({
-        tokenId,
         imageUrl,
+        imageName
       });
-      console.log(`Token ID: ${tokenId}, Image URL: ${imageUrl}`); 
+      console.log(`Token ID: ${tokenId}, Image URL: ${imageUrl}, Image Name: ${imageName}`); 
     }
   
     setTokens(tokenDetails);
@@ -105,7 +106,7 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
                  onClick={() => selectNFT(tokenDetail.tokenId)}
             >
               <img src={tokenDetail.imageUrl} alt="NFT" style={{ maxWidth: '100%', display: 'block', marginBottom: '5px', }} />
-              <p className="account-info"> Token ID: {tokenDetail.tokenId}</p>
+              <p className="account-info">{tokenDetail.imageName}</p>
             </div>
           ))}
         </div>
