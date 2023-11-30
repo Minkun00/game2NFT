@@ -45,6 +45,11 @@ public class ItemManager : MonoBehaviour
     public List<ImageLink> ColorImages;
     public List<ImageLink> RankImages;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     private void Start()
     {
         // 전체 아이템 리스트 불러오기

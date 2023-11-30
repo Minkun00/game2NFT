@@ -112,7 +112,7 @@ public class ActionController : MonoBehaviour
         pickActivated = true;
         actionText.gameObject.SetActive(true);
         actionTextPanel.gameObject.SetActive(true);
-        actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "]" + " Pick it up" + "<color=yellow>" + " (Z)" + "</color>";
+        actionText.text = "[" + hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "]" + " ащ╠Б :" + "<color=yellow>" + " (Z)" + "</color>";
     }
 
     private void InfoDisappear()

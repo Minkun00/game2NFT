@@ -11,6 +11,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public Item item; // 획득한 아이템.
     public int itemCount; // 획득한 아이템의 개수.
     public Image itemImage; // 아이템의 이미지.
+    public Image itemInvenBack; // 아이템의 이미지.
+    public Image itemInvenRank; // 아이템의 이미지.
+
 
     // 아이템 정보를 표시할 Text UI
     [SerializeField]
@@ -21,6 +24,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     private TextMeshProUGUI itemNameText;
     [SerializeField]
     private Image itemExplainImage;
+    [SerializeField]
+    private Image itemBackImage;
+    [SerializeField]
+    private Image itemRankImage;
 
     // 필요한 컴포넌트.
     [SerializeField]
@@ -33,8 +40,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     private void SetColor(float _alpha)
     {
         Color color = itemImage.color;
+        Color colorBack = itemInvenBack.color;
+        Color colorRank = itemInvenRank.color;
+
         color.a = _alpha;
+        colorBack.a = _alpha;
+        colorRank.a = _alpha;
+
+
         itemImage.color = color;
+        itemInvenBack.color = color;
+        itemInvenRank.color = color;
+
     }
 
     // 아이템 획득
@@ -42,7 +59,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         item = _item;
         itemCount = _count;
+
         itemImage.sprite = item.itemImage;
+        itemInvenBack.sprite = item.colorImage;
+        itemInvenRank.sprite = item.rankedImage;
+
+        //itemImage.GetComponent<RectTransform>().sizeDelta = new Vector2(70, 70);
 
         if (item.itemType != Item.ItemType.Equipment)
         {
@@ -154,7 +176,19 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             itemInfoPanel.SetActive(true);
             itemNameText.text = item.itemModify + " " + item.itemName;
             itemExplainImage.sprite = item.itemImage;
-            itemInfoText.text = "등급 : " + item.itemRank + "\n" + "공격력 : " + item.itemAttack + "\n" + "방어력 : " + item.itemDefence + "\n" + "Code : " + item.itemCode;
+            itemBackImage.sprite = item.colorImage;
+            itemRankImage.sprite = item.rankedImage;
+
+            // 이미지 크기 조절
+            itemExplainImage.GetComponent<RectTransform>().sizeDelta = new Vector2(110, 110);
+            itemBackImage.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150); 
+            itemRankImage.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150); 
+
+            itemInfoText.text = 
+                "등급 : " + item.itemRank + "\n" + 
+                "공격력 : " + item.itemAttack + "\n" + 
+                "방어력 : " + item.itemDefence + "\n" + 
+                "Code : " + item.itemCode;
         }
     }
 

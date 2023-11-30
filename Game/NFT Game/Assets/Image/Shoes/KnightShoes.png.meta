@@ -104,10 +104,10 @@ TextureImporter:
       name: KnightShoes_0
       rect:
         serializedVersion: 2
-        x: 111
-        y: 31
-        width: 114
-        height: 450
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,31 +121,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: KnightShoes_1
-      rect:
-        serializedVersion: 2
-        x: 303
-        y: 31
-        width: 114
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad2f3c5dd02d1ec80800000000000000
-      internalID: -8295118081776946470
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fbcc029bc77eb594bb76364cbde64466
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +133,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       KnightShoes_0: -7592935724253850164
-      KnightShoes_1: -8295118081776946470
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

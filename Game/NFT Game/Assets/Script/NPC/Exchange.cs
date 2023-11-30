@@ -14,10 +14,26 @@ public class Exchange : MonoBehaviour
     public TextMeshProUGUI copiedTextUI; // 복사 알림을 표시할 Text UI를 연결해주세요.
     public GameObject copiedPanel; // 복사 알림 패널을 연결해주세요.
 
+
     private void Start()
     {
         copiedPanel.SetActive(false);
+
+        //// Panel의 수만큼 반복
+        //for (int i = 0; i < ItemListUp.Length; i++)
+        //{
+        //    // Panel을 찾음
+        //    GameObject panel = GameObject.Find("Panel (" + (i + 1) + ")");
+
+        //    // Panel의 자식 오브젝트 중 item을 찾아 ItemListUp에 연결
+        //    ItemListUp[i] = panel.transform.Find("item").GetComponent<TextMeshProUGUI>();
+
+        //    // Panel의 자식 오브젝트 중 CopyBtn을 찾아 BtnListUP에 연결
+        //    BtnListUP[i] = panel.transform.Find("CopyBtn").GetComponent<Button>();
+        //}
     }
+
+
     private void OnMouseDown()
     {
         if (exchangeUI != null)
@@ -34,7 +50,7 @@ public class Exchange : MonoBehaviour
                     {
                         int number = i + 1;
                         string itemInfo = "[" + actionController.curItemRankList[i] + "] " + actionController.curItemModifyList[i] + " " + actionController.curItemNameList[i];
-                        ItemListUp[i].text = number + itemInfo;
+                        ItemListUp[i].text = number + ". " + itemInfo;
                         BtnListUP[i].onClick.RemoveAllListeners();
                         string curItemCode = actionController.curItemCodeList[i];
                         BtnListUP[i].onClick.AddListener(() => copyCode(curItemCode, itemInfo));
@@ -50,6 +66,9 @@ public class Exchange : MonoBehaviour
 
     private void Update()
     {
+        GameObject player = GameObject.Find("Player");
+        actionController = player.GetComponent<ActionController>();
+
         // ESC 키를 눌렀을 때 copiedPanel을 비활성화합니다.
         if (Input.GetKeyDown(KeyCode.Escape) && copiedPanel.activeSelf)
         {
