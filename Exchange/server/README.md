@@ -29,69 +29,16 @@ directory : {~/server}
 
 ## Item Code
 
-<div style="display: flex; justify-content: space-between;">
+| Name       | Code | Name    | Code | Name   | Code | Name      | Code | Name   | Code |
+|------------|------|---------|------|--------|------|-----------|------|--------|------|
+| 낭만있는    | 101  | Army    | 30   | Helmet | 100  | Red       | FF0000 | Normal | 123 |
+| 쾌속의      | 202  | Knight  | 40   | Top    | 200  | Orange    | FF5E00 | Epic | 234 |
+| 벽력일섬의  | 303  | Absolute| 50   | Pants  | 300  | Yellow    | FFE400 | Unique | 345 | 
+| 음주가무의  | 404  |         |      | Shoes  | 400  | Green     | 1DDB16 | Legendary | 456|
+| 불굴의      | 505  |         |      | Sword  | 500  | Skyblue   | 00D8FF |
+| 진격의      | 606  |         |      |        |      | Blue      | 0100FF |
+|            |      |         |      |        |      | Purple    | 3F0099 |
 
-  <div style="flex: 1; margin-right: 5px;">
-
-  | Name       | Code |
-  |------------|------|
-  | 낭만있는    |  101 | 
-  | 쾌속의      | 202  |
-  | 벽력일섬의  | 303  |
-  | 음주가무의  |  404  |
-  | 불굴의      | 505  |
-  | 진격의      | 606  |
-
-  </div>
-
-  <div style="flex: 1; margin-right: 5px;">
-
-  | Name    | Code |
-  |---------|------|
-  | Army    | 30   |
-  | Knight  | 40   |
-  | Absolute| 50   |
-
-  </div>
-
-  <div style="flex: 1; margin-right: 5px;">
-
-  | Name    | Code |
-  |---------|------|
-  | Helmet | 100  |
-  | Top     | 200  |
-  | Pants   | 300  |
-  | Shoes   | 400  |
-  | Sword   | 500  |
-
-  </div>
-  
-  <div style="flex: 1; margin-right: 5px;">
-  
-  | Name    | Code   |
-  |---------|--------|
-  | Red     | FF0000 |
-  | Orange  | FF5E00 |
-  | Yellow  | FFE400 |
-  | Green   | 1DDB16 |
-  | Skyblue | 00D8FF |
-  | Blue    | 0100FF |
-  | Purple  | 3F0099 |
-
-  </div>
-
-  <div style="flex: 1; margin-right: 5px;">
-
-  | Name      | Code |
-  |-----------|------|
-  | Normal    | 123  |
-  | Epic      | 234  |
-  | Unique    | 345  |
-  | Legendary | 456  |
-
-  </div>
-
-</div>
 
 ### example 
 ```bash
