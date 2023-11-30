@@ -26,6 +26,7 @@ you can see
 Server listening on port 3001
 directory : {~/server}
 ```
+
 ## Item Code
 
 <div style="display: flex; justify-content: space-between;">
@@ -96,3 +97,5 @@ directory : {~/server}
 ```bash
 낭만있는 ArmyHelmet (붉은 배경, 노말 등급) = 10130100FF0000123
 ```
+=======
+if `server` gets `Code`, `Description` and `Name`, you can see `ipfs url` on terminal
