@@ -57,7 +57,7 @@ directory : {~/server}
 
   | Name    | Code |
   |---------|------|
-  | Helpmet | 100  |
+  | Helmet | 100  |
   | Top     | 200  |
   | Pants   | 300  |
   | Shoes   | 400  |

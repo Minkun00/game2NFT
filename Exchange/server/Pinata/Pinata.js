@@ -11,9 +11,16 @@ const { ACCESS_KEY, SECRET_ACCESS_KEY } = process.env;
 const usePinata = async (code, _name, _description) => {   
   // code : item code, _name : name of the item, _description : description of the item
   console.log(`got code : ${code}`);
+  // console.log("itemABI : ", itemABI);
+
   const codeObj = await disolveCode(code);
   const _itemName = `[${codeObj.rank}] ${codeObj.adjective} ${codeObj.itemName} ${codeObj.item} (${codeObj.background})`;
   console.log(`itemName : ${_itemName}`);
+  if (Object.values(codeObj).includes('Unknown')) {
+    console.log(`!ERROR! : Unknown code`);
+    return { error: "Unknown code" };
+  }
+  
 
   const combinedImageBuffer = await combineImages(codeObj);
 
@@ -47,11 +54,16 @@ const usePinata = async (code, _name, _description) => {
 };
 
 const disolveCode = async (code) => {
+  const codeLength = 17;
   const codeString = code.padStart(17, '0'); 
+  if (codeString.length !== codeLength) {
+    console.log("!ERROR! : Invalid code length");
+    return { error: "Invalid code length" };
+  }
 
   const adjectiveCode = codeString.slice(0, 3);
-  const itemCode = codeString.slice(3, 5);
-  const itemNameCode = codeString.slice(5, 8);
+  const itemNameCode = codeString.slice(3, 5);
+  const itemCode = codeString.slice(5, 8);
   const backgroundCode = codeString.slice(8, 14);
   const rankCode = codeString.slice(14, 17);
 
@@ -60,14 +72,15 @@ const disolveCode = async (code) => {
     background: getCodeValue(itemABI.Color, backgroundCode),
     itemName: getCodeValue(itemABI.ItemName, itemNameCode),
     item: getCodeValue(itemABI.Item, itemCode),
-    rank: getCodeValue(itemABI.rank, rankCode)
+    rank: getCodeValue(itemABI.Rank, rankCode)
   };
 
   return codeObj;
 };
 
 const getCodeValue = (codeMap, code) => {
-  return codeMap[code] !== undefined ? codeMap[code] : 'Unknown';
+  const foundKey = Object.keys(codeMap).find(key => codeMap[key] === code);
+  return foundKey !== undefined ? foundKey : 'Unknown';
 }
 
 
