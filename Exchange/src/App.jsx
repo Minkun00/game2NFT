@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import KaikasConnect from './contracts/kaikasConnect/KaikasConnect';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import ItemToImg from './contracts/itemToIMG/itemToImg';
@@ -11,7 +11,7 @@ import BuyTokenButton from './contracts/kaikasConnect/BuyTokens/BuyTokens';
 import './App.css';
 import SnowEffect from './SnowEffect';
 
-function App() {
+function AppContent() {
   const nftContractABI = myNFT.abi;
   const tokenContractABI = myToken.abi;
   const marcketContractABI = myMarcket.abi;
@@ -19,12 +19,20 @@ function App() {
   const tokenContractAddress = process.env.REACT_APP_TOKEN_CONTRACT_ADDRESS;
   const marcketContractAddress = process.env.REACT_APP_MARKET_CONTRACT_ADDRESS;
 
+  const [showSnowEffect, setShowSnowEffect] = useState(true);
+
+  const toggleSnowEffect = () => {
+    setShowSnowEffect((prev) => !prev);
+    console.log("showSnowEffect", showSnowEffect);
+  }
+
 
   return (
-    <Router> 
-      <SnowEffect />
+    <> 
+      {showSnowEffect && <SnowEffect showSnowEffect={showSnowEffect}/>}
       <div className="app-container">    
         <h1>EXCHANGE</h1>
+        <button onClick={toggleSnowEffect}>{showSnowEffect ? 'Hide Snow Effect' : 'Show Snow Effect'}</button>
         <nav className = "nav">
           <ul>
             <li>
@@ -70,7 +78,18 @@ function App() {
             />}/>
            
         </Routes>
-      </div>
+        <h6>Network : Baobab testnet</h6>
+      </div> 
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path='*' element={<AppContent/>}/>
+      </Routes>
     </Router>
   );
 }

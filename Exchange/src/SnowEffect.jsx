@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './styles/SnowEffect.css'; 
 import './styles/BitcoinLogo.css';
 
-const SnowEffect = () => {
+const SnowEffect = ({ showSnowEffect }) => {
   useEffect(() => {
     // 눈송이 생성 함수
     const createSnowflake = () => {
@@ -60,7 +60,7 @@ const SnowEffect = () => {
       createSnowflake();
       createBitcoinLogo();
     }
-  }, []); // useEffect 디펜던시 배열에 빈 배열을 전달하여 한 번만 실행
+  }, [showSnowEffect]); // useEffect 디펜던시 배열에 빈 배열을 전달하여 한 번만 실행
 
   return <div className="snow-effect" />;
 };
