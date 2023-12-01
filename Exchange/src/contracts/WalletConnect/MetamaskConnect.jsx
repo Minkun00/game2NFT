@@ -1,16 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import "../../App.css";
 
-const MetamaskConnect = () => {
+const MetamaskConnect = ({ setIsMetamaskConnected, setConnectedWallet }) => {
     const [account, setAccount] = useState('');
-
-    useEffect(() => {
-        const initialize = async () => {
-            if (window.ethereum) {
-                await loadMetaMaskData();
-            }
-        };
-        initialize();
-    }, []);
 
     const loadMetaMaskData = async () => {
         try {
@@ -18,9 +10,12 @@ const MetamaskConnect = () => {
             const accounts = await window.ethereum.request({ method: 'eth_accounts' });
             if (accounts.length > 0) {
                 setAccount(accounts[0]);
+                setIsMetamaskConnected(true);
+                setConnectedWallet('Metamask');
             } 
         } catch (error) {
                 console.log("Error loading Metamask Data: ", error);
+                setIsMetamaskConnected(false);
         }
     };
 
@@ -34,11 +29,9 @@ const MetamaskConnect = () => {
 
     return (
         <div>
-            {account ? (
-                <p className='account info'>Connected account (Metamask): {account}</p>
-            ) : <button className='button' onClick={connectWalletHandler}>
+            <button className='button' onClick={connectWalletHandler}>
                 Connect to Metamask
-                </button>}
+            </button>
         </div>
     )
 }

@@ -3,17 +3,8 @@ import Caver from 'caver-js';
 import "../../App.css";
 
 
-const KaikasConnect = () => {
+const KaikasConnect = ({ setIsKaikasConnected, setConnectedWallet }) => {
   const [account, setAccount] = useState('');
-
-  useEffect(() => {
-    if (window.klaytn) {
-      const caverInstance = new Caver(window.klaytn);
-      loadBlockchainData(caverInstance);
-    } else {
-      alert('Please install Kaikas!');
-    }
-  }, []);
 
   const loadBlockchainData = async (caverInstance) => {
     const accounts = await caverInstance.klay.getAccounts();
@@ -21,25 +12,30 @@ const KaikasConnect = () => {
       setAccount(accounts[0]);
     } else {
       alert('Please connect to Kaikas!');
+      console.log("loadBlockchainData Error!")
     }
   };
 
   const connectWalletHandler = async () => {
     if (window.klaytn) {
+      const caverInstance = new Caver(window.klaytn);
+      loadBlockchainData(caverInstance);
+
       const accounts = await window.klaytn.enable();
       setAccount(accounts[0]);
+      setIsKaikasConnected(true);
+      setConnectedWallet('Kaikas');
     } else {
       alert('Please install Kaikas!');
+      console.log("connectWalletHandler Error!")
     }
   };
 
   return (
     <div>
-      {account ? (
-        <p className="account-info">Connected account: {account}</p>
-      ) : (
-        <button className = "button" onClick={connectWalletHandler}>Connect to Kaikas</button>
-      )}
+        <button className = "button" onClick={connectWalletHandler}>
+          Connect to Kaikas
+        </button>
     </div>
   );
 };
