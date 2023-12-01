@@ -22,6 +22,7 @@ export default function Marcketplace({ tokenContractABI, tokenContractAddress, n
       const imageUrl = convertIPFStoHTTP(metadata.image);
       const imageName = metadata.name;
       return {
+        tokenId,
         imageName,
         imageUrl,
         price: prices[index]

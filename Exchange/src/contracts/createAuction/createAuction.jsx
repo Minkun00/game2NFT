@@ -62,6 +62,7 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
       const imageUrl = metadata.image.replace('ipfs://', 'https://ipfs.io/ipfs/');
       const imageName = metadata.name;
       tokenDetails.push({
+        tokenId,
         imageUrl,
         imageName
       });
