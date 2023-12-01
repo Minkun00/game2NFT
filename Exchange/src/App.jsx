@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import KaikasConnect from './contracts/kaikasConnect/KaikasConnect';
+import KaikasConnect from './contracts/WalletConnect/KaikasConnect';
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import ItemToImg from './contracts/itemToIMG/itemToImg';
 import CreateAuction from './contracts/createAuction/createAuction';
@@ -7,7 +7,7 @@ import Marketplace from './contracts/buyItem/market';
 import myToken from './contracts/Hardhat_abis/MyToken.json';
 import myNFT from './contracts/Hardhat_abis/MyNFT.json';
 import myMarcket from './contracts/Hardhat_abis/MyMarketplace.json';
-import BuyTokenButton from './contracts/kaikasConnect/BuyTokens/BuyTokens';
+import BuyTokenButton from './contracts/WalletConnect/BuyTokens/BuyTokens';
 import './App.css';
 import SnowEffect from './SnowEffect';
 
@@ -19,7 +19,7 @@ function AppContent() {
   const tokenContractAddress = process.env.REACT_APP_TOKEN_CONTRACT_ADDRESS;
   const marcketContractAddress = process.env.REACT_APP_MARKET_CONTRACT_ADDRESS;
 
-  const [showSnowEffect, setShowSnowEffect] = useState(true);
+  const [showSnowEffect, setShowSnowEffect] = useState(false);
 
   const toggleSnowEffect = () => {
     setShowSnowEffect((prev) => !prev);
