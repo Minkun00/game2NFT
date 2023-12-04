@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useImageGenerator from './useImageGenerator';
 import Caver from 'caver-js';
+import { ethers, providers } from 'ethers';
+import Web3 from 'web3';
 
 const caver = new Caver(window.klaytn);
 
@@ -49,23 +51,22 @@ export default function ItemToImg({ nftContractABI, nftContractAddress, connecte
         // 현재 에러 있음. metamask에서 web3.js를 더이상 쓰지 않는다고 함. 좀 더 찾아봐야함.
         const mintNFT = async () => {
           try {
-            const nftContract = new window.ethereum.Contract(nftContractABI, nftContractAddress);
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            
-            const response = await nftContract.methods.mint(tokenUri).send({
-              from: accounts[0],
-              gas: '2000000',
-            });
-            console.log('NFT Minted!', response);
+           const web3 = new Web3(Web3.givenProvider);
+           const accounts = await web3.eth.requestAccounts();
+           const contract = new web3.eth.Contract(nftContractABI, nftContractAddress);
+           contract.methods.mint(tokenUri).send({
+            from: accounts[0],
+            gas: '2000000',
+           });
           } catch (error) {
             console.log('Error minting NFT: ', error);
           }
         }
         mintNFT();
+      } else {
+        alert('Wallet is not connected!')
       }
-    } else {
-      alert('Wallet is not Connected!')
-    }
+    } 
   }, [imgLoaded, tokenUri, nftContractABI, nftContractAddress]);
 
   return (

@@ -3,7 +3,7 @@ import { Buffer } from 'buffer';
 
 import Caver from 'caver-js';
 
-export default function CreateAuction({  nftContractABI, marcketContractABI, nftContractAddress, marcketContractAddress }) {
+export default function CreateAuction({  nftContractABI, marcketContractABI, nftContractAddress, marcketContractAddress, connectedWallet }) {
   const [tokens, setTokens] = useState([]);
   const caver = new Caver(window.klaytn);
   const [selectedTokenId, setSelectedTokenId] = useState(null);
@@ -17,27 +17,23 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
   };
   const listNFT = async () => {
     if (selectedTokenId && price) {
-      // NFT 컨트랙트 인스턴스 생성
       const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
   
       try {
-        // 마켓플레이스에 대한 승인을 설정합니다.
         await nftContract.methods.setMarketplaceApproval(marcketContractAddress, true).send({
           from: window.klaytn.selectedAddress,
           gas: '2000000',
         });
         console.log(`Marketplace approval set for token ID: ${selectedTokenId}`);
   
-        // 마켓플레이스 컨트랙트 인스턴스 생성
         const marketplaceContract = new caver.klay.Contract(marcketContractABI, marcketContractAddress);
   
         const listingPrice = caver.utils.toWei(price.toString(), 'ether');
-        // 승인 후 NFT를 마켓플레이스에 리스트합니다.
+
         await marketplaceContract.methods.listNFT(selectedTokenId, listingPrice).send({
           from: window.klaytn.selectedAddress,
           gas: '2000000',
         });
-        console.log(`Token ID: ${selectedTokenId} is now listed with price ${price}`);
         loadNFTs()
       } catch (error) {
         console.error("Setting marketplace approval or listing NFT failed", error);
@@ -52,7 +48,6 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
   const loadNFTs = async () => {
     const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
     const balanceOf = await nftContract.methods.balanceOf(window.klaytn.selectedAddress).call();
-    console.log(`nft balance : ${balanceOf}`)
     const tokenDetails = [];
     
     for (let i = 0; i < balanceOf; i++) {
@@ -66,7 +61,6 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
         imageUrl,
         imageName
       });
-      console.log(`Token ID: ${tokenId}, Image URL: ${imageUrl}, Image Name: ${imageName}`); 
     }
   
     setTokens(tokenDetails);
@@ -78,7 +72,6 @@ export default function CreateAuction({  nftContractABI, marcketContractABI, nft
   async function fetchMetadata(uri) {
     const url = convertIPFStoHTTP(uri);
     const response = await fetch(url);
-    console.log(response)
     const metadata = await response.json();
     return metadata;
   }
