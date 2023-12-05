@@ -1,2 +1,61 @@
-**/node_modules/
-Exchange/**/*.env
+# OSX
+#
+native/.DS_Store
+
+# Xcode
+#
+/native/build/
+/native/*.pbxuser
+/native/!default.pbxuser
+/native/*.mode1v3
+/native/!default.mode1v3
+/native/*.mode2v3
+/native/!default.mode2v3
+/native/*.perspectivev3
+/native/!default.perspectivev3
+/native/xcuserdata
+/native/*.xccheckout
+/native/*.moved-aside
+/native/DerivedData
+/native/*.hmap
+/native/*.ipa
+/native/*.xcuserstate
+
+# Android/IntelliJ
+#
+/native/build/
+/native/.idea
+/native/.gradle
+/native/local.properties
+/native/*.iml
+/native/*.hprof
+
+# node.js
+#
+/native/node_modules/
+/native/npm-debug.log
+/native/yarn-error.log
+
+# BUCK
+/native/buck-out/
+\.buckd/
+/native/*.keystore
+/native/!debug.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
+
+/native/*/fastlane/report.xml
+/native/*/fastlane/Preview.html
+/native/*/fastlane/screenshots
+
+# Bundle artifact
+/native/*.jsbundle
+
+# Ruby / CocoaPods
+/ios/Pods/
+/native/vendor/bundle/
