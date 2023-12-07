@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/game2NFT/static/css/main.49f86a27.css",
+    "main.js": "/game2NFT/static/js/main.293918a1.js",
+    "static/js/787.42f951f2.chunk.js": "/game2NFT/static/js/787.42f951f2.chunk.js",
+    "static/media/bitcoinlogo1.png": "/game2NFT/static/media/bitcoinlogo1.12479098c6be8d4ae6a3.png",
+    "index.html": "/game2NFT/index.html",
+    "main.49f86a27.css.map": "/game2NFT/static/css/main.49f86a27.css.map",
+    "main.293918a1.js.map": "/game2NFT/static/js/main.293918a1.js.map",
+    "787.42f951f2.chunk.js.map": "/game2NFT/static/js/787.42f951f2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49f86a27.css",
+    "static/js/main.293918a1.js"
+  ]
+}
