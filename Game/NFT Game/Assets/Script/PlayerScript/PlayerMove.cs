@@ -88,7 +88,7 @@ public class PlayerMove : MonoBehaviour
 
         bool isGrounded = IsGrounded();
 
-        if(isGrounded)
+        if(isGrounded) //¶¥¿¡ ´ê¾ÒÀ» ¶§
         {
             if(!wasGrounded)
             {
@@ -96,7 +96,7 @@ public class PlayerMove : MonoBehaviour
                 airborneTime = 0f;
             }
         }
-        else
+        else //¶¥¿¡ ´êÁö ¾Ê¾ÒÀ» ¶§
         {
             wasGrounded = false;
             airborneTime += Time.deltaTime;
@@ -105,11 +105,11 @@ public class PlayerMove : MonoBehaviour
         if (airborneTime > 1f)
         {
             maxairborneTime = airborneTime;
-            if (airborneTime > maxairborneTime)
+            if (airborneTime > maxairborneTime) 
                 maxairborneTime = airborneTime;
         }
-
-        if (maxairborneTime > 1f && !isGrounded)
+          
+        if (maxairborneTime > 1.5f && isGrounded)
         {
             Hurt(10f, transform.position);
             maxairborneTime = 0f;
