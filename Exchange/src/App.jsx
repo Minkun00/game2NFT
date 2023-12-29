@@ -8,7 +8,6 @@ import myToken from './contracts/Hardhat_abis/MyToken.json';
 import myNFT from './contracts/Hardhat_abis/MyNFT.json';
 import myMarcket from './contracts/Hardhat_abis/MyMarketplace.json';
 import BuyTokenButton from './contracts/WalletConnect/BuyTokens/BuyTokens';
-import MetamaskConnect from './contracts/WalletConnect/MetamaskConnect';
 import './App.css';
 import SnowEffect from './SnowEffect';
 
@@ -21,21 +20,12 @@ function AppContent() {
   const marcketContractAddress = process.env.REACT_APP_MARKET_CONTRACT_ADDRESS;
 
   const [showSnowEffect, setShowSnowEffect] = useState(false);
-  // 지갑을 Metamask/Kaikas 중 하나만 선택하게 함
-  const [isMetamaskConnected, setIsMetamaskConnected] = useState(false);
-  const [isKaikasConnected, setIsKaikasConnected] = useState(false);
   const [connectedWallet, setConnectedWallet] = useState(null);
 
   const toggleSnowEffect = () => {
     setShowSnowEffect((prev) => !prev);
     console.log("showSnowEffect", showSnowEffect);
     console.log("Connected Wallet : ", connectedWallet);
-  };
-
-  const getConsleLogs = () => {
-    console.log(`kaikas : ${isKaikasConnected}`)
-    console.log(`metamask : ${isMetamaskConnected}`)
-    console.log(`connected wallet : ${connectedWallet}`)
   };
   
   const handleWalletOff = () => {
@@ -49,9 +39,6 @@ function AppContent() {
 
   return (
     <> 
-      {/*console.log 값을 볼 수 있게 하는 버튼. 테스트용도*/}
-      <button onClick={getConsleLogs}>GET LOGS ON CONSOLE</button>
-
       <SnowEffect showSnowEffect={showSnowEffect}/>
       <div className="app-container">    
         <h1>EXCHANGE</h1>
@@ -59,18 +46,9 @@ function AppContent() {
 
         <nav className='nav'>
           <ul>
-            <li>
-              {!isMetamaskConnected && (            
+            <li>         
                 <KaikasConnect 
-                  setIsKaikasConnected={setIsKaikasConnected}
-                  setConnectedWallet={setConnectedWallet}/>)}
-
-            </li>
-            <li>
-              {!isKaikasConnected && (
-                <MetamaskConnect 
-                  setIsMetamaskConnected={setIsMetamaskConnected}
-                  setConnectedWallet={setConnectedWallet}/>)}
+                  setConnectedWallet={setConnectedWallet}/>
             </li>
             <li>
               {connectedWallet && (
@@ -106,7 +84,6 @@ function AppContent() {
             <ItemToImg 
               nftContractABI={nftContractABI}
               nftContractAddress={nftContractAddress}
-              connectedWallet={connectedWallet}
             />} /> 
           <Route path="/createAuction" element={
             <CreateAuction
@@ -115,7 +92,6 @@ function AppContent() {
               nftContractAddress={nftContractAddress}
               marcketContractABI={marcketContractABI}
               marcketContractAddress={marcketContractAddress}
-              connectedWallet={connectedWallet}
             />
           } />
             <Route path="/market" element={
@@ -126,7 +102,6 @@ function AppContent() {
               nftContractAddress={nftContractAddress}
               marcketContractABI={marcketContractABI}
               marcketContractAddress={marcketContractAddress}
-              connectedWallet={connectedWallet}
             />}/>
            
         </Routes>

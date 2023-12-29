@@ -4,16 +4,17 @@ import Caver from 'caver-js';
 export default function Marcketplace({ tokenContractABI, tokenContractAddress, nftContractABI, nftContractAddress, marcketContractABI, marcketContractAddress }) {
   const caver = new Caver(window.klaytn);
   const [listedNfts, setListedNfts] = useState([]);
+
+  const ITEMS_PER_PAGE = 8;
+  const [currentPage, setCurrentPage] = useState(1);
   
   const loadListedNFTs = async () => {
     const marketplaceContract = new caver.klay.Contract(marcketContractABI, marcketContractAddress );
     const result = await marketplaceContract.methods.getListedNFTs().call();
   
-    // result 객체에서 배열을 추출합니다.
     const tokenIds = result[0];
     const prices = result[1];
   
-    // result 객체의 각 키에 접근해서 배열을 얻어낸 후 나머지 로직을 수 행합니다.
     const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
   
     const listedItems = await Promise.all(tokenIds.map(async (tokenId, index) => {
