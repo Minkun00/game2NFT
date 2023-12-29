@@ -113,22 +113,8 @@ public class PlayerMove : MonoBehaviour
         {
             Hurt(10f, transform.position);
             maxairborneTime = 0f;
-        //    RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 0.9f, LayerMask.GetMask("Ground"));
-        //    string layername = LayerMask.LayerToName(hit.collider.gameObject.layer);
-        //    if (layername != "NULL")
-        //    {
-        //        Debug.Log(layername);
-        //    }
-        //    else
-        //        Debug.Log("NULL");
-        //    Debug.Log(maxairborneTime);
-        //    Debug.Log("Ouch");
-
         }
-        //if(airborneTime != 0f)
-        //{
-        //    Debug.Log("Airborne Tiem: " + airborneTime);  ///del
-        //}
+       
     }
 
     bool IsGrounded()
