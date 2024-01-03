@@ -11203,7 +11203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e35b046d7732b41a03c389c4dc27e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 0}
+  coin: {fileID: 2024679539}
 --- !u!224 &2053486234 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4172889515834107161, guid: 33eaf82d55c8151469479ea33600ca00, type: 3}

@@ -10,8 +10,9 @@ public class Coin : MonoBehaviour
 
         if (col.gameObject.name == "Player")
         {
-            Debug.Log(Score.coinAmount);
             Destroy(gameObject);
+            Score.coinAmount += 1;
+
         }
     }
 }

@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         coin.text = "0";
+
     }
 
     void Update()
