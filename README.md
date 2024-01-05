@@ -18,3 +18,6 @@ Game에서 직접 연결(API 등)하여 거래소 사용. Token을 사용하여 
 1. game item code 입력받으면 Pinata를 통해 NFT생성
 
 2. demo version 게임 아이템 거래소 사이트 완성
+
+## Page
+https://minkun00.github.io/game2NFT/
