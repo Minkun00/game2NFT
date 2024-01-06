@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -12,8 +13,9 @@ public class PlayerMove : MonoBehaviour
     public string playerCurrentMapThird;
     public string playerCurrentMapFourth;
 
-    public const float moveSpeed = 7f;
-    public const float jumpForce = 25f;
+    public float moveSpeed = 4f;
+    public float jumpForce = 7f;
+
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -39,52 +41,77 @@ public class PlayerMove : MonoBehaviour
         }
 
         anim = GetComponent<Animator>();
-        anim.SetBool("isWalking", false);
+        anim.SetInteger("AnimState", 0);
     }
 
     void Update()
     {
         // 이동
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = UnityEngine.Input.GetAxis("Horizontal");
+        float verticalInput = UnityEngine.Input.GetAxis("Vertical");
 
         Vector2 moveDirection = new Vector2(horizontalInput, verticalInput);
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
 
         // 점프
-        if (Input.GetKeyDown(KeyCode.LeftAlt) && IsGrounded())
+        if (UnityEngine.Input.GetKeyDown(KeyCode.LeftAlt) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            anim.SetBool("isJumping", true);
+            anim.SetTrigger("Jump");
+            anim.SetBool("Grounded", false);
         }
 
         // 착지 후 점프 애니메이션 종료
-        if (!IsJumping() && anim.GetBool("isJumping") && IsGrounded())
+        if (!IsJumping() && !anim.GetBool("Grounded") && IsGrounded())
         {
-            anim.SetBool("isJumping", false);
+            anim.SetBool("Grounded", true);
         }
 
         // 방향 전환
-        if (Input.GetButton("Horizontal"))
+        if (UnityEngine.Input.GetButton("Horizontal"))
         {
-            float direction = Input.GetAxisRaw("Horizontal");
+            float direction = UnityEngine.Input.GetAxisRaw("Horizontal");
             if (direction == -1) // 왼쪽으로 이동
             {
-                transform.localScale = new Vector3(-3.625789f, 3.625789f, 3.625789f);
+                spriteRenderer.flipX = false;
             }
             else if (direction == 1) // 오른쪽으로 이동
             {
-                transform.localScale = new Vector3(3.625789f, 3.625789f, 3.625789f);
+                spriteRenderer.flipX = true;
             }
         }
 
-        Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
-
         //Walking animation
         if (Mathf.Abs(rb.velocity.x) < 0.3)
-            anim.SetBool("isWalking", false);
+            anim.SetInteger("AnimState", 0);
         else
-            anim.SetBool("isWalking", true);
+            anim.SetInteger("AnimState", 2);
+
+        //Attack
+        if (UnityEngine.Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            anim.SetTrigger("Attack");
+        }
+
+
+        Vector3 start = transform.position + new Vector3(0, 1.0f, 0); // Y축으로 1만큼 이동
+        Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
+
+        bool IsGrounded()
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 0.9f, LayerMask.GetMask("Ground"));
+            return hit.collider != null;
+        }
+
+        bool IsJumping()
+        {
+            return rb.velocity.y > 0.01f || rb.velocity.y < -0.01f;
+        }
+
+
+
+        // =====================================피격========================================
+    
 
         bool isGrounded = IsGrounded();
 
@@ -115,17 +142,6 @@ public class PlayerMove : MonoBehaviour
             maxairborneTime = 0f;
         }
        
-    }
-
-    bool IsGrounded()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 0.9f, LayerMask.GetMask("Ground"));
-        return hit.collider != null;
-    }
-
-    bool IsJumping()
-    {
-        return rb.velocity.y > 0.01f || rb.velocity.y < -0.01f;
     }
 
     //피격시 효과

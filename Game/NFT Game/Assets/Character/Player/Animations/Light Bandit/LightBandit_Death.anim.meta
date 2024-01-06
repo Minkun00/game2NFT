@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 104130
   packageName: Bandits - Pixel Art
   packageVersion: 2.2
-  assetPath: Assets/Bandits - Pixel Art/Animations/Light Bandit/LightBandit_Death.anim
+  assetPath: Assets/Character/Player/Animations/Light Bandit/LightBandit_Death.anim
   uploadId: 384983

@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 099dfb8d0a4c81443afd494f1dd4efdb
-NativeFormatImporter:
+guid: 4beb47d3f52622a4db6bba0f8809ce39
+MonoImporter:
   externalObjects: {}
-  mainObjectFileID: 11400000
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -11,5 +14,5 @@ AssetOrigin:
   productId: 104130
   packageName: Bandits - Pixel Art
   packageVersion: 2.2
-  assetPath: Assets/Character/Player/Environment/EnvironmentTiles_0.asset
+  assetPath: Assets/Bandits - Pixel Art/Demo/Sensor_Bandit.cs
   uploadId: 384983

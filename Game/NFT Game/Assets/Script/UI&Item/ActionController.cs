@@ -93,9 +93,12 @@ public class ActionController : MonoBehaviour
         {
             direction = Vector2.left;  // 왼쪽 방향
         }
-        Debug.DrawRay(transform.position, direction, new Color(0, 1, 0));
 
-        hitInfo = Physics2D.Raycast(transform.position, direction, range, layerMask);
+        Vector3 start = transform.position + new Vector3(0, 1.0f, 0); // Y축으로 1만큼 이동
+
+        Debug.DrawRay(start, direction, new Color(0, 1, 0));
+
+        hitInfo = Physics2D.Raycast(start, direction, range, layerMask);
         if (hitInfo)
         {
             if (hitInfo.transform.tag == "Item")
