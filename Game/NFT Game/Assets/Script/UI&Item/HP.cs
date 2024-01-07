@@ -17,5 +17,6 @@ public class HP : MonoBehaviour
     void Update()
     {
         slider.value = health / maxHealth;
+        slider.value = 0f;
     }
 }

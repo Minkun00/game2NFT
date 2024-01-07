@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3d4ff25af20ccf849b7f1b24bd3e0d0b
+guid: 9bafea266d857684682559a02f5fc685
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5009855128227389574
-    second: HeavyBandit_Death_0_0
+      213: 3093076967673929392
+    second: HeavyBandit_Recover_1_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,22 +98,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HeavyBandit_Death_0_0
+      name: HeavyBandit_Recover_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 46
-        height: 13
+        x: 6
+        y: 1
+        width: 39
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7f56d1ed4b697ab0800000000000000
-      internalID: -5009855128227389574
+      spriteID: 0be95214d11dcea20800000000000000
+      internalID: 3093076967673929392
       vertices: []
       indices: 
       edges: []
@@ -121,7 +121,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 113d0f989cc0c7c4098e577b49dd5591
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HeavyBandit_Death_0_0: -5009855128227389574
+      HeavyBandit_Recover_1_0: 3093076967673929392
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

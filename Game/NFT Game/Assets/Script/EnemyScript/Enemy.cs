@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     public int nextMove;
+    public Slider slider;
 
     void Awake()
     {
@@ -42,7 +44,6 @@ public class Enemy : MonoBehaviour
         {
             rigid.velocity = Vector2.zero;
         }
-
     }
 
     void Think()
@@ -102,5 +103,17 @@ public class Enemy : MonoBehaviour
         anim.SetBool("isCombating", false);
         anim.SetBool("isAttacking", false);
 
+    }
+    /*
+    public void Hurt()
+    {
+        if ()
+            anim.SetTrigger("isHurting");
+    }
+    */
+    public void Death()
+    {
+        if (slider.value == 0f)
+            anim.SetBool("isDied", true);
     }
 }
