@@ -4565,7 +4565,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -7303,7 +7303,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -7719,6 +7719,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1594566155}
   go_CountImage: {fileID: 309935012}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &577894339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8505,6 +8507,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1278575558}
   go_CountImage: {fileID: 632255655}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &647601800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8880,6 +8884,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1385820019}
   go_CountImage: {fileID: 1255873969}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &658305050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14471,6 +14477,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1825720708}
   go_CountImage: {fileID: 2047842951}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &898474202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18769,6 +18777,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1405320672}
   go_CountImage: {fileID: 1756366467}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &1009153255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19407,6 +19417,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 955235399}
   go_CountImage: {fileID: 316879279}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &1088800375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19706,6 +19718,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1230235079}
   go_CountImage: {fileID: 799219006}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &1117113468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20000,7 +20014,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -20346,6 +20360,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1924476555}
   go_CountImage: {fileID: 1068978069}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &1129335141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21065,6 +21081,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1538229655}
   go_CountImage: {fileID: 1902355516}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &1183729794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21521,7 +21539,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -30698,6 +30716,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 110555782}
   go_CountImage: {fileID: 996365144}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &1902413341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32548,6 +32568,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 1900149552}
   go_CountImage: {fileID: 264572478}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!114 &1986894804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35483,6 +35505,8 @@ MonoBehaviour:
   itemRankImage: {fileID: 722183585}
   text_Count: {fileID: 2576782168722313030}
   go_CountImage: {fileID: 7448964596562731705}
+  playerCharacter: {fileID: 0}
+  equipmentItem: {fileID: 0}
 --- !u!1 &6346573954296716156
 GameObject:
   m_ObjectHideFlags: 0
