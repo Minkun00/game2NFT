@@ -21,6 +21,23 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
   };
+
+  // marketApproved is for only once
+  const isApprovedForMarket = async () => {
+    try {
+      const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
+      
+      const response = await nftContract.methods.isMarketplaceApproved().call({
+        from: window.klaytn.selectedAddress,
+        gas: '2000000'
+      })
+
+      return response
+    } catch (e) {
+      console.log(`Error for 'isApprovedForMarket' : ${e}`);
+    }
+  }
+
   const listNFT = async () => {
     if (selectedTokenId && price) {
       const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);

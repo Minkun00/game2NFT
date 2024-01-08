@@ -22,10 +22,17 @@ contract MyNFT is ERC721URIStorage, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
+    mapping(address => bool) private _marketplaceApprovals;
+
     constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
     
     function setMarketplaceApproval(address marketplace, bool approved) external {
         setApprovalForAll(marketplace, approved);
+        _marketplaceApprovals[msg.sender] = true;
+    }
+
+    function isMarketplaceApproved() external view returns (bool) {
+        return _marketplaceApprovals[msg.sender];
     }
 
     // ERC721Enumerable를 사용할 때는 부모 컨트랙트의 함수를 오버라이드해야 합니다.
@@ -69,11 +76,15 @@ contract MyNFT is ERC721URIStorage, ERC721Enumerable, Ownable {
         _setTokenURI(newItemId, uri); // 토큰 ID와 메타데이터 URI를 연결합니다.
     }
 
-    function burn(uint256 tokenId) public onlyOwner returns (bool) {
+    function burn(uint256 tokenId) public returns (bool) {
+        address owner = ownerOf(tokenId);
+        require(owner == msg.sender, "You are not the owner of this token");
+
         require(_exists(tokenId), "Token does not exist");
         _burn(tokenId);
         return true;
     }
+
     // MyNFT 컨트랙트에 추가
     function getCurrentTokenId() public view returns (uint256) {
         return _tokenIdCounter.current();   
@@ -158,9 +169,3 @@ contract MyMarketplace is Ownable {
         return (tokenIds, prices);
     }    
 }
-
-
-
-
-
-
