@@ -1,6 +1,7 @@
 {
   "name": "exchange",
   "version": "0.1.0",
+  "homepage": "https://Minkun00.github.io/game2NFT",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
