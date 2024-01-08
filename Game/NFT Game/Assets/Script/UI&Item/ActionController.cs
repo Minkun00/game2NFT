@@ -72,13 +72,18 @@ public class ActionController : MonoBehaviour
         {
             if (hitInfo.transform != null)
             {
-                Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " 획득했습니다 ");
-                theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
-                Destroy(hitInfo.transform.gameObject);
-                InfoDisappear();
+                ItemPickUp itemPickUp = hitInfo.transform.GetComponent<ItemPickUp>();
+                if (itemPickUp != null)
+                {
+                    Debug.Log(itemPickUp.item.itemName + " 획득했습니다 ");
+                    theInventory.AcquireItem(itemPickUp.item); // 인벤토리에 아이템 추가
+                    Destroy(hitInfo.transform.gameObject); // 아이템 게임 오브젝트 제거
+                    InfoDisappear();
+                }
             }
         }
     }
+
 
 
     private void CheckItem()

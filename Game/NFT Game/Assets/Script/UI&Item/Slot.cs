@@ -102,18 +102,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         go_CountImage.SetActive(false);
     }
 
+    private float lastClickTime = 0f; // 마지막 클릭 시간을 저장
+    private const float doubleClickTime = 0.2f; // 더블 클릭 간격 (초)
+    public Character playerCharacter; // Player 캐릭터 참조
+    public EquipmentItem equipmentItem; // 이 슬롯에 할당된 장비 아이템
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Left && item != null)
         {
-            if (item != null)
+            if ((Time.time - lastClickTime) < doubleClickTime)
             {
                 if (item.itemType == Item.ItemType.Equipment)
                 {
-                    // 장비 장착 스크립트 코루틴으로!
-                    // Equip스크립트 따로.
-                    Debug.Log(item.name + "장착");
+                    playerCharacter.Equip(equipmentItem); // 아이템 장착
                 }
+
                 else
                 {
                     Debug.Log(item.itemName + " 을 사용했습니다");
@@ -121,7 +125,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                     SetSlotCount(-1);
                 }
             }
+            lastClickTime = Time.time;
         }
+    }
+
+
+    private void EquipItem()
+    {
+        // 아이템을 장착하는 로직 구현
+        Debug.Log(item.itemName + "을 장착했습니다.");
+
+        // 여기에 장비 장착 관련 로직을 추가
+        // 예: 캐릭터 모델에 스프라이트 변경, 스탯 업데이트 등
     }
 
     public void OnBeginDrag(PointerEventData eventData)
