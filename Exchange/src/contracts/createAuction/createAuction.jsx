@@ -25,12 +25,10 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
   // marketApproved is for only once
   const isApprovedForMarket = async () => {
     try {
+      alert('Approve to MarketPlace.');
       const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
       
-      const response = await nftContract.methods.isMarketplaceApproved().call({
-        from: window.klaytn.selectedAddress,
-        gas: '2000000'
-      })
+      const response = await nftContract.methods.isMarketplaceApproved().call();
 
       return response
     } catch (e) {
@@ -43,12 +41,16 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
       const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
   
       try {
-        await nftContract.methods.setMarketplaceApproval(marcketContractAddress, true).send({
-          from: window.klaytn.selectedAddress,
-          gas: '2000000',
-        });
-        console.log(`Marketplace approval set for token ID: ${selectedTokenId}`);
-  
+        const response = await isApprovedForMarket()
+
+        if (!response) {
+          await nftContract.methods.setMarketplaceApproval(marcketContractAddress, true).send({
+            from: window.klaytn.selectedAddress,
+            gas: '2000000',
+          });
+          console.log(`Marketplace approval set for token ID: ${selectedTokenId}`);
+        }
+      
         const marketplaceContract = new caver.klay.Contract(marcketContractABI, marcketContractAddress);
   
         const listingPrice = caver.utils.toWei(price.toString(), 'ether');
@@ -58,6 +60,7 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
           gas: '2000000',
         });
         loadNFTs()
+        alert('Your NFT is listed to MarketPlace');
       } catch (error) {
         console.error("Setting marketplace approval or listing NFT failed", error);
       }
@@ -66,6 +69,22 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
     }
   };
   
+  const burnNFT = async () => {
+    if(selectedTokenId) {
+      const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
+      const tokenURI = await nftContract.methods.tokenURI(selectedTokenId).call();
+      const metadata = await fetchMetadata(tokenURI);
+      try {
+        await nftContract.methods.burn(selectedTokenId).send({
+          from: window.klaytn.selectedAddress,
+          gas: '2000000',
+        });
+        alert(`Code is : ${metadata.code}`);
+      } catch (e) {
+        console.log(`Error burnNFT : ${e}`);
+      }
+    }
+  }
 
 
   const loadNFTs = async () => {
@@ -115,6 +134,8 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
     return metadata;
   }
 
+ 
+
   useEffect(() => {
     if (window.klaytn.selectedAddress) {
         loadNFTs();
@@ -157,7 +178,8 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
             ))}
           </div>
           <input type="text" placeholder="Price in KLAY" value={price} onChange={handlePriceChange} />
-          <button className="input-button"onClick={listNFT}>List NFT for Sale</button>
+          <button className="input-button" onClick={listNFT}>List NFT for Sale</button>
+          <button className="input-button" onClick={burnNFT}>Burn</button>
           <div>
             <button onClick={handlePrevPage} disabled={currentPage === 1}>Previous Page</button>
             <button onClick={handleNextPage} disabled={currentPage * ITEMS_PER_PAGE >= tokenBalance}>Next Page</button>

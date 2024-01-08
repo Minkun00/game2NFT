@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useImageGenerator from './useImageGenerator';
 import Caver from 'caver-js';
+import { useNavigate } from 'react-router-dom';
 
 const caver = new Caver(window.klaytn);
 
@@ -10,6 +11,7 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
   const [description, setDescription] = useState('');
   const [imgLoaded, setImgLoaded] = useState(false);
   const { imgUri, tokenUri, generateImage } = useImageGenerator();
+  const navigate = useNavigate();
 
   const imgRef = useRef(null);
 
@@ -35,7 +37,8 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
             from: window.klaytn.selectedAddress,
             gas: '2000000',
           });
-          console.log('NFT Minted!', response);
+          alert('NFT Minted! Check it on "CreactAuction"!');
+          navigate('/createAuction');
         } catch (error) {
           console.error('Error minting NFT:', error);
         }
