@@ -115,7 +115,7 @@ public class PlayerMove : MonoBehaviour
 
         bool isGrounded = IsGrounded();
 
-        if(isGrounded) //∂•ø° ¥Íæ“¿ª ∂ß
+        if(isGrounded) 
         {
             if(!wasGrounded)
             {
@@ -123,7 +123,7 @@ public class PlayerMove : MonoBehaviour
                 airborneTime = 0f;
             }
         }
-        else //∂•ø° ¥Í¡ˆ æ æ“¿ª ∂ß
+        else 
         {
             wasGrounded = false;
             airborneTime += Time.deltaTime;

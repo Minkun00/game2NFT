@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Animator anim;
+    Rigidbody2D rigid;
+    
+    void Awake()
     {
-        
-    }
+        anim = GetComponent <Animator>();
+        rigid = GetComponent<Rigidbody2D>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

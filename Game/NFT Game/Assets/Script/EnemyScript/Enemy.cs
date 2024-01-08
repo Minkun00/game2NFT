@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     public int nextMove;
-    public Slider slider;
 
     void Awake()
     {
@@ -104,16 +103,92 @@ public class Enemy : MonoBehaviour
         anim.SetBool("isAttacking", false);
 
     }
-    /*
-    public void Hurt()
+
+    bool isHurt;
+    bool isknockback = false;
+    Color halfA = new Color(1, 1, 1, 0.5f);
+    Color fullA = new Color(1, 1, 1, 1);
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    //무기와 충돌시 피격(rigidbody2D)
+    //    if (collision.gameObject.tag == "dfd")
+    //    {
+    //        Hurt(damage, collision.transform.position);
+    //    }
+    //}
+    
+
+    //player script와 겹침. 한 곳에 정리?
+    public void Hurt(float damage, Vector2 pos)
     {
-        if ()
-            anim.SetTrigger("isHurting");
+        if (!isHurt)
+        {
+            float currentHealth = HP.health;
+            isHurt = true;
+            currentHealth -= damage;
+            HP.health = currentHealth;
+
+            if (currentHealth <= 0)
+            {
+                anim.SetBool("isDied", true);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                float x = transform.position.x - pos.x;
+                float y = transform.position.y - pos.y;
+
+                if (x < 0)
+                    x = 1;
+                else
+                    x = -1;
+
+                if (y < 0)
+                    y = 1;
+                else
+                    y = -1;
+
+                StartCoroutine(Knockback(x, y));
+                StartCoroutine(HurtRoutine());
+                StartCoroutine(alphablink());
+            }
+        }
     }
-    */
-    public void Death()
+
+    IEnumerator Knockback(float x_dir, float y_dir) // 피격 시 밀쳐지는 효과
     {
-        if (slider.value == 0f)
-            anim.SetBool("isDied", true);
+        isknockback = true;
+        Vector2 knockbackVelocity = new Vector2(x_dir, y_dir) * 0.2f;
+
+        rigid.velocity = knockbackVelocity;
+
+        float ctime = 0;
+
+        while (ctime < 0.2f)
+        {
+            ctime += Time.deltaTime;
+            yield return null;
+        }
+        rigid.velocity = Vector2.zero;
+        isknockback = false;
     }
+
+    IEnumerator alphablink() //피격 시 깜빡이는 효과
+    {
+        while (isHurt)
+        {
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = halfA;
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = fullA;
+        }
+    }
+
+    IEnumerator HurtRoutine() //피격시 3초 동안 무적
+    {
+        yield return new WaitForSeconds(3f);
+        isHurt = false;
+    }
+
 }
