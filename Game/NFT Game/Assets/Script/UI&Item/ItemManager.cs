@@ -134,8 +134,8 @@ public class ItemManager : MonoBehaviour
             // 선택된 아이템의 스프라이트를 게임 오브젝트로 생성
             Sprite[] sprites = new Sprite[] { randomItem.EquipmentImage, randomItem.ColorImage, randomItem.RankImage };
             int[] sortingOrders = new int[] { 2 + k*2, 1 + k*2, 0 + k * 2 };
-            GameObject itemObject = CreateObjectWithMultipleSprites(sprites, sortingOrders, "Dropped_Item", "Item");
 
+            GameObject itemObject = CreateObjectWithMultipleSprites(sprites, sortingOrders, "Dropped_Item_" + k, "Item");
 
             // 아이템 오브젝트에 ItemPickUp 컴포넌트 추가
             ItemPickUp itemPickUp = itemObject.AddComponent<ItemPickUp>();
