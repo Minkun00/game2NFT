@@ -88,7 +88,6 @@ export default function Marcketplace({ tokenContractABI, tokenContractAddress, n
     const fromAddress = window.klaytn.selectedAddress;
     try {
       const allowance = await tokenContract.methods.allowance(fromAddress, marcketContractAddress).call();
-      console.log(`Allowance : ${allowance}`)
     } catch (error) {
       console.error('Error checking allowance', error);
     }

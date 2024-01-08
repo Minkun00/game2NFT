@@ -18,7 +18,6 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
   const handleSubmit = async () => {
     try {
       await generateImage(code, name, description);
-      console.log(`imgUri : ${imgUri}, tokenUri : ${tokenUri}`);
     } catch(error) {
       console.log('Error generating image: ', error);
       alert('Error generating NFT. Might be wrong code.');
@@ -33,7 +32,7 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
       const mintNFT = async () => {
         try {
           const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
-          const response = await nftContract.methods.mint(tokenUri).send({
+          await nftContract.methods.mint(tokenUri).send({
             from: window.klaytn.selectedAddress,
             gas: '2000000',
           });

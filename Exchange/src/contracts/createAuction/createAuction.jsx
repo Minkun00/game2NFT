@@ -48,7 +48,7 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
             from: window.klaytn.selectedAddress,
             gas: '2000000',
           });
-          console.log(`Marketplace approval set for token ID: ${selectedTokenId}`);
+          alert(`Marketplace approval set for token ID: ${selectedTokenId}`);
         }
       
         const marketplaceContract = new caver.klay.Contract(marcketContractABI, marcketContractAddress);
@@ -65,7 +65,7 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
         console.error("Setting marketplace approval or listing NFT failed", error);
       }
     } else {
-      console.log("No token selected or price set");
+      alert("No token selected or price set");
     }
   };
   
@@ -99,7 +99,6 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
       
       const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
       const endIndex = Math.min(currentPage * ITEMS_PER_PAGE, balanceOf);
-      console.log(`tokens : ${tokenBalance}`)
      
       for (let i = startIndex; i < endIndex; i++) {
         const tokenId = await nftContract.methods.tokenOfOwnerByIndex(window.klaytn.selectedAddress, i).call();
@@ -113,7 +112,6 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
           imageName
         });
       }
-      console.log(startIndex, endIndex)
       setTokens(tokenDetails);
     } catch (error) {
       console.error('Error loading NFTs : ', error);
