@@ -66,9 +66,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 1.2405437
-  m_TransitionOffset: 0.0044916156
-  m_ExitTime: 1.0005362
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.12107618
+  m_ExitTime: 0.13621058
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -184,10 +184,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: BossSneer
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 306616762581001099}
   m_Solo: 0
@@ -299,14 +296,14 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: BossSneer
+  - m_Name: BossWalk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: BossWalk
-    m_Type: 4
+  - m_Name: BossSneer
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -442,9 +439,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 1.8212117
-  m_TransitionOffset: 0
-  m_ExitTime: 0.0040354542
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.17517863
+  m_ExitTime: 0.29308003
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -540,9 +537,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_TransitionDuration: 0.000000029802322
+  m_TransitionOffset: 0.35934216
+  m_ExitTime: 0.35035798
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

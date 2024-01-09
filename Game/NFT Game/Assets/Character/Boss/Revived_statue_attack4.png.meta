@@ -116,12 +116,12 @@ TextureImporter:
       name: Revived_statue_attack4_0
       rect:
         serializedVersion: 2
-        x: 22
+        x: 4
         y: 0
-        width: 48
-        height: 63
+        width: 65
+        height: 62
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -137,12 +137,12 @@ TextureImporter:
       name: Revived_statue_attack4_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 76
         y: 0
-        width: 45
-        height: 63
+        width: 64
+        height: 62
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -158,12 +158,12 @@ TextureImporter:
       name: Revived_statue_attack4_2
       rect:
         serializedVersion: 2
-        x: 166
+        x: 167
         y: 0
-        width: 47
-        height: 63
+        width: 45
+        height: 62
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -179,12 +179,12 @@ TextureImporter:
       name: Revived_statue_attack4_3
       rect:
         serializedVersion: 2
-        x: 234
+        x: 216
         y: 0
-        width: 51
-        height: 63
+        width: 68
+        height: 62
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -200,12 +200,12 @@ TextureImporter:
       name: Revived_statue_attack4_4
       rect:
         serializedVersion: 2
-        x: 308
+        x: 288
         y: 0
-        width: 50
-        height: 63
+        width: 69
+        height: 62
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -221,12 +221,12 @@ TextureImporter:
       name: Revived_statue_attack4_5
       rect:
         serializedVersion: 2
-        x: 388
+        x: 389
         y: 0
-        width: 42
-        height: 63
+        width: 40
+        height: 62
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,48 +234,6 @@ TextureImporter:
       bones: []
       spriteID: 147ef27e4e27ff3f0800000000000000
       internalID: -864846275975059647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Revived_statue_attack4_6
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 0
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf9c6d13541d7284584c08a3555608a5
-      internalID: -1169073307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Revived_statue_attack4_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 22
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5ef8d5a4adc655499656c3502ab11ff
-      internalID: 1640614557
       vertices: []
       indices: 
       edges: []
@@ -297,8 +255,6 @@ TextureImporter:
       Revived_statue_attack4_3: 7779741498220265088
       Revived_statue_attack4_4: 6422470788297430032
       Revived_statue_attack4_5: -864846275975059647
-      Revived_statue_attack4_6: -1169073307
-      Revived_statue_attack4_7: 1640614557
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
