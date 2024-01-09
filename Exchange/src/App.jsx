@@ -12,6 +12,7 @@ import './App.css';
 import SnowEffect from './SnowEffect';
 
 function AppContent() {
+  // contract 사용을 위한 변수 선언
   const nftContractABI = myNFT.abi;
   const tokenContractABI = myToken.abi;
   const marcketContractABI = myMarcket.abi;
@@ -22,17 +23,21 @@ function AppContent() {
   const [showSnowEffect, setShowSnowEffect] = useState(false);
   const [connectedWallet, setConnectedWallet] = useState(null);
 
+  /**
+   * @description SnowEffect On/Off
+   */
   const toggleSnowEffect = () => {
     setShowSnowEffect((prev) => !prev);
     console.log("showSnowEffect", showSnowEffect);
     console.log("Connected Wallet : ", connectedWallet);
   };
   
+  /**
+   * @description Kaikas On/Off
+   */
   const handleWalletOff = () => {
     if (connectedWallet) {
       setConnectedWallet(null);
-      setIsKaikasConnected(false);
-      setIsMetamaskConnected(false);
     }
   };
 
@@ -44,6 +49,7 @@ function AppContent() {
         <h1>EXCHANGE</h1>
         <button className="button" onClick={toggleSnowEffect}>{showSnowEffect ? 'Hide Snow Effect' : 'Show Snow Effect'}</button>
 
+        {/*Nav Bar : 1*/}
         <nav className='nav'>
           <ul>
             <li>         
@@ -64,6 +70,7 @@ function AppContent() {
           </ul>
         </nav><br/>
 
+        {/*Nav Bar : 2*/}
         <nav className = "nav">
           <ul>
             <li>
@@ -84,7 +91,8 @@ function AppContent() {
             <ItemToImg 
               nftContractABI={nftContractABI}
               nftContractAddress={nftContractAddress}
-            />} /> 
+            />} 
+          /> 
           <Route path="/createAuction" element={
             <CreateAuction
               nftContractABI={nftContractABI}
@@ -92,8 +100,8 @@ function AppContent() {
               nftContractAddress={nftContractAddress}
               marcketContractABI={marcketContractABI}
               marcketContractAddress={marcketContractAddress}
-            />
-          } />
+            />}
+          />
             <Route path="/market" element={
             <Marketplace
               tokenContractABI={tokenContractABI}
@@ -102,8 +110,8 @@ function AppContent() {
               nftContractAddress={nftContractAddress}
               marcketContractABI={marcketContractABI}
               marcketContractAddress={marcketContractAddress}
-            />}/>
-           
+            />}
+          />
         </Routes>
         <h6>Network : Baobab testnet</h6>
       </div> 
