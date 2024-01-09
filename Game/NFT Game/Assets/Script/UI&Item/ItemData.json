@@ -1,0 +1,37 @@
+{
+    "Adjective" : {
+        "낭만있는" : "101",
+        "쾌속의" : "202",
+        "벽력일섬의" : "303",
+        "음주가무의" : "404",
+        "불굴의" : "505",
+        "진격의" : "606"
+    },
+    "ItemName" : {
+        "Army" : "30",
+        "Knight" : "40",
+        "Absolute" : "50"
+    },
+    "Item" : {
+        "Helmet" : "100",
+        "Top" : "200",
+        "Pants" : "300",
+        "Shoes" : "400",
+        "Sword" : "500"
+    },
+    "Color" : {
+        "Red" : "FF0000",
+        "Orange" : "FF5E00",
+        "Yellow" : "FFE400",
+        "Green" : "1DDB16",
+        "Skyblue" : "00D8FF",
+        "Blue" : "0100FF",
+        "Purple" : "3F0099" 
+    },
+    "Rank" : {
+        "Normal" : "123",
+        "Epic" : "234",
+        "Unique" : "345",
+        "Legendary" : "456"
+    }  
+}
