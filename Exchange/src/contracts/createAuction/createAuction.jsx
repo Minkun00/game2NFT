@@ -3,26 +3,43 @@ import './createAuction.css';
 
 import Caver from 'caver-js';
 
-export default function CreateAuction({ nftContractABI, marcketContractABI, nftContractAddress, marcketContractAddress, connectedWallet }) {
-  const [tokens, setTokens] = useState([]);
+/**
+ * @description user가 소유한 NFT 보여주고, market에 업로드할 수 있게 함
+ * @returns {React.ReactComponentElement}
+ */
+export default function CreateAuction({ nftContractABI, marcketContractABI, nftContractAddress, marcketContractAddress }) {
+  const [tokens, setTokens] = useState([]); // user가 소유한 NFT 정보 저장
   const caver = new Caver(window.klaytn);
-  const [selectedTokenId, setSelectedTokenId] = useState(null);
+  const [selectedTokenId, setSelectedTokenId] = useState(null); // 화면에서 선택한 tokenId 저장
   const [price, setPrice] = useState('');
 
-  const ITEMS_PER_PAGE = 8;
+  const ITEMS_PER_PAGE = 8;   // 너무 많은 이미지를 소유할 경우, ipfs에서 이미지 로드에 문제가 있어 8개씩 제한
   const [currentPage, setCurrentPage] = useState(1);
-  const [tokenBalance, setTokenBalance] = useState(0);
+
+  const [tokenBalance, setTokenBalance] = useState(0);  // 총 NFT 소유 수
 
   const [loading, setLoading] = useState(false);
 
+  /**
+   * @description 어떤 NFT 선택했는지 저장
+   * @param {Number} tokenId 화면에서 선택한 토큰의 id
+   */
   const selectNFT = (tokenId) => {
     setSelectedTokenId(tokenId);
   };
+
+  /**
+   * @description NFT 판매 가격 설정 저장
+   * @param {Number} e user가 입력한 NFT 판매 가격(단위 : MTK)
+   */
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
   };
 
-  // marketApproved is for only once
+  /**
+   * @description user가 market에 1회는 market에 approve해야 하기에 확인용
+   * @returns {Boolean} user가 이미 market에 approve 했는가에 대한 확인
+   */
   const isApprovedForMarket = async () => {
     try {
       alert('Approve to MarketPlace.');
@@ -35,7 +52,10 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
       console.log(`Error for 'isApprovedForMarket' : ${e}`);
     }
   }
-
+  /**
+   * @description user의 NFT를 market에 업로드. approve가 선행되어야 가능함
+   * @see isApprovedForMarket
+   */
   const listNFT = async () => {
     if (selectedTokenId && price) {
       const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
@@ -43,7 +63,7 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
       try {
         const response = await isApprovedForMarket()
 
-        if (!response) {
+        if (!response) {    // !approved면 approve하는 과정 진행
           await nftContract.methods.setMarketplaceApproval(marcketContractAddress, true).send({
             from: window.klaytn.selectedAddress,
             gas: '2000000',
@@ -52,14 +72,17 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
         }
       
         const marketplaceContract = new caver.klay.Contract(marcketContractABI, marcketContractAddress);
-  
         const listingPrice = caver.utils.toWei(price.toString(), 'ether');
 
+        // Market에 업로드하기
         await marketplaceContract.methods.listNFT(selectedTokenId, listingPrice).send({
           from: window.klaytn.selectedAddress,
           gas: '2000000',
         });
-        loadNFTs()
+
+        // 화면 새로고침(업로드한 NFT 화면에서 지우기)
+        loadNFTs();
+
         alert('Your NFT is listed to MarketPlace');
       } catch (error) {
         console.error("Setting marketplace approval or listing NFT failed", error);
@@ -69,16 +92,22 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
     }
   };
   
+  /**
+   * @description user소유의 NFT burn하는 과정
+   * @return {String} item code 값 
+   */
   const burnNFT = async () => {
     if(selectedTokenId) {
       const nftContract = new caver.klay.Contract(nftContractABI, nftContractAddress);
       const tokenURI = await nftContract.methods.tokenURI(selectedTokenId).call();
       const metadata = await fetchMetadata(tokenURI);
       try {
+        // NFT burn
         await nftContract.methods.burn(selectedTokenId).send({
           from: window.klaytn.selectedAddress,
           gas: '2000000',
         });
+        // code 값 alert를 통해 보여줌(암호/복호화 과정 없는 상태임)
         alert(`Code is : ${metadata.code}`);
       } catch (e) {
         console.log(`Error burnNFT : ${e}`);
@@ -86,7 +115,10 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
     }
   }
 
-
+  /**
+   * @description user소유의 NFT정보 pageIndex에 따라 load함
+   * @returns {Object} tokenDetails
+   */
   const loadNFTs = async () => {
     try {
       setLoading(true);
@@ -118,13 +150,22 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
     } finally {
       setLoading(false);
     }
-    
   };
 
+  /**
+   * @description ipfsURL 재설정(이미지 바로 보일 수 있게)
+   * @param {URL} ipfsUrl
+   * @returns {URL}
+   */
   function convertIPFStoHTTP(ipfsUrl) {
     return ipfsUrl.replace('ipfs://', 'https://ipfs.io/ipfs/')
   }
   
+  /**
+   * @description metadata의 json객체 다운로드
+   * @param {URL} uri NFT의 정보가 저장된 metadata의 URL
+   * @returns {Object} metadata
+   */
   async function fetchMetadata(uri) {
     const url = convertIPFStoHTTP(uri);
     const response = await fetch(url);
@@ -132,20 +173,23 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
     return metadata;
   }
 
- 
-
   useEffect(() => {
     if (window.klaytn.selectedAddress) {
         loadNFTs();
     }
   }, [window.klaytn.selectedAddress]);
 
-
+  /**
+   * @description page handler
+   */
   const handleNextPage = async () => {
     setCurrentPage((prevPage) => prevPage + 1);
     await loadNFTs();
   }
-
+  
+  /**
+   * @description page handler
+   */
   const handlePrevPage = async () => {
     setCurrentPage((prevPage) => prevPage - 1);
     await loadNFTs();

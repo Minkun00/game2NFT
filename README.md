@@ -14,10 +14,12 @@ RPG 게임 등, 아이템의 중요도가 큰 게임에서는 거래소가 필�
 
 Game에서 직접 연결(API 등)하여 거래소 사용. Token을 사용하여 거래하기 때문에 Defi, GameFi적인 내용 추가.
 
-- 11.5 
+- 23.11.5 
 1. game item code 입력받으면 Pinata를 통해 NFT생성
 
 2. demo version 게임 아이템 거래소 사이트 완성
 
-## Page
-https://minkun00.github.io/game2NFT/
+- 24.1.9
+1. demo page 최종 github.page에 올림 : https://minkun00.github.io/game2NFT/
+
+2. 주석 작성 완료

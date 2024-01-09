@@ -10,7 +10,7 @@ import Web3 from 'web3';
 * @param {string} _wallet - "Metamask" 나 "Kaikas"
 * @param {any} _args - Smart Contract에 전달할 인자
 * @returns {Promise<void>}
-*
+* @warning Baobab-testnet에서 deploy한 contract는 metamask에서 실행 불가능. 이 프로젝트에서는 사용하지 않았음
 * @example
 * await contract Exectue(contractABI, contractAddress, mint, "Metamask", tokenUri);
 **/
