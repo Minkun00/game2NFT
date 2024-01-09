@@ -24,8 +24,8 @@ app.listen(PORT, () => {
 app.post('/api/pinata', async (req, res) => {
   const { code, name, description } = req.body;
   try {
-    const { imgUrl, tokenUri, metaData } = await usePinata(code, name, description);
-    res.json({ imgUrl, tokenUri, metaData });
+    const { imgUrl, tokenUri } = await usePinata(code, name, description);
+    res.json({ imgUrl, tokenUri });
   } catch (error) {
     res.status(500).send({ error : error.message });
   }

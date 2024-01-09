@@ -1,92 +1,31 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "./1_Token.sol";
+import "./2_NFT.sol";
 
-contract MyToken is ERC20 {
-    constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
-        _mint(msg.sender, initialSupply);
-    }
-
-    function purchase() external payable {
-        uint256 amountToMint = msg.value; // 1:1 비율
-        _mint(msg.sender, amountToMint);
-    }
-}
-
-contract MyNFT is ERC721URIStorage, ERC721Enumerable, Ownable {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIdCounter;
-
-    constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
-    
-    function setMarketplaceApproval(address marketplace, bool approved) external {
-        setApprovalForAll(marketplace, approved);
-    }
-
-    // ERC721Enumerable를 사용할 때는 부모 컨트랙트의 함수를 오버라이드해야 합니다.
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId)
-        internal
-        override(ERC721, ERC721Enumerable)
-    {
-        super._beforeTokenTransfer(from, to, tokenId);
-    }
-
-    // 토큰 ID에 대한 정보를 얻기 위한 지원 함수입니다.
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
-        super._burn(tokenId);
-    }
-
-    // 토큰 URI를 가져오기 위한 함수입니다.
-    function tokenURI(uint256 tokenId)
-        public
-        view
-        override(ERC721, ERC721URIStorage)
-        returns (string memory)
-    {
-        return super.tokenURI(tokenId);
-    }
-
-    // 모든 부모 컨트랙트에 구현된 supportsInterface 함수를 호출합니다.
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC721, ERC721Enumerable)
-        returns (bool)
-    {
-        return super.supportsInterface(interfaceId);
-    }
-
-    // NFT를 민팅하고, 토큰 URI를 설정하는 함수입니다. msg.sender가 주인이 됩니다
-    function mint(string memory uri) public {
-        _tokenIdCounter.increment();
-        uint256 newItemId = _tokenIdCounter.current();
-        _safeMint(msg.sender, newItemId);
-        _setTokenURI(newItemId, uri); // 토큰 ID와 메타데이터 URI를 연결합니다.
-    }
-
-    function burn(uint256 tokenId) public onlyOwner returns (bool) {
-        require(_exists(tokenId), "Token does not exist");
-        _burn(tokenId);
-        return true;
-    }
-    // MyNFT 컨트랙트에 추가
-    function getCurrentTokenId() public view returns (uint256) {
-        return _tokenIdCounter.current();   
-    }
-}
-
+/**
+ * @dev NFT 거래용 Contract. Token을 재화로 사용함
+ */
 contract MyMarketplace is Ownable {
     MyNFT public nft;
     MyToken public token;
-    uint256 public feePercentage = 10;      // 10% 수수료
+    uint256 public feePercentage = 10;      // 판매 10% 수수료
 
+    /**
+     * @dev toeknId => market에 올라가 있는지 확인용
+     */
     mapping(uint256 => bool) public isListed;
+
+    /**
+     * @dev tokenId => price
+     */
     mapping(uint256 => uint256) public nftPrices;
+
+    /**
+     * @dev tokenId => 판매자. 판매대금 전달용
+     */
     mapping(uint256 => address) private _sellers;
 
 
@@ -98,7 +37,11 @@ contract MyMarketplace is Ownable {
         token = MyToken(_token);
     }
 
-
+    /**
+     * @dev NFT를 Market에 등록
+     * @param tokenId 소유하는 tokenId
+     * @param price 판매 가격 설정
+     */
     function listNFT(uint256 tokenId, uint256 price) public {
         require(nft.ownerOf(tokenId) == msg.sender, "Not the owner");
         require(!isListed[tokenId], "Already listed");
@@ -111,6 +54,10 @@ contract MyMarketplace is Ownable {
         emit NFTListed(tokenId, msg.sender);
     }
 
+    /**
+     * @dev market에 등록된 NFT구매
+     * @param tokenId market에 등록된 NFT의 tokenId값
+     */
     function purchaseNFT(uint256 tokenId) external payable {
         require(isListed[tokenId], "Not listed");
         uint256 price = nftPrices[tokenId];
@@ -130,6 +77,11 @@ contract MyMarketplace is Ownable {
         emit NFTSold(tokenId, price, msg.sender);
     }
 
+    /**
+     * @dev market에 올라간 NFT 정보 제공
+     * @return tokenIds NFT의 tokenId 배열
+     * @return prices NFT의 가격 배열
+     */
     function getListedNFTs() public view returns (uint256[] memory, uint256[] memory) {
         uint256 itemCount = nft.getCurrentTokenId(); // 수정된 부분 
         uint256 listedCount = 0; 
@@ -158,9 +110,3 @@ contract MyMarketplace is Ownable {
         return (tokenIds, prices);
     }    
 }
-
-
-
-
-
-

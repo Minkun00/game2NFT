@@ -51,7 +51,7 @@ const usePinata = async (code, _name, _description) => {
   const tokenUri = await jsonToPinata(metaData);
   console.log("Pinata에 메타데이터 저장이 완료되었습니다. : ", tokenUri);
   console.log("---------------------------")
-  return { imgUrl, tokenUri, metaData };
+  return { imgUrl, tokenUri };
 };
 
 const disolveCode = async (code) => {

@@ -8,7 +8,7 @@ export default function useImageGenerator() {
   const generateImage = useCallback(async (code, name, description) => {
     try {
       const response = await axios.post('http://localhost:3001/api/pinata', { code, name, description }); // 서버의 엔드포인트 URL로 수정하세요.
-      const { imgUrl, tokenUri, metaData } = response.data;
+      const { imgUrl, tokenUri } = response.data;
 
       if (response.data.error) {
         

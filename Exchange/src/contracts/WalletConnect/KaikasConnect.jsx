@@ -3,7 +3,7 @@ import Caver from 'caver-js';
 import "../../App.css";
 
 
-const KaikasConnect = ({ setIsKaikasConnected, setConnectedWallet }) => {
+const KaikasConnect = ({ setConnectedWallet }) => {
   const [account, setAccount] = useState('');
 
   const loadBlockchainData = async (caverInstance) => {
@@ -23,7 +23,6 @@ const KaikasConnect = ({ setIsKaikasConnected, setConnectedWallet }) => {
 
       const accounts = await window.klaytn.enable();
       setAccount(accounts[0]);
-      setIsKaikasConnected(true);
       setConnectedWallet('Kaikas');
     } else {
       alert('Please install Kaikas!');
