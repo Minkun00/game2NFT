@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
+
 [System.Serializable]
 public class ItemList
 {
@@ -22,7 +23,9 @@ public class ItemList
 }
 
 
-
+/**
+ *  이미지를 unity 에디터 내의 ItemManager 오브젝트에서 설정해줘야 함.
+ */
 [System.Serializable]
 public class ImageLink
 {

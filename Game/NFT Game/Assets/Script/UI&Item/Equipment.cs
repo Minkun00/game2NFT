@@ -12,7 +12,6 @@ public class EquipmentItem : Item
 {
     public Sprite equipmentSprite;
     public EquipmentType equipmentType;
-    // 기타 속성들...
 }
 
 
