@@ -77,6 +77,36 @@ public class Enemy : MonoBehaviour
 
     }
 
+    bool isHurt;
+    bool isknockback = false;
+    Color halfA = new Color(1, 1, 1, 0.5f);
+    Color fullA = new Color(1, 1, 1, 1);
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    //무기와 충돌시 피격(rigidbody2D)
+    //    if (collision.gameObject.tag == "무기")
+    //    {
+    //        Hurt(damage, collision.transform.position);
+    //    }
+    //}
+
+    public void Hurt(float damage, Vector2 pos)
+    {
+        float currentHealth = GameObject.Find("Enemy").GetComponent<HP>().health;
+        currentHealth -= damage;
+        //HP hpInstance = new HP();
+        //hpInstance.health -= 10f;
+        Debug.Log("hello");
+        Debug.Log(currentHealth);
+        if (currentHealth <= 0)
+        {
+            anim.SetTrigger("E_Death");
+            Destroy(gameObject, 3);
+        }
+    }
+
+    //For Trigger Script
     public void Combat()
     {
         anim.SetBool("isCombating", true);
@@ -103,31 +133,6 @@ public class Enemy : MonoBehaviour
         anim.SetBool("isAttacking", false);
 
     }
+    //
 
-    bool isHurt;
-    bool isknockback = false;
-    Color halfA = new Color(1, 1, 1, 0.5f);
-    Color fullA = new Color(1, 1, 1, 1);
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    //무기와 충돌시 피격(rigidbody2D)
-    //    if (collision.gameObject.tag == "무기")
-    //    {
-    //        Hurt(damage, collision.transform.position);
-    //    }
-    //}
-
-    public void Hurt(float damage, Vector2 pos)
-    {
-        float currentHealth = HP.health;
-        currentHealth -= 10f;
-        HP.health = currentHealth;
-
-        if (HP.health <= 0)
-        {
-            anim.SetTrigger("E_Death");
-            Destroy(gameObject, 3);
-        }
-    }
 }

@@ -7,7 +7,7 @@ public class HP : MonoBehaviour
 {
     public Slider slider;
     float maxHealth = 100f;
-    public static float health;
+    public float health;
 
     void Awake()
     {

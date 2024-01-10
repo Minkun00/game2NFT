@@ -47,19 +47,3 @@ public class Trigger : MonoBehaviour
         }
     }
 }
-
-
-
-//private void OnTriggerExit2D(Collider2D collision)
-//{
-
-//    // 트리거 영역을 벗어날 때 combat 및 attacking 상태를 재설정하여 정확한 전환.
-//    if (gameObject.CompareTag("Combat"))
-//    {
-//        GameObject.Find("Enemy").GetComponent<Enemy>().Idle();
-//    }
-//    else if (gameObject.CompareTag("Attack"))
-//    {
-//        GameObject.Find("Enemy").GetComponent<Enemy>().Combat();
-//    }
-//}

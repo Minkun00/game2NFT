@@ -13,6 +13,7 @@ TagManager:
   - Combat
   - Attack
   - Enemy
+  - Barrier
   layers:
   - Default
   - TransparentFX
