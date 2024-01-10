@@ -17,13 +17,6 @@ const BuyTokenButton = ({ tokenContractAddress, tokenContractAbi }) => {
         value: caver.utils.toPeb(klayValue, 'KLAY'),
         gas: 500000,
       })
-        .on('transactionHash', (hash) => {
-          console.log('Transaction Hash:', hash);
-        })
-        .on('receipt', (receipt) => {
-          console.log('Transaction receipt:', receipt);
-        })
-        .on('error', console.error);
     } catch (error) {
       console.error('Error buying tokens:', error);
     }
