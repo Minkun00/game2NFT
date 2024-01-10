@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public Slider slider;
+    float maxHealth = 100f;
+    public float health;
     public float damage = 10f;
+    public int nextMove;
+    
     Animator anim;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
-    public int nextMove;
 
     void Awake()
     {
@@ -17,6 +21,7 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        health = maxHealth;
         Invoke("Think", 5);
         anim.SetBool("isRunning", false);
     }
@@ -42,6 +47,7 @@ public class Enemy : MonoBehaviour
         {
             rigid.velocity = Vector2.zero;
         }
+        slider.value = health / maxHealth;
 
     }
 
@@ -93,13 +99,10 @@ public class Enemy : MonoBehaviour
 
     public void Hurt(float damage, Vector2 pos)
     {
-        float currentHealth = GameObject.Find("Enemy").GetComponent<HP>().health;
-        currentHealth -= damage;
-        //HP hpInstance = new HP();
-        //hpInstance.health -= 10f;
+        health -= 10f;
         Debug.Log("hello");
-        Debug.Log(currentHealth);
-        if (currentHealth <= 0)
+        Debug.Log(health);
+        if (health <= 0)
         {
             anim.SetTrigger("E_Death");
             Destroy(gameObject, 3);

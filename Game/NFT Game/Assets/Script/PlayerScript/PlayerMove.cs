@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 
 public class PlayerMove : MonoBehaviour
@@ -15,7 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     public float moveSpeed = 4f;
     public float jumpForce = 7f;
-
+    public float health;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -24,6 +25,8 @@ public class PlayerMove : MonoBehaviour
     bool wasGrounded = false;
     float airborneTime = 0f;
     float maxairborneTime = 0f;
+    public float maxHealth = 100f;
+    public float sliderValue;
 
     void Start()
     {
@@ -42,6 +45,8 @@ public class PlayerMove : MonoBehaviour
 
         anim = GetComponent<Animator>();
         anim.SetInteger("AnimState", 0);
+
+        health = maxHealth;
     }
 
     void Update()
@@ -141,7 +146,8 @@ public class PlayerMove : MonoBehaviour
             Hurt(10f, transform.position);
             maxairborneTime = 0f;
         }
-       
+
+        sliderValue = health / maxHealth;
     }
 
     //피격시 효과
@@ -181,13 +187,11 @@ public class PlayerMove : MonoBehaviour
     public void Hurt(float damage, Vector2 pos)
     {
         if (!isHurt)
-        {   
-            float currentHealth = HP.health;
+        {
             isHurt = true;
-            currentHealth -= damage;
-            HP.health = currentHealth;
+            health -= damage;
 
-            if (currentHealth <= 0)
+            if (health <= 0)
             {
                 GameManager.Instance.GameOver();
             }

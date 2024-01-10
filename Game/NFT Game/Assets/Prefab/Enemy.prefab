@@ -131,7 +131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692982283960999457}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8, y: 0.26, z: 0}
   m_LocalScale: {x: 1.6875135, y: 1.6875135, z: 1.6875135}
   m_ConstrainProportionsScale: 0
@@ -291,9 +291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101c95cadf8ebf144a5f0b36c5bcb03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 285757748136717911}
+  health: 0
   damage: 10
   nextMove: 0
-  slider: {fileID: 0}
 --- !u!1 &4260931088103848716
 GameObject:
   m_ObjectHideFlags: 0
