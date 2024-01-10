@@ -1,45 +1,70 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
 
-
-[System.Serializable]
-public class ItemList
-{
-    public ItemList(string _Modifier, string _Equipment, string _Color, string _Rank, string _ItemCode, Sprite _EquipmentImage, Sprite _ColorImage, Sprite _RankImage)
-    {
-        Modifier = _Modifier;
-        Equipment = _Equipment;
-        Color = _Color;
-        Rank = _Rank;
-        ItemCode = _ItemCode;
-        EquipmentImage = _EquipmentImage;
-        ColorImage = _ColorImage;
-        RankImage = _RankImage;
-    }
-
-    public string Modifier, Equipment, Color, Rank, ItemCode;
-    public Sprite EquipmentImage, ColorImage, RankImage;
-}
-
-
-/**
- *  이미지를 unity 에디터 내의 ItemManager 오브젝트에서 설정해줘야 함.
- */
+// 아이템에 해당하는 이미지를 unity 에디터 내의 ItemManager 오브젝트에서 연결해줌.
 [System.Serializable]
 public class ImageLink
 {
-    public string name;
+    public string ItemName;             // Absolute, Army, Knight
+    public ItemPartType ItemPart;       // 아래 enum 참고
     public Sprite image;
 
-    public ImageLink(string _name, Sprite _image)
+    public enum ItemPartType
     {
-        name = _name;
+        Helmet,
+        Top,
+        Pants,
+        Shoes,
+        Sword
+    }
+
+    public ImageLink(string _name, ItemPartType _part, Sprite _image)
+    {
+        ItemName = _name;
+        ItemPart = _part;
         image = _image;
     }
 }
 
+// 생성되는 모든 아이템의 리스트를 짜기 위한 class 및 생성자
+[System.Serializable]
+public class ItemList
+{
+    public string Adjective, ItemName, ItemPart, Color, Rank, ItemCode, Name;
+    public Sprite EquipmentImage, ColorImage, RankImage;
 
+    // 생성자 ItemList를 생성 할 때 형용사 등과 해당 이미지를 인자로 받아옴.
+    public ItemList(string _Adjective, string _ItemName, string _ItemPart, string _Color, string _Rank, string _ItemCode,
+                   Sprite _EquipmentImage, Sprite _ColorImage, Sprite _RankImage)
+    {
+        Adjective = _Adjective;
+        ItemName = _ItemName;
+        ItemPart = _ItemPart;
+        Color = _Color;
+        Rank = _Rank;
+        ItemCode = _ItemCode;
+
+        EquipmentImage = _EquipmentImage;
+        ColorImage = _ColorImage;
+        RankImage = _RankImage;
+    }
+}
+
+
+[System.Serializable]
+public class ItemData
+{
+    public Dictionary<string, string> Adjective;
+    public Dictionary<string, string> ItemName;
+    public Dictionary<string, string> ItemPart;
+    public Dictionary<string, string> Color;
+    public Dictionary<string, string> Rank;
+}
+
+
+/*
+ *  본격적으로 ItemData.json을 읽어오는 과정
+ */
 public class ItemManager : MonoBehaviour
 {
     public TextAsset ItemDatabase;
@@ -56,142 +81,41 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-        // 전체 아이템 리스트 불러오기
-        string[] line = ItemDatabase.text.Substring(0, ItemDatabase.text.Length - 1).Split('\n');
+        // JSON 데이터 읽기
+        TextAsset jsonData = Resources.Load<TextAsset>("ItemData");
+        ItemData itemData = JsonUtility.FromJson<ItemData>(jsonData.text);
 
-        // 아이템 이름 리스트
-        List<string> EquipmentList = new List<string>();
-        List<string> ModifierList = new List<string>();
-        List<string> ColorList = new List<string>();
-        List<string> RankList = new List<string>();
-
-        // 아이템 코드 리스트
-        List<string> EquipmentCodeList = new List<string>();
-        List<string> ModifierCodeList = new List<string>();
-        List<string> ColorCodeList = new List<string>();
-        List<string> RankCodeList = new List<string>();
-
-        int numberOfObjectsToCreate = 2;
-
-        for (int k = 0; k < numberOfObjectsToCreate; k++)
-        {
-            for (int i = 0; i < line.Length; i++)
-            {
-                string[] row = line[i].Split('\t');
-
-                // 각 요소가 비어있지 않으면 리스트에 추가
-                if (row.Length > 1 && !string.IsNullOrEmpty(row[0]) && !EquipmentList.Contains(row[0]))
-                {
-                    EquipmentList.Add(row[0]);
-                    EquipmentCodeList.Add(row[1]);
-                }
-
-                if (row.Length > 3 && !string.IsNullOrEmpty(row[2]) && !ModifierList.Contains(row[2]))
-                {
-                    ModifierList.Add(row[2]);
-                    ModifierCodeList.Add(row[3]);
-                }
-
-                if (row.Length > 5 && !string.IsNullOrEmpty(row[4]) && !ColorList.Contains(row[4]))
-                {
-                    ColorList.Add(row[4]);
-                    ColorCodeList.Add(row[5]);
-                }
-
-                if (row.Length > 7 && !string.IsNullOrEmpty(row[6]) && !RankList.Contains(row[6]))
-                {
-                    RankList.Add(row[6]);
-                    RankCodeList.Add(row[7]);
-                }
-            }
-
-
-            // 모든 경우의 수를 고려하여 아이템 생성
-            for (int m = 0; m < ModifierList.Count; m++)
-            {
-                for (int e = 0; e < EquipmentList.Count; e++)
-                {
-                    for (int c = 0; c < ColorList.Count; c++)
-                    {
-                        for (int r = 0; r < RankList.Count; r++)
-                        {
-                            string itemCode = ModifierCodeList[m] + EquipmentCodeList[e] + ColorCodeList[c] + RankCodeList[r];
-
-                            ImageLink equipmentLink = EquipmentImages.Find(img => img.name == EquipmentList[e]);
-                            ImageLink colorLink = ColorImages.Find(img => img.name == ColorList[c]);
-                            ImageLink rankLink = RankImages.Find(img => img.name == RankList[r]);
-
-                            Sprite equipmentImage = equipmentLink.image;
-                            Sprite colorImage = colorLink.image;
-                            Sprite rankImage = rankLink.image;
-
-                            AllItemList.Add(new ItemList(ModifierList[m], EquipmentList[e], ColorList[c], RankList[r], itemCode, equipmentImage, colorImage, rankImage));
-                        }
-                    }
-                }
-            }
-
-            // AllItemList에서 랜덤한 아이템 선택
-            int randomIndex = Random.Range(0, AllItemList.Count);
-            ItemList randomItem = AllItemList[randomIndex];
-
-            // 선택된 아이템의 스프라이트를 게임 오브젝트로 생성
-            Sprite[] sprites = new Sprite[] { randomItem.EquipmentImage, randomItem.ColorImage, randomItem.RankImage };
-            int[] sortingOrders = new int[] { 2 + k*2, 1 + k*2, 0 + k * 2 };
-
-            GameObject itemObject = CreateObjectWithMultipleSprites(sprites, sortingOrders, "Dropped_Item_" + k, "Item");
-
-            // 아이템 오브젝트에 ItemPickUp 컴포넌트 추가
-            ItemPickUp itemPickUp = itemObject.AddComponent<ItemPickUp>();
-
-            // 아이템 정보 설정
-            itemPickUp.itemInfo = randomItem;  // randomItem 정보를 itemInfo에 저장
-
-            // 아이템 정보를 Item 스크립트 오브젝트로 생성
-            Item item = ScriptableObject.CreateInstance<Item>();
-            item.itemName = randomItem.Equipment;
-            item.itemImage = randomItem.EquipmentImage;
-            item.itemType = Item.ItemType.Equipment;
-            item.itemCode = randomItem.ItemCode;
-            item.itemModify = randomItem.Modifier;
-            item.itemRank = randomItem.Rank;
-            item.equipmentImage = randomItem.EquipmentImage;
-            item.colorImage = randomItem.ColorImage;
-            item.rankedImage = randomItem.RankImage;
-
-            // ItemPickUp 컴포넌트에 Item 정보 저장
-            itemPickUp.item = item;
-        }
+        // 랜덤 아이템 생성
+        CreateRandomItem(itemData);
     }
 
-    GameObject CreateObjectWithMultipleSprites(Sprite[] sprites, int[] sortingOrders, string objectName, string objectTag)
+    private void CreateRandomItem(ItemData itemData)
     {
-        // 빈 GameObject 생성
-        GameObject obj = new GameObject();
-        obj.name = objectName;  // GameObject의 이름 설정
-        obj.tag = objectTag;  // GameObject의 태그 설정
-        obj.layer = LayerMask.NameToLayer("Item");
+        // 랜덤으로 아이템 구성 요소 선택
+        string randomAdjective = GetRandomKeyFromDictionary(itemData.Adjective);
+        string randomItemName = GetRandomKeyFromDictionary(itemData.ItemName);
+        string randomItemPart = GetRandomKeyFromDictionary(itemData.ItemPart);
+        string randomColor = GetRandomKeyFromDictionary(itemData.Color);
+        string randomRank = GetRandomKeyFromDictionary(itemData.Rank);
 
-        // BoxCollider2D 컴포넌트 추가
-        BoxCollider2D collider = obj.AddComponent<BoxCollider2D>();
-        collider.isTrigger = true;  // isTrigger 설정
+        // 아이템 코드 생성
+        string itemCode = itemData.Adjective[randomAdjective] + itemData.ItemName[randomItemName] +
+                          itemData.ItemPart[randomItemPart] + itemData.Color[randomColor] +
+                          itemData.Rank[randomRank];
 
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            // SpriteRenderer 컴포넌트를 가진 자식 GameObject 생성
-            GameObject child = new GameObject();
-            child.transform.parent = obj.transform;  // 부모 설정
-            SpriteRenderer spriteRenderer = child.AddComponent<SpriteRenderer>();  // SpriteRenderer 컴포넌트 추가
-            spriteRenderer.sprite = sprites[i];  // 스프라이트 설정
-            spriteRenderer.sortingOrder = sortingOrders[i];  // Layer Order 설정
 
-            // 스케일 조절
-            child.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);  // 크기를 절반으로 줄임
-        }
+        // 이미지 링크 및 추가 처리
+        // 예: ImageLink equipmentLink = EquipmentImages.Find(img => img.ItemName == randomItemName);
+        // 아이템 오브젝트 생성 등...
 
-        return obj;
+        // 생성된 아이템 정보 로깅 또는 처리
+        Debug.Log("Created Item: " + randomAdjective + " " + randomItemName + " " + randomItemPart + " " + randomColor + " " + randomRank);
     }
 
-
+    private string GetRandomKeyFromDictionary(Dictionary<string, string> dict)
+    {
+        List<string> keys = new List<string>(dict.Keys);
+        return keys[UnityEngine.Random.Range(0, keys.Count)];
+    }
 
 }

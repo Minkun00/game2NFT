@@ -12,7 +12,7 @@
         "Knight" : "40",
         "Absolute" : "50"
     },
-    "ItemPart" : {
+    "Item" : {
         "Helmet" : "100",
         "Top" : "200",
         "Pants" : "300",
