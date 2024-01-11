@@ -23002,7 +23002,10 @@ MonoBehaviour:
   playerCurrentMapFourth: 
   moveSpeed: 7
   jumpForce: 25
+  health: 0
   anim: {fileID: 1288848017}
+  maxHealth: 100
+  sliderValue: 0
 --- !u!70 &1288848012
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -33768,10 +33771,10 @@ RectTransform:
   - {fileID: 2091114366}
   m_Father: {fileID: 1539913105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -295.28702, y: 504.1088}
-  m_SizeDelta: {x: 227.7, y: 36.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 201.5, y: -35.891205}
+  m_SizeDelta: {x: 227.70001, y: 36.599976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2071996241
 MonoBehaviour:

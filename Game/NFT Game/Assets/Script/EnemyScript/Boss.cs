@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
+    public Slider barrierslider;
+    public Slider hpslider;
+    public float currentHP;
+    public float currentBarrier;
+    
+    float max = 100f;
+
     Animator anim;
     Rigidbody2D rigid;
     
@@ -13,13 +20,49 @@ public class Boss : MonoBehaviour
         anim = GetComponent <Animator>();
         rigid = GetComponent<Rigidbody2D>();
 
+        currentBarrier = max;
+        currentHP = max;
+
+        anim.SetBool("BossWalk", false);
+        StartCoroutine("Attack1");
     }
 
-    //void Hurt_Barrier()
-    //{
-    //    if (collision.gameObject.tag == "sword")
-    //    {
-    //        Barrier.health -= 10f; //can change damage
-    //    }
-    //}
+    void Update()
+    {
+        barrierslider.value = currentBarrier / max;
+        hpslider.value = currentHP / max;
+        
+        if(currentHP<=0)
+        {
+            StopCoroutine("Attack1");
+        }
+
+    }
+
+    public void BarrierHurt(float damage)
+    {
+        currentBarrier -= damage;
+        if(currentBarrier <= 0)
+        {
+            Destroy(GameObject.Find("Barrier"));
+        }
+    }
+
+    public void Hurt(float damage)
+    {
+        currentHP -= damage;
+        anim.SetTrigger("BossAttacked");
+        if(currentHP <= 0)
+        {
+            anim.SetTrigger("BossDied");
+            //Show Game End Scene 
+        }
+    }
+
+    IEnumerator Attack1()
+    {
+        anim.SetTrigger("BossAttack1");
+        yield return new WaitForSeconds(4f);
+        StartCoroutine("Attack1");
+    }
 }

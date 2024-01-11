@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//combatmode, attackmode 애니메이션 활성화를 위한 스크립트
-public class Trigger : MonoBehaviour
+public class BossTrigger : MonoBehaviour
 {
+    void Update()
+    {
+        if (gameObject.CompareTag("Combat") && )
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //enemy를 parent로 두고 combatmode와 attackmode를 넣으면 enemy tag 그대로 가져감.
-        //별개로 두어야 함. 종속시키면 안됨.
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Boss"))
         {
             if (gameObject.CompareTag("Combat"))
             {
-                // 전투 상태를 true로 설정하고 공격 상태를 false로 설정
-                GameObject.Find("Enemy").GetComponent<Enemy>().Combat();
-            }
-            else if (gameObject.CompareTag("Attack"))
-            {
-                // 공격 상태를 true로 설정하고 전투 상태를 false로 설정
-                GameObject.Find("Enemy").GetComponent<Enemy>().Attack();
-            }
-            else // Combat도 Attack도 충돌하지 않았을 때
-            {
-                GameObject.Find("Enemy").GetComponent<Enemy>().Idle();
+                //BossAttack2만 랜덤한 간격으로 반복.
+                StartCoroutine("Razer");
             }
         }
+
+        IEnumerator Razer()
+        {
+            float nextTime = Random.Range(1f, 8f);
+            anim.SetTrigger("BossAttack2");
+            yield return new WaitForSeconds(nextTime);
+            StartCoroutine("Razer");
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)

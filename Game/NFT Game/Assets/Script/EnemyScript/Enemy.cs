@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public Slider slider;
-    float maxHealth = 100f;
-    public float health;
+    float maxHP = 100f;
+    public float currentHP;
     public float damage = 10f;
     public int nextMove;
     
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        health = maxHealth;
+        currentHP = maxHP;
         Invoke("Think", 5);
         anim.SetBool("isRunning", false);
     }
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         {
             rigid.velocity = Vector2.zero;
         }
-        slider.value = health / maxHealth;
+        slider.value = currentHP / maxHP;
 
     }
 
@@ -88,24 +88,13 @@ public class Enemy : MonoBehaviour
     Color halfA = new Color(1, 1, 1, 0.5f);
     Color fullA = new Color(1, 1, 1, 1);
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    //무기와 충돌시 피격(rigidbody2D)
-    //    if (collision.gameObject.tag == "무기")
-    //    {
-    //        Hurt(damage, collision.transform.position);
-    //    }
-    //}
-
-    public void Hurt(float damage, Vector2 pos)
+    public void Hurt(float damage)
     {
-        health -= 10f;
-        Debug.Log("hello");
-        Debug.Log(health);
-        if (health <= 0)
+        currentHP -= damage;
+        if (currentHP <= 0)
         {
             anim.SetTrigger("E_Death");
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 4);
         }
     }
 
