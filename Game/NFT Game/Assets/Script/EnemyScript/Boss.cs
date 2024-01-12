@@ -59,16 +59,56 @@ public class Boss : MonoBehaviour
         }
     }
 
+    public void Idle()
+    {
+        anim.SetBool("BossAttack2", false);
+        anim.SetBool("BossAttack4", false);
+        StopCoroutine("Razer");
+        StopCoroutine("ShortRazer");
+    }
+
+
     IEnumerator Attack1()
     {
         anim.SetBool("BossAttack1", true);
         Invoke("Wait", 1);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         StartCoroutine("Attack1");
     }
 
     void Wait()
     {
         anim.SetBool("BossAttack1",false);
+        anim.SetBool("BossAttack2", false);
+        anim.SetBool("BossAttack4", false);
+    }
+
+    public void Attack2()
+    {
+        StartCoroutine(Razer());
+    }
+
+    IEnumerator Razer()
+    {
+        Invoke("Wait", 0.2f);
+        anim.SetBool("BossAttack2", true);
+        Invoke("Wait",1.8f);
+        yield return new WaitForSeconds(10f);
+        StartCoroutine("Razer");
+        StopCoroutine("ShortRazer");
+    }
+
+    public void Attack4()
+    {
+        StartCoroutine(ShortRazer());
+    }
+
+    IEnumerator ShortRazer()
+    {
+        Invoke("Wait", 0.2f);
+        anim.SetBool("BossAttack4", true);
+        Invoke("Wait", 1.2f);
+        yield return new WaitForSeconds(5f);
+        StartCoroutine("ShortRazer");
     }
 }
