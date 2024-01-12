@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializedField]
+   // [SerializedField]
 }

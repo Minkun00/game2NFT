@@ -61,8 +61,14 @@ public class Boss : MonoBehaviour
 
     IEnumerator Attack1()
     {
-        anim.SetTrigger("BossAttack1");
+        anim.SetBool("BossAttack1", true);
+        Invoke("Wait", 1);
         yield return new WaitForSeconds(4f);
         StartCoroutine("Attack1");
+    }
+
+    void Wait()
+    {
+        anim.SetBool("BossAttack1",false);
     }
 }
