@@ -14,12 +14,11 @@ export default function useImageGenerator() {
   /**
    * @description `server/Pinata/Pinata.js`의 api에 request 실행. 현재 `code`외의 값들은 NFT 발행에 큰 의미 없음
    * @param {String} code item code
-   * @param {String} name item name
-   * @param {String} description description of item
    */
-  const generateImage = useCallback(async (code, name, description) => {
+  const generateImage = useCallback(async (code) => {
     try {
-      const response = await axios.post('http://localhost:3001/api/pinata', { code, name, description }); // 서버의 엔드포인트 URL로 수정하세요.
+      const action = 'encrypt';
+      const response = await axios.post('http://localhost:3001/api/pinata', { code, action }); // 서버의 엔드포인트 URL로 수정하세요.
       const { imgUrl, tokenUri } = response.data;
 
       if (response.data.error) {

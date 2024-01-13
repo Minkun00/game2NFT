@@ -20,10 +20,10 @@ app.listen(PORT, () => {
 
 // http://localhost:3001/api/pinata 에서 실행
 app.post('/api/pinata', async (req, res) => {
-  const { code, name, description } = req.body;
+  const { code, action } = req.body;
   try {
-    const { imgUrl, tokenUri } = await usePinata(code, name, description);
-    res.json({ imgUrl, tokenUri });
+    const result = await usePinata(code, action);
+    res.json(result);
   } catch (error) {
     res.status(500).send({ error : error.message });
   }
