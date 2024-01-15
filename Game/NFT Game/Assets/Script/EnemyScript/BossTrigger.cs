@@ -18,7 +18,7 @@ public class BossTrigger : MonoBehaviour
                 // 공격 상태를 true로 설정하고 전투 상태를 false로 설정
                 GameObject.Find("Boss").GetComponent<Boss>().Attack4();
             }
-            else // Combat도 Attack도 충돌하지 않았을 때s
+            else // Combat도 Attack도 충돌하지 않았을 때
             {
                 GameObject.Find("Boss").GetComponent<Boss>().Idle();
             }
@@ -40,6 +40,7 @@ public class BossTrigger : MonoBehaviour
             else if (gameObject.CompareTag("Attack"))
             {
                 bossState.Attack2();
+                bossState.outOfRange();
             }
         }
     }

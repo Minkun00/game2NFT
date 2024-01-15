@@ -190,6 +190,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Revived_statue_attack2_4
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 41
+        width: 37
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6cd7d69d02d4ff4ba7a04f860cd3246
+      internalID: 1092124002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Revived_statue_attack2_5
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 41
+        width: 37
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83cd26696863f7240ba53d500ecfcc6d
+      internalID: -1099193058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -205,6 +247,8 @@ TextureImporter:
       Revived_statue_attack2_1: -4113788305431658347
       Revived_statue_attack2_2: 7270356293832842943
       Revived_statue_attack2_3: -5913123247180276498
+      Revived_statue_attack2_4: 1092124002
+      Revived_statue_attack2_5: -1099193058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -14,17 +14,20 @@ public class Boss : MonoBehaviour
 
     Animator anim;
     Rigidbody2D rigid;
+    Transform razer;
     
     void Awake()
     {
         anim = GetComponent <Animator>();
         rigid = GetComponent<Rigidbody2D>();
+        razer = transform.GetChild(2);
 
         currentBarrier = max;
         currentHP = max;
 
         anim.SetBool("BossWalk", false);
         StartCoroutine("Attack1");
+        razer.GetComponent<BoxCollider>().enabled = false;
     }
 
     void Update()
@@ -61,26 +64,19 @@ public class Boss : MonoBehaviour
 
     public void Idle()
     {
-        anim.SetBool("BossAttack2", false);
-        anim.SetBool("BossAttack4", false);
         StopCoroutine("Razer");
+    }
+
+    public void outOfRange()
+    {
         StopCoroutine("ShortRazer");
     }
 
-
     IEnumerator Attack1()
     {
-        anim.SetBool("BossAttack1", true);
-        Invoke("Wait", 1);
+        anim.SetTrigger("BossAttack1");
         yield return new WaitForSeconds(3f);
         StartCoroutine("Attack1");
-    }
-
-    void Wait()
-    {
-        anim.SetBool("BossAttack1",false);
-        anim.SetBool("BossAttack2", false);
-        anim.SetBool("BossAttack4", false);
     }
 
     public void Attack2()
@@ -90,12 +86,11 @@ public class Boss : MonoBehaviour
 
     IEnumerator Razer()
     {
-        Invoke("Wait", 0.2f);
-        anim.SetBool("BossAttack2", true);
-        Invoke("Wait",1.8f);
+        Debug.Log("razer");
+        anim.SetTrigger("BossAttack2");
+        razer.GetComponent<BoxCollider>().enabled = true;
         yield return new WaitForSeconds(10f);
         StartCoroutine("Razer");
-        StopCoroutine("ShortRazer");
     }
 
     public void Attack4()
@@ -105,9 +100,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator ShortRazer()
     {
-        Invoke("Wait", 0.2f);
-        anim.SetBool("BossAttack4", true);
-        Invoke("Wait", 1.2f);
+        anim.SetTrigger("BossAttack4");
         yield return new WaitForSeconds(5f);
         StartCoroutine("ShortRazer");
     }
