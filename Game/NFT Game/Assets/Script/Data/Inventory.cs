@@ -75,7 +75,7 @@ public class Inventory : MonoBehaviour
             {
                 if (slots[i].item != null)
                 {
-                    if (slots[i].item.itemName == _item.itemName)
+                    if (slots[i].item.ItemName == _item.ItemName)
                     {
                         slots[i].SetSlotCount(_count);
                         return;

@@ -2626,7 +2626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exchangeUI: {fileID: 1824092299}
   actionController: {fileID: 1288848015}
-  itemManager: {fileID: 0}
+  itemManager: {fileID: 1782143433}
   ItemListUp:
   - {fileID: 1465702248}
   - {fileID: 2048711232}
@@ -28762,7 +28762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b03ec5fd13113d4ead07fef2c087105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curItemList: []
+  itemList: []
   ItemDatabase: {fileID: 4900000, guid: 78ea4c071d3c4894c9b7ec7b5334cb3e, type: 3}
   EquipmentImages:
   - itemPart: 0

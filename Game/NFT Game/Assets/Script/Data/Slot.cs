@@ -36,33 +36,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     private GameObject go_CountImage;
 
 
-    // 이미지의 투명도 조절.
-    private void SetColor(float _alpha)
-    {
-        Color color = itemImage.color;
-        Color colorBack = itemInvenBack.color;
-        Color colorRank = itemInvenRank.color;
-
-        color.a = _alpha;
-        colorBack.a = _alpha;
-        colorRank.a = _alpha;
-
-
-        itemImage.color = color;
-        itemInvenBack.color = color;
-        itemInvenRank.color = color;
-
-    }
-
     // 아이템 획득
     public void AddItem(Item _item, int _count = 1)
     {
         item = _item;
         itemCount = _count;
 
-        itemImage.sprite = item.itemImage;
-        itemInvenBack.sprite = item.colorImage;
-        itemInvenRank.sprite = item.rankedImage;
+        itemImage.sprite = item.EquipmentImage;
+        itemInvenBack.sprite = item.ColorImage;
+        itemInvenRank.sprite = item.RankImage;
 
         //itemImage.GetComponent<RectTransform>().sizeDelta = new Vector2(70, 70);
 
@@ -102,6 +84,23 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         go_CountImage.SetActive(false);
     }
 
+    // 이미지의 투명도 조절.
+    private void SetColor(float _alpha)
+    {
+        Color color = itemImage.color;
+        Color colorBack = itemInvenBack.color;
+        Color colorRank = itemInvenRank.color;
+
+        color.a = _alpha;
+        colorBack.a = _alpha;
+        colorRank.a = _alpha;
+
+
+        itemImage.color = color;
+        itemInvenBack.color = color;
+        itemInvenRank.color = color;
+    }
+
     private float lastClickTime = 0f; // 마지막 클릭 시간을 저장
     private const float doubleClickTime = 0.2f; // 더블 클릭 간격 (초)
     public Character playerCharacter; // Player 캐릭터 참조
@@ -120,7 +119,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
                 else
                 {
-                    Debug.Log(item.itemName + " 을 사용했습니다");
+                    Debug.Log(item.Adjective + item.ItemName + item.ItemPart + " 을 사용했습니다");
                     // Heal 메소드 짜야할 듯. -> HP스크립트에서 작업.
                     SetSlotCount(-1);
                 }
@@ -133,7 +132,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     private void EquipItem()
     {
         // 아이템을 장착하는 로직 구현
-        Debug.Log(item.itemName + "을 장착했습니다.");
+        Debug.Log(item.Adjective + item.ItemName + item.ItemPart + " 을 사용했습니다");
 
         // 여기에 장비 장착 관련 로직을 추가
         // 예: 캐릭터 모델에 스프라이트 변경, 스탯 업데이트 등
@@ -189,10 +188,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         if (item != null)
         {
             itemInfoPanel.SetActive(true);
-            itemNameText.text = item.itemModify + " " + item.itemName;
-            itemExplainImage.sprite = item.itemImage;
-            itemBackImage.sprite = item.colorImage;
-            itemRankImage.sprite = item.rankedImage;
+            itemNameText.text = item.Adjective + " " + item.ItemName + item.ItemPart;
+            itemExplainImage.sprite = item.EquipmentImage;
+            itemBackImage.sprite = item.ColorImage;
+            itemRankImage.sprite = item.RankImage;
 
             // 이미지 크기 조절
             itemExplainImage.GetComponent<RectTransform>().sizeDelta = new Vector2(110, 110);
@@ -200,10 +199,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             itemRankImage.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
 
             itemInfoText.text =
-                "등급 : " + item.itemRank + "\n" +
+                "등급 : " + item.Rank + "\n" +
                 "공격력 : " + item.itemAttack + "\n" +
                 "방어력 : " + item.itemDefence + "\n" +
-                "Code : " + item.itemCode;
+                "Code : " + item.ItemCode;
         }
     }
 

@@ -42,7 +42,7 @@ public class ItemManager : MonoBehaviour
         ItemData itemData = JsonConvert.DeserializeObject<ItemData>(ItemDatabase.text);
 
         // 랜덤 아이템 생성
-        int wantItemCount = 2;
+        int wantItemCount = 4;
         for (int i = 0; i < wantItemCount; ++i)
         {
             CreateRandomItem(itemData);
@@ -142,15 +142,16 @@ public class ItemManager : MonoBehaviour
 
         // 아이템 정보를 Item 스크립트 오브젝트로 생성
         Item item = ScriptableObject.CreateInstance<Item>();
-        item.itemName = randomItem.ItemName;
-        item.itemImage = randomItem.EquipmentImage;
         item.itemType = Item.ItemType.Equipment; // 이 부분은 필요에 따라 조정
-        item.itemCode = randomItem.ItemCode;
-        item.itemModify = randomItem.Adjective;
-        item.itemRank = randomItem.Rank;
-        item.equipmentImage = randomItem.EquipmentImage;
-        item.colorImage = randomItem.ColorImage;
-        item.rankedImage = randomItem.RankImage;
+        item.ItemCode = randomItem.ItemCode;
+        item.Adjective = randomItem.Adjective;
+        item.ItemName = randomItem.ItemName;
+        item.ItemPart = randomItem.ItemPart;
+        item.Rank = randomItem.Rank;
+        item.Color = randomItem.Color;
+        item.EquipmentImage = randomItem.EquipmentImage;
+        item.ColorImage = randomItem.ColorImage;
+        item.RankImage = randomItem.RankImage;
 
         // ItemPickUp 컴포넌트에 Item 정보 저장
         itemPickUp.item = item;
