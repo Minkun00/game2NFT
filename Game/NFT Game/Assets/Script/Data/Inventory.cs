@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour
         go_InventoryBase.SetActive(false);
     }
 
-    public void AcquireItem(Item _item, ItemList _itemList, int _count = 1)
+    public void AcquireItem(Item _item, int _count = 1)
     {
         if (Item.ItemType.Equipment != _item.itemType)
         {

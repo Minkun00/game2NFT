@@ -149,7 +149,7 @@ public class ActionController : MonoBehaviour
                 if (itemPickUp != null)
                 {
                     Debug.Log(itemPickUp.itemInfo.Adjective + " " + itemPickUp.itemInfo.ItemName + " " + itemPickUp.itemInfo.ItemPart + "를 획득했습니다 ");
-                    theInventory.AcquireItem(itemPickUp.item, itemPickUp.itemInfo); // 인벤토리에 아이템 추가
+                    theInventory.AcquireItem(itemPickUp.item); // 인벤토리에 아이템 추가
                     Destroy(hitInfo.transform.gameObject); // 아이템 게임 오브젝트 제거
                     InfoDisappear();
                 }
