@@ -1,109 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
-using static ColorImageLink;
 using System;
-using static ItemImageLink;
-using NUnit.Framework.Internal;
 
-// 아이템에 해당하는 이미지를 unity 에디터 내의 ItemManager 오브젝트에서 연결해줌.
-[System.Serializable]
-public class ItemImageLink
-{
-    public enum Type
-    {
-        Helmet,
-        Top,
-        Pants,
-        Shoes,
-        Sword
-    }
-    public enum Name
-    {
-        Absolute,
-        Knight,
-        Army
-    }
-
-    public Type itemPart;       // 아래 enum 참고
-    public Name itemName;             // Absolute, Army, Knight
-    public Sprite image;
-
-
-    public ItemImageLink(Name _name, Type _part, Sprite _image)
-    {
-        itemPart = _part;
-        itemName = _name;
-        image = _image;
-    }
-}
-
-// 배경 색 이미지 연동
-[System.Serializable]
-public class ColorImageLink
-{
-    public enum Color
-    {
-        Red,
-        Orange,
-        Yellow,
-        Green,
-        Skyblue,
-        Blue,
-        Purple
-    }
-
-    public Color color;
-    public Sprite image;
-
-    public ColorImageLink(Color _color, Sprite _image)
-    {
-        color = _color;
-        image = _image;
-    }
-}
-
-// 랭크 이미지 연동
-[System.Serializable]
-public class RankImageLink
-{
-    public enum Rank
-    {
-        Normal,
-        Epic,
-        Unique,
-        Legendary
-    }
-
-    public Rank rank;
-    public Sprite image;
-
-    public RankImageLink(Rank _rank, Sprite _image)
-    {
-        rank = _rank;
-        image = _image;
-    }
-}
-
-
-// 생성되는 모든 아이템의 리스트를 짜기 위한 class 및 생성자
-[System.Serializable]
-public class ItemList
-{
-    public string Adjective, ItemName, ItemPart, Color, Rank;
-
-    // 생성자 ItemList를 생성 할 때 형용사 등과 해당 이미지를 인자로 받아옴.
-    public ItemList(string _Adjective, string _ItemName, string _ItemPart, string _Color, string _Rank)
-    {
-        Adjective = _Adjective;
-        ItemName = _ItemName;
-        ItemPart = _ItemPart;
-        Color = _Color;
-        Rank = _Rank;
-    }
-}
-
-
+/**
+ *  JSON데이터를 키-밸류값으로 불러오기 위함.
+ *  Adjective, ItemName 등 가장 큰 타입의 키들을 가져오고,
+ *  해당하는 밸류인 <낭만있는, 101>... 등 가져옴
+ */
 [System.Serializable]
 public class ItemData
 {
@@ -114,33 +18,11 @@ public class ItemData
     public Dictionary<string, string> Rank;
 }
 
-[System.Serializable]
-public class CurItemList
-{
-    public string Adjective, ItemName, ItemPart, Color, Rank, ItemCode;
-    public Sprite EquipmentImage, ColorImage, RankImage;
-
-    public CurItemList(string _Adjective, string _ItemName, string _ItemPart, string _Color, string _Rank, string _ItemCode, Sprite _EquipmentImage, Sprite _ColorImage, Sprite _RankImage)
-    {
-        Adjective = _Adjective;
-        ItemName = _ItemName;
-        ItemPart = _ItemPart;
-        Color = _Color;
-        Rank = _Rank;
-        ItemCode = _ItemCode;
-        EquipmentImage = _EquipmentImage;
-        ColorImage = _ColorImage;
-        RankImage = _RankImage;
-    }
-}
 
 
-/*
- *  본격적으로 ItemData.json을 읽어오는 과정
- */
 public class ItemManager : MonoBehaviour
 {
-    public List<CurItemList> curItemList;
+    public List<ItemList> itemList;
     public TextAsset ItemDatabase;
 
     public List<ItemImageLink> EquipmentImages;
@@ -154,11 +36,18 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
+        /**
+         *  ItemData.json을 역직렬화하여 itemData에 저장한다. 
+         */
         ItemData itemData = JsonConvert.DeserializeObject<ItemData>(ItemDatabase.text);
 
         // 랜덤 아이템 생성
-        CreateRandomItem(itemData);
-        CreateItemSprite(curItemList[0]);
+        int wantItemCount = 2;
+        for (int i = 0; i < wantItemCount; ++i)
+        {
+            CreateRandomItem(itemData);
+            CreateItemSprite(itemList[i]);
+        }
     }
 
     private void CreateRandomItem(ItemData itemData)
@@ -223,7 +112,7 @@ public class ItemManager : MonoBehaviour
         }
 
         // 현재 아이템 리스트에 업데이트
-        curItemList.Add(new CurItemList(randomAdjective, randomItemName, randomItemPart, randomColor, randomRank, itemCode, itemSprite, colorSprite, rankSprite));
+        itemList.Add(new ItemList(randomAdjective, randomItemName, randomItemPart, randomColor, randomRank, itemCode, itemSprite, colorSprite, rankSprite));
 
         // 생성된 아이템 정보 로깅 또는 처리
         Debug.Log("Created Item: " + randomAdjective + " " + randomItemName + " " + randomItemPart);
@@ -237,7 +126,7 @@ public class ItemManager : MonoBehaviour
 
 
 
-    private GameObject CreateItemSprite(CurItemList randomItem)
+    private GameObject CreateItemSprite(ItemList randomItem)
     {
         // 선택된 아이템의 스프라이트를 게임 오브젝트로 생성
         Sprite[] sprites = new Sprite[] { randomItem.EquipmentImage, randomItem.ColorImage, randomItem.RankImage };

@@ -28,8 +28,8 @@ public class ActionController : MonoBehaviour
 
     /**
      *  아이템 근처에 왔을 때 안내하는 UI (Editor에서 연결)
-     *  actionText : z키를 누르라고 안내하는 텍스트
-     *  actionTextPanel : 텍스트의 배경 패널
+     *  @description actionText : z키를 누르라고 안내하는 텍스트
+     *  @description actionTextPanel : 텍스트의 배경 패널
      */
     [SerializeField]
     private TextMeshProUGUI actionText;
@@ -46,7 +46,7 @@ public class ActionController : MonoBehaviour
      *  플레이어가 바라보는 방향을 조절하기 위한 변수(Update함수 및 CanPickUp함수에서 조절)
      */
     private Vector2 facingDirection = Vector2.right;
-    
+
 
     void Update()
     {
@@ -149,7 +149,7 @@ public class ActionController : MonoBehaviour
                 if (itemPickUp != null)
                 {
                     Debug.Log(itemPickUp.itemInfo.Adjective + " " + itemPickUp.itemInfo.ItemName + " " + itemPickUp.itemInfo.ItemPart + "를 획득했습니다 ");
-                    theInventory.AcquireItem(itemPickUp.item); // 인벤토리에 아이템 추가
+                    theInventory.AcquireItem(itemPickUp.item, itemPickUp.itemInfo); // 인벤토리에 아이템 추가
                     Destroy(hitInfo.transform.gameObject); // 아이템 게임 오브젝트 제거
                     InfoDisappear();
                 }

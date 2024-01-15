@@ -29,17 +29,17 @@ public class Exchange : MonoBehaviour
             exchangeUI.SetActive(!isActive); // UI의 활성화 상태를 토글합니다.
 
             // exchangeUI가 활성화될 때 curItemNameList의 항목들을 표시합니다.
-            if (itemManager.curItemList.Count > 0)
+            if (itemManager.itemList.Count > 0)
             {
                 for (int i = 0; i < ItemListUp.Length; i++)
                 {
-                    if (i < itemManager.curItemList.Count)
+                    if (i < itemManager.itemList.Count)
                     {
                         int number = i + 1;
-                        string itemInfo = "[" + itemManager.curItemList[i].Rank + "] " + itemManager.curItemList[i].Adjective + " " + itemManager.curItemList[i].ItemName + " " + itemManager.curItemList[i].ItemPart;
+                        string itemInfo = "[" + itemManager.itemList[i].Rank + "] " + itemManager.itemList[i].Adjective + " " + itemManager.itemList[i].ItemName + " " + itemManager.itemList[i].ItemPart;
                         ItemListUp[i].text = number + ". " + itemInfo;
                         BtnListUP[i].onClick.RemoveAllListeners();
-                        string curItemCode = itemManager.curItemList[i].ItemCode;
+                        string curItemCode = itemManager.itemList[i].ItemCode;
                         BtnListUP[i].onClick.AddListener(() => copyCode(curItemCode, itemInfo));
                     }
                     else
