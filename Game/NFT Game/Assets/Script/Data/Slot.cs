@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System;
 
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -46,7 +47,26 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         itemInvenBack.sprite = item.ColorImage;
         itemInvenRank.sprite = item.RankImage;
 
-        //itemImage.GetComponent<RectTransform>().sizeDelta = new Vector2(70, 70);
+        // GameObject에서 EquipmentItem 컴포넌트가 이미 있는지 확인
+        equipmentItem = GetComponent<EquipmentItem>();
+        if (equipmentItem == null)
+        {
+            // GameObject에 EquipmentItem 컴포넌트가 없으면 추가
+            equipmentItem = gameObject.AddComponent<EquipmentItem>();
+        }
+
+        equipmentItem.equipmentSprite = itemImage.sprite; // EquipmentImage 설정
+
+        // ItemPart 문자열을 EquipmentType 열거형으로 변환
+        if (Enum.TryParse(item.ItemPart, true, out EquipmentType parsedPart))
+        {
+            equipmentItem.equipmentPart = parsedPart;
+        }
+        else
+        {
+            Debug.LogError("Invalid ItemPart: " + item.ItemPart);
+        }
+
 
         if (item.itemType != Item.ItemType.Equipment)
         {
@@ -128,15 +148,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         }
     }
 
-
-    private void EquipItem()
-    {
-        // 아이템을 장착하는 로직 구현
-        Debug.Log(item.Adjective + item.ItemName + item.ItemPart + " 을 사용했습니다");
-
-        // 여기에 장비 장착 관련 로직을 추가
-        // 예: 캐릭터 모델에 스프라이트 변경, 스탯 업데이트 등
-    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
