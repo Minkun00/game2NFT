@@ -125,6 +125,5 @@ public class Enemy : MonoBehaviour
         anim.SetBool("isAttacking", false);
 
     }
-    //
 
 }

@@ -9,7 +9,10 @@ public class Boss : MonoBehaviour
     public Slider hpslider;
     public float currentHP;
     public float currentBarrier;
-    
+    public bool Isattacking2;
+    public bool Isattacking4_1;
+    public bool Isattacking4_2;
+
     float max = 100f;
 
     Animator anim;
@@ -25,24 +28,27 @@ public class Boss : MonoBehaviour
         currentBarrier = max;
         currentHP = max;
 
+        Isattacking2 = false;
+        Isattacking4_2 = false;
+        Isattacking4_1 = false;
+
         anim.SetBool("BossWalk", false);
         StartCoroutine("Attack1");
-        razer.GetComponent<BoxCollider>().enabled = false;
+
     }
 
     void Update()
     {
         barrierslider.value = currentBarrier / max;
         hpslider.value = currentHP / max;
-        
-        if(currentHP<=0)
+
+        if (currentHP <= 0)
         {
             StopCoroutine("Attack1");
         }
-
     }
-
-    public void BarrierHurt(float damage)
+        
+    private void BarrierHurt(float damage)
     {
         currentBarrier -= damage;
         if(currentBarrier <= 0)
@@ -60,48 +66,46 @@ public class Boss : MonoBehaviour
             anim.SetTrigger("BossDied");
             //Show Game End Scene 
         }
-    }
 
-    public void Idle()
-    {
-        StopCoroutine("Razer");
-    }
-
-    public void outOfRange()
-    {
-        StopCoroutine("ShortRazer");
     }
 
     IEnumerator Attack1()
     {
         anim.SetTrigger("BossAttack1");
+        Invoke("Bullet", 0.67f);
+        yield return new WaitForSeconds(2f);
+        StartCoroutine("Attack2");
+    }
+
+    void Bullet()
+    {
+        GameObject.Find("Bullet").GetComponent<Bullet>().Fire();
+    }
+
+    IEnumerator Attack2()
+    {
+        Isattacking2 = true;
+        anim.SetTrigger("BossAttack2");
+        yield return new WaitForSeconds(1.5f);
+        Isattacking2 = false;
+        StartCoroutine("Attack4");
+    }
+
+
+    IEnumerator Attack4()
+    {
+        Isattacking4_1 = true;
+        anim.SetTrigger("BossAttack4");
+        Invoke("wait", 0.07f);
         yield return new WaitForSeconds(3f);
+        Isattacking4_2 = false;
         StartCoroutine("Attack1");
     }
 
-    public void Attack2()
+    void wait()
     {
-        StartCoroutine(Razer());
+        Isattacking4_1 = false;
+        Isattacking4_2 = true;
     }
 
-    IEnumerator Razer()
-    {
-        Debug.Log("razer");
-        anim.SetTrigger("BossAttack2");
-        razer.GetComponent<BoxCollider>().enabled = true;
-        yield return new WaitForSeconds(10f);
-        StartCoroutine("Razer");
-    }
-
-    public void Attack4()
-    {
-        StartCoroutine(ShortRazer());
-    }
-
-    IEnumerator ShortRazer()
-    {
-        anim.SetTrigger("BossAttack4");
-        yield return new WaitForSeconds(5f);
-        StartCoroutine("ShortRazer");
-    }
 }

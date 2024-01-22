@@ -184,6 +184,26 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public void Hurt0(float damage)
+    {
+        if (!isHurt)
+        {
+            isHurt = true;
+            health -= damage;
+            if (health <= 0)
+            {
+                GameManager.Instance.GameOver();
+                Debug.Log("GAMEOVER");
+            }
+            else
+            {
+                StartCoroutine(alphablink());
+                StartCoroutine(HurtRoutine());
+            }
+        }
+
+    }
+
     public void Hurt(float damage, Vector2 pos)
     {
         if (!isHurt)
