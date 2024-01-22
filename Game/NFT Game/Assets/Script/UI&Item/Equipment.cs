@@ -4,14 +4,14 @@ using UnityEngine;
 
 public enum EquipmentType
 {
-    Helmet, Top, Bottom, Shoes, Weapon
+    Helmet, Top, Pants, Shoes, Sword
 }
 
 [System.Serializable]
-public class EquipmentItem : Item
+public class EquipmentItem : MonoBehaviour
 {
     public Sprite equipmentSprite;
-    public EquipmentType equipmentType;
+    public EquipmentType equipmentPart;
 }
 
 
@@ -25,7 +25,7 @@ public class Character : MonoBehaviour
 
     public void Equip(EquipmentItem equipment)
     {
-        switch (equipment.equipmentType)
+        switch (equipment.equipmentPart)
         {
             case EquipmentType.Helmet:
                 helmetRenderer.sprite = equipment.equipmentSprite;
@@ -33,13 +33,13 @@ public class Character : MonoBehaviour
             case EquipmentType.Top:
                 topRenderer.sprite = equipment.equipmentSprite;
                 break;
-            case EquipmentType.Bottom:
+            case EquipmentType.Pants:
                 bottomRenderer.sprite = equipment.equipmentSprite;
                 break;
             case EquipmentType.Shoes:
                 shoesRenderer.sprite = equipment.equipmentSprite;
                 break;
-            case EquipmentType.Weapon:
+            case EquipmentType.Sword:
                 weaponRenderer.sprite = equipment.equipmentSprite;
                 break;
         }
@@ -55,13 +55,13 @@ public class Character : MonoBehaviour
             case EquipmentType.Top:
                 topRenderer.sprite = null;
                 break;
-            case EquipmentType.Bottom:
+            case EquipmentType.Pants:
                 bottomRenderer.sprite = null;
                 break;
             case EquipmentType.Shoes:
                 shoesRenderer.sprite = null;
                 break;
-            case EquipmentType.Weapon:
+            case EquipmentType.Sword:
                 weaponRenderer.sprite = null;
                 break;
         }
