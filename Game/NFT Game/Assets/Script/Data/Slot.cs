@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using System;
+using static UnityEditor.Progress;
 
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -46,26 +47,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         itemImage.sprite = item.EquipmentImage;
         itemInvenBack.sprite = item.ColorImage;
         itemInvenRank.sprite = item.RankImage;
-
-        // GameObject에서 EquipmentItem 컴포넌트가 이미 있는지 확인
-        equipmentItem = GetComponent<EquipmentItem>();
-        if (equipmentItem == null)
-        {
-            // GameObject에 EquipmentItem 컴포넌트가 없으면 추가
-            equipmentItem = gameObject.AddComponent<EquipmentItem>();
-        }
-
-        equipmentItem.equipmentSprite = itemImage.sprite; // EquipmentImage 설정
-
-        // ItemPart 문자열을 EquipmentType 열거형으로 변환
-        if (Enum.TryParse(item.ItemPart, true, out EquipmentType parsedPart))
-        {
-            equipmentItem.equipmentPart = parsedPart;
-        }
-        else
-        {
-            Debug.LogError("Invalid ItemPart: " + item.ItemPart);
-        }
 
 
         if (item.itemType != Item.ItemType.Equipment)
@@ -123,8 +104,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     private float lastClickTime = 0f; // 마지막 클릭 시간을 저장
     private const float doubleClickTime = 0.2f; // 더블 클릭 간격 (초)
-    public Character playerCharacter; // Player 캐릭터 참조
-    public EquipmentItem equipmentItem; // 이 슬롯에 할당된 장비 아이템
+    public ItemSwap itemSwap; // Player 캐릭터 참조
+
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -134,7 +116,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             {
                 if (item.itemType == Item.ItemType.Equipment)
                 {
-                    playerCharacter.Equip(equipmentItem); // 아이템 장착
+                    itemSwap.Equip(item.EquipmentImage, item.ItemPart, item.ColorImage); // 아이템 장착
                 }
 
                 else
@@ -203,6 +185,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             itemExplainImage.sprite = item.EquipmentImage;
             itemBackImage.sprite = item.ColorImage;
             itemRankImage.sprite = item.RankImage;
+
 
             // 이미지 크기 조절
             itemExplainImage.GetComponent<RectTransform>().sizeDelta = new Vector2(110, 110);

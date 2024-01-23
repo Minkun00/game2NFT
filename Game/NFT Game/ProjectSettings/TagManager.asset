@@ -28,7 +28,7 @@ TagManager:
   - Item
   - Ground
   - Portal
-  - 
+  - EquipedItem
   - 
   - 
   - 
@@ -54,4 +54,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4191950801
+    locked: 0
+  - name: EquipedItem
+    uniqueID: 2726673639
     locked: 0
