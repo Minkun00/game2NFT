@@ -50,7 +50,7 @@ public class MainCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        float yOffset = 1.0f; // 위를 향하는 정도를 조절합니다. 이 값을 증가시키면 카메라가 더 위를 향하게 됩니다.
+        float yOffset = 3.0f; // 위를 향하는 정도를 조절합니다. 이 값을 증가시키면 카메라가 더 위를 향하게 됩니다.
         Vector3 targetPosition = new Vector3(target.position.x, target.position.y + yOffset, target.position.z);
 
         // 카메라가 뒤따라가는 느낌의 이동

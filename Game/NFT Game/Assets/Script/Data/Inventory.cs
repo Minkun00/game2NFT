@@ -49,7 +49,7 @@ public class Inventory : MonoBehaviour
             inventoryActivated = true;
             OpenInventory();
         }
-        else if (Input.GetKeyDown(KeyCode.I) && inventoryActivated)
+        else if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape)) && inventoryActivated)
         {
             inventoryActivated = false;
             CloseInventory();
