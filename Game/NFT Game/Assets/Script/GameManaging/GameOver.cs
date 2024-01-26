@@ -22,6 +22,8 @@ public class GameOver : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("Town");
+            //캐릭터 불러오기 필요
+
         }
     }
 }

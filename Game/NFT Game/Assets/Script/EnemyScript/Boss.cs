@@ -48,7 +48,7 @@ public class Boss : MonoBehaviour
         }
     }
         
-    private void BarrierHurt(float damage)
+    public void BarrierHurt(float damage)
     {
         currentBarrier -= damage;
         if(currentBarrier <= 0)

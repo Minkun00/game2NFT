@@ -88,6 +88,7 @@ public class Enemy : MonoBehaviour
     Color halfA = new Color(1, 1, 1, 0.5f);
     Color fullA = new Color(1, 1, 1, 1);
 
+    //enemy hurt
     public void Hurt(float damage)
     {
         currentHP -= damage;

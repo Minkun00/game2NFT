@@ -4,6 +4,7 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -162,7 +163,7 @@ public class PlayerMove : MonoBehaviour
         //finish 태그에 닿았을 시 게임오버
         if (collision.CompareTag("Finish"))
         {
-            GameManager.Instance.GameOver();
+            SceneManager.LoadScene("GameOver");
         }
         else if(collision.CompareTag("Damage"))
         {
@@ -178,12 +179,14 @@ public class PlayerMove : MonoBehaviour
         {
             if(collision.gameObject.tag == "Enemy")
             {
+                Debug.Log("enemy");
                 float e_damage = enemyScript.damage;
                 Hurt(e_damage, collision.transform.position);
             }
         }
     }
 
+    //attacked by boss
     public void Hurt0(float damage)
     {
         if (!isHurt)
@@ -192,8 +195,8 @@ public class PlayerMove : MonoBehaviour
             health -= damage;
             if (health <= 0)
             {
-                GameManager.Instance.GameOver();
-                Debug.Log("GAMEOVER");
+                anim.SetTrigger("Death");
+                Invoke("LoadGameOver", 0.3f);
             }
             else
             {
@@ -213,7 +216,8 @@ public class PlayerMove : MonoBehaviour
 
             if (health <= 0)
             {
-                GameManager.Instance.GameOver();
+                anim.SetTrigger("Death");
+                Invoke("LoadGameOver", 0.3f);
             }
             else
             {
@@ -236,6 +240,13 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+
+    void LoadGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+        Debug.Log("GAMEOVER");
+    }
+
 
     IEnumerator Knockback(float x_dir, float y_dir) // 피격 시 밀쳐지는 효과
     {
