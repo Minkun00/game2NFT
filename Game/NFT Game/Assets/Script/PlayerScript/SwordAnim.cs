@@ -9,18 +9,16 @@ public class SwordAnim : MonoBehaviour
         //enemy hurt by player
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("enemy");
             collision.GetComponent<Enemy>().Hurt(10f);
         }
         //boss hurt by player
-        else if (collision.CompareTag("Boss"))
+        else if (collision.CompareTag("Barrier"))
         {
-            Debug.Log("barrier");
-            collision.GetComponent<Boss>().BarrierHurt(7f);
+            GameObject.Find("Boss").GetComponent<Boss>().BarrierHurt(7f);
+
         }
         else if (collision.CompareTag("Boss") && GameObject.Find("Barrier") == null)
         {
-            Debug.Log("boss");
             collision.GetComponent<Boss>().Hurt(5f);
         }
 

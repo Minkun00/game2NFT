@@ -244,7 +244,6 @@ public class PlayerMove : MonoBehaviour
     void LoadGameOver()
     {
         SceneManager.LoadScene("GameOver");
-        Debug.Log("GAMEOVER");
     }
 
 

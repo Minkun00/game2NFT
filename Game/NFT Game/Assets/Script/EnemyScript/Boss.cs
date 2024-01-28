@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -41,7 +43,6 @@ public class Boss : MonoBehaviour
     {
         barrierslider.value = currentBarrier / max;
         hpslider.value = currentHP / max;
-
         if (currentHP <= 0)
         {
             StopCoroutine("Attack1");
@@ -63,10 +64,21 @@ public class Boss : MonoBehaviour
         anim.SetTrigger("BossAttacked");
         if(currentHP <= 0)
         {
-            anim.SetTrigger("BossDied");
+            StopCoroutine("Attack1");
+            StopCoroutine("Attack2");
+            StopCoroutine("Attack4");
+            anim.SetBool("BossDied",true);
+            Destroy(GameObject.Find("Bullet"));
+            Destroy(gameObject.GetComponent<Rigidbody2D>());
+            Invoke("DestroyBoss", 2f);
             //Show Game End Scene 
         }
 
+    }
+
+    void DestroyBoss()
+    {
+        SceneManager.LoadScene("EndScene");
     }
 
     IEnumerator Attack1()
