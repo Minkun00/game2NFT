@@ -14,8 +14,6 @@ public class Exchange : MonoBehaviour
     public TextMeshProUGUI[] ItemListUp;
     public Button[] BtnListUP;
 
-    public TextMeshProUGUI InfoTextUI; // 판매 알림을 표시할 Text UI를 연결해주세요. (~~아이템을 판매 동의?)
-    public GameObject sellPanel; // 판매 확인 알림 패널을 연결해주세요.
 
     public TextMeshProUGUI copiedTextUI; // 복사 알림을 표시할 Text UI를 연결해주세요.
     public GameObject copiedPanel; // 복사 알림 패널을 연결해주세요.
