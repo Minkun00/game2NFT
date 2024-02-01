@@ -14,12 +14,12 @@ public class PlayerRespawn : MonoBehaviour
 
     IEnumerator InitializePlayerRespawn()
     {
-        yield return new WaitUntil(() => GlobalControl.Instance.GameOverPlayer != null);
-        GlobalControl.Instance.GameOverPlayer.SetActive(true);
-        GlobalControl.Instance.GameOverPlayer = GameObject.FindWithTag("Player");
+        yield return new WaitUntil(() => GameManager.Instance.GameOverPlayer != null);
+        GameManager.Instance.GameOverPlayer.SetActive(true);
+        GameManager.Instance.GameOverPlayer = GameObject.FindWithTag("Player");
 
-        yield return new WaitUntil(() => GlobalControl.Instance.GameOverPlayer.GetComponent<PlayerMove>() != null);
-        thePlayer = GlobalControl.Instance.GameOverPlayer.GetComponent<PlayerMove>();
+        yield return new WaitUntil(() => GameManager.Instance.GameOverPlayer.GetComponent<PlayerMove>() != null);
+        thePlayer = GameManager.Instance.GameOverPlayer.GetComponent<PlayerMove>();
         
         theCamera.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10f);
         thePlayer.transform.position = this.transform.position;

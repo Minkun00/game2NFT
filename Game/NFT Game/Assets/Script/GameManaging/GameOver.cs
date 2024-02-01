@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
         // 플레이어 오브젝트를 찾아서 GlobalControl 인스턴스에 저장
         if (playerObject != null)
         {
-            GlobalControl.Instance.GameOverPlayer = playerObject;
+            GameManager.Instance.GameOverPlayer = playerObject;
             playerObject.SetActive(false);
         }
     }

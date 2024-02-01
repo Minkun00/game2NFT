@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private Vector3 initialPosition;
     private float health;
+    public GameObject GameOverPlayer;
+
     //private int score; //스코어 사용할 경우 
 
     private void Awake()
