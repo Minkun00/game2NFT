@@ -1,0 +1,26 @@
+{
+    "map": {
+        "Town": {
+            "portal_1": "CaveRoad1"
+        },
+        "CaveRoad1": {
+            "portal_1": "Town",
+            "portal_2": "CaveRoad2"
+        },
+        "CaveRoad2": {
+            "portal_1": "CaveRoad1",
+            "portal_2": "Hidden",
+            "portal_3": "InCave"
+        },
+        "InCave": {
+            "portal_1": "CaveRoad2",
+            "portal_2": "BossRoom"
+        },
+        "Hidden": {
+            "portal_1": "CaveRoad2"
+        },
+        "BossRoom": {
+            "portal_1": "InCave"
+        }
+    }
+}

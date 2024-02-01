@@ -22,6 +22,8 @@ public class ItemData
 
 public class ItemManager : MonoBehaviour
 {
+    static public ItemManager instance;
+
     public List<ItemList> itemList;
     public TextAsset ItemDatabase;
 
@@ -31,7 +33,13 @@ public class ItemManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

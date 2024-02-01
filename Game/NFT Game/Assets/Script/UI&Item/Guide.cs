@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Guide : MonoBehaviour
 {
-    public GameObject guidePanel; // °¡ÀÌµå ÆÐ³ÎÀ» ¿¬°áÇØÁÖ¼¼¿ä.
+
+    public UIManager uiManager;
+
+    public GameObject guidePanel; // ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.
 
 
     private void OnMouseDown()
     {
-        if (guidePanel != null)
+        if (guidePanel != null && !uiManager.exchangeUI.activeSelf && !uiManager.completePanel.activeSelf)
         {
             bool isActive = guidePanel.activeSelf;
-            guidePanel.SetActive(!isActive); // UIÀÇ È°¼ºÈ­ »óÅÂ¸¦ Åä±ÛÇÕ´Ï´Ù.
+            guidePanel.SetActive(!isActive); // UIï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         }
     }
 

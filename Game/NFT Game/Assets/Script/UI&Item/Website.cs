@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Website : MonoBehaviour
 {
+    public UIManager uiManager;
+
     public GameObject confirmPanel; // 확인 알림 패널을 연결해주세요.
     public GameObject loadingPanel; // 예 눌렀을 때 나오는 화면
     public GameObject completePanel;
@@ -30,7 +32,7 @@ public class Website : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (confirmPanel != null)
+        if ((confirmPanel != null) && !uiManager.exchangeUI.activeSelf && !uiManager.guidePanel.activeSelf)
         {
             bool isActive = confirmPanel.activeSelf;
             confirmPanel.SetActive(!isActive); // UI의 활성화 상태를 토글합니다.

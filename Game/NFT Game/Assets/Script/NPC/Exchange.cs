@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Exchange : MonoBehaviour
 {
+    public UIManager uiManager;
+
     public GameObject exchangeUI; // Exchange UI를 연결해주세요.
 
     public ActionController actionController;
@@ -27,7 +29,7 @@ public class Exchange : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (exchangeUI != null)
+        if (exchangeUI != null && !uiManager.guidePanel.activeSelf && !uiManager.completePanel.activeSelf)
         {
             bool isActive = exchangeUI.activeSelf;
             exchangeUI.SetActive(!isActive); // UI의 활성화 상태를 토글합니다.
