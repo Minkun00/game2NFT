@@ -12,6 +12,7 @@ public class Exchange : MonoBehaviour
 
     public ActionController actionController;
     public ItemManager itemManager;
+    public Inventory inventory;
 
     public TextMeshProUGUI[] ItemListUp;
     public Button[] BtnListUP;
@@ -34,28 +35,31 @@ public class Exchange : MonoBehaviour
             bool isActive = exchangeUI.activeSelf;
             exchangeUI.SetActive(!isActive); // UI의 활성화 상태를 토글합니다.
 
-            // exchangeUI가 활성화될 때 curItemNameList의 항목들을 표시합니다.
-            if (itemManager.itemList.Count > 0)
+            // CurItemList의 항목들을 표시합니다.
+            if (inventory.CurItemList.Count > 0)
             {
                 for (int i = 0; i < ItemListUp.Length; i++)
                 {
-                    if (i < itemManager.itemList.Count)
+                    if (i < inventory.CurItemList.Count)
                     {
                         int number = i + 1;
-                        string itemInfo = "[" + itemManager.itemList[i].Rank + "] " + itemManager.itemList[i].Adjective + " " + itemManager.itemList[i].ItemName + " " + itemManager.itemList[i].ItemPart;
+                        CurrentItemList currentItem = inventory.CurItemList[i];
+                        string itemInfo = "[" + currentItem.Rank + "] " + currentItem.Adjective + " " + currentItem.ItemName + " " + currentItem.ItemPart;
                         ItemListUp[i].text = number + ". " + itemInfo;
                         BtnListUP[i].onClick.RemoveAllListeners();
-                        string curItemCode = itemManager.itemList[i].ItemCode;
+                        string curItemCode = currentItem.ItemCode;
                         BtnListUP[i].onClick.AddListener(() => copyCode(curItemCode, itemInfo));
                     }
                     else
                     {
                         ItemListUp[i].text = "";
+                        BtnListUP[i].gameObject.SetActive(false); // 비활성화 버튼
                     }
                 }
             }
         }
     }
+
 
     private void Update()
     {

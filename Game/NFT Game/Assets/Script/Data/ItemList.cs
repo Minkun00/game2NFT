@@ -21,3 +21,5 @@ public class ItemList
         RankImage = _RankImage;
     }
 }
+
+
