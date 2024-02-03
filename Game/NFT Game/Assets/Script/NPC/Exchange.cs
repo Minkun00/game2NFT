@@ -14,6 +14,7 @@ public class Exchange : MonoBehaviour
     public ItemManager itemManager;
     public Inventory inventory;
 
+    public GameObject exchangeGrid;
     public TextMeshProUGUI[] ItemListUp;
     public Button[] BtnListUP;
 
@@ -25,6 +26,27 @@ public class Exchange : MonoBehaviour
     private void Start()
     {
         copiedPanel.SetActive(false);
+
+        for (int i = 0; i < exchangeGrid.transform.childCount; i++)
+        {
+            // Panel (i) 오브젝트를 찾습니다.
+            GameObject panel = exchangeGrid.transform.GetChild(i).gameObject;
+
+            // item 오브젝트 (TextMeshProUGUI 컴포넌트를 가진 오브젝트)를 찾아 ItemListUp에 할당합니다.
+            TextMeshProUGUI itemText = panel.transform.Find("item").GetComponent<TextMeshProUGUI>();
+            if (itemText != null && i < ItemListUp.Length)
+            {
+                ItemListUp[i] = itemText;
+            }
+
+            // 해당 Panel 내의 Button 컴포넌트를 찾아 BtnListUP에 할당합니다.
+            // 예를 들어, 버튼이 "button"이라는 이름으로 Panel 내에 있다고 가정합니다.
+            Button button = panel.transform.Find("CopyBtn").GetComponent<Button>();
+            if (button != null && i < BtnListUP.Length)
+            {
+                BtnListUP[i] = button;
+            }
+        }
     }
 
 
@@ -35,26 +57,23 @@ public class Exchange : MonoBehaviour
             bool isActive = exchangeUI.activeSelf;
             exchangeUI.SetActive(!isActive); // UI의 활성화 상태를 토글합니다.
 
-            // CurItemList의 항목들을 표시합니다.
-            if (inventory.CurItemList.Count > 0)
+            // CurItemList의 크기에 따라 UI 요소를 활성화 또는 비활성화합니다.
+            for (int i = 0; i < inventory.CurItemList.Count; i++)
             {
-                for (int i = 0; i < ItemListUp.Length; i++)
+                if (i < inventory.CurItemList.Count)
                 {
-                    if (i < inventory.CurItemList.Count)
-                    {
-                        int number = i + 1;
-                        CurrentItemList currentItem = inventory.CurItemList[i];
-                        string itemInfo = "[" + currentItem.Rank + "] " + currentItem.Adjective + " " + currentItem.ItemName + " " + currentItem.ItemPart;
-                        ItemListUp[i].text = number + ". " + itemInfo;
-                        BtnListUP[i].onClick.RemoveAllListeners();
-                        string curItemCode = currentItem.ItemCode;
-                        BtnListUP[i].onClick.AddListener(() => copyCode(curItemCode, itemInfo));
-                    }
-                    else
-                    {
-                        ItemListUp[i].text = "";
-                        BtnListUP[i].gameObject.SetActive(false); // 비활성화 버튼
-                    }
+                    CurrentItemList currentItem = inventory.CurItemList[i];
+                    string itemInfo = "[" + currentItem.Rank + "] " + currentItem.Adjective + " " + currentItem.ItemName + " " + currentItem.ItemPart;
+                    ItemListUp[i].text = (i + 1) + ". " + itemInfo;
+
+                    BtnListUP[i].onClick.RemoveAllListeners();
+                    string curItemCode = currentItem.ItemCode;
+                    BtnListUP[i].onClick.AddListener(() => copyCode(curItemCode, itemInfo));
+                }
+                else
+                {
+                    ItemListUp[i].gameObject.SetActive(false); // 비활성화
+                    BtnListUP[i].gameObject.SetActive(false); // 비활성화
                 }
             }
         }
