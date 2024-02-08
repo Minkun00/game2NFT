@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +40,7 @@ public class Loading : MonoBehaviour
             }
         }
 
-        else  // Startȭ�鿡�� �Ѿ ��
+        else  // StartÈ­¸é¿¡¼­ ³Ñ¾î°¥ ¶§
         {
             AsyncOperation operation = SceneManager.LoadSceneAsync("Town");
             operation.allowSceneActivation = false;
@@ -65,6 +65,6 @@ public class Loading : MonoBehaviour
             }
         }
 
-        
+
     }
 }

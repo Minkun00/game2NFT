@@ -14,6 +14,7 @@ public class GlobalControl : MonoBehaviour
     public GameObject playerObjectThird;
     public GameObject playerObjectFourth;
 
+    public GameObject GameOverPlayer;
 
 
     void Awake()
@@ -29,4 +30,3 @@ public class GlobalControl : MonoBehaviour
         }
     }
 }
-

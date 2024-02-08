@@ -31308,12 +31308,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1904800847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0262d2e994bf0c4a972fae88a1e967b, type: 3}
+  m_Script: {fileID: 11500000, guid: 51f81db89397a304f9581e44e872d72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFile: {fileID: 4900000, guid: 29464ce7214acb84880993d9ad2fb85e, type: 3}
-  currentLocation: Town
-  nextLocationKey: portal_1
+  NextSceneName: CaveRoad1
+  currentStage: 0
 --- !u!1 &1922268385
 GameObject:
   m_ObjectHideFlags: 0
