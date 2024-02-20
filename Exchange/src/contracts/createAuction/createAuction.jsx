@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './createAuction.css';
-
+import decryptCode from './getDecryptedCode';
 import Caver from 'caver-js';
 
 /**
@@ -19,6 +19,7 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
   const [tokenBalance, setTokenBalance] = useState(0);  // 총 NFT 소유 수
 
   const [loading, setLoading] = useState(false);
+  const { decryptedCode, decryption } = decryptCode();
 
   /**
    * @description 어떤 NFT 선택했는지 저장
@@ -102,13 +103,15 @@ export default function CreateAuction({ nftContractABI, marcketContractABI, nftC
       const tokenURI = await nftContract.methods.tokenURI(selectedTokenId).call();
       const metadata = await fetchMetadata(tokenURI);
       try {
+        const _decryptedCode = await decryption(metadata.code);
         // NFT burn
         await nftContract.methods.burn(selectedTokenId).send({
           from: window.klaytn.selectedAddress,
           gas: '2000000',
         });
         // code 값 alert를 통해 보여줌(암호/복호화 과정 없는 상태임)
-        alert(`Code is : ${metadata.code}`);
+        alert(`Code is : ${_decryptedCode}`);
+        loadNFTs();
       } catch (e) {
         console.log(`Error burnNFT : ${e}`);
       }

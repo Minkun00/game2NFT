@@ -1,6 +1,6 @@
 require("dotenv").config();
 const itemABI = require('./itemCode.json').Code;  // img는 json으로 code값 기반으로 분류
-
+const cryption = require('./hash'); // en/decrypt javascript code
 const axios = require("axios");
 const FormData = require("form-data");
 const fs = require("fs");
@@ -12,12 +12,18 @@ const { ACCESS_KEY, SECRET_ACCESS_KEY } = process.env;
 /**
  * @description Main function
  * @param {String} code item code
- * @param {String} _name item name
- * @param {String} _description description of item
+ * @param {String} action encrypt, decrypt
  * @returns 
  */
-const usePinata = async (code, _name, _description) => {   
-  console.log(`got code : ${code}`);
+const usePinata = async (code, action) => {   
+  console.log(`got code : ${code} | mode : ${action}`);
+
+  if (action == 'decrypt') {
+    const decryptedCode = cryption.decryptCode(code);
+    console.log(`decryptedCode : ${decryptedCode}`);
+    console.log('-------------------------');
+    return {decryptedCode};
+  }
 
   // code 분해 -> 이미지 합성을 위함
   const codeObj = await disolveCode(code);
@@ -52,12 +58,12 @@ const usePinata = async (code, _name, _description) => {
   const imgUrl = await uploadImgToPinata(formData);
   console.log("Pinata에 이미지 저장이 완료되었습니다. : ", imgUrl);
 
+  const encryptedCode = cryption.encryptCode(code);
   // metadata 작성
   const metaData = {
     name: _itemName,
-    description: _description,
     image: imgUrl,
-    code: `${code}`
+    code: `${encryptedCode}`
   };
 
   // metadata도 Pinata를 통해 ipfs에 upload

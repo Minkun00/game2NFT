@@ -12,8 +12,6 @@ const caver = new Caver(window.klaytn);
 export default function ItemToImg({ nftContractABI, nftContractAddress }) {
   // params for generateImage
   const [code, setCode] = useState('');
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
 
   const [imgLoaded, setImgLoaded] = useState(false);
   const { imgUri, tokenUri, generateImage } = useImageGenerator();
@@ -27,7 +25,7 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
    */
   const handleSubmit = async () => {
     try {
-      await generateImage(code, name, description);
+      await generateImage(code);
     } catch(error) {
       console.log('Error generating image: ', error);
       alert('Error generating NFT. Might be wrong code.');
@@ -74,18 +72,6 @@ export default function ItemToImg({ nftContractABI, nftContractAddress }) {
           placeholder="Code"
           value={code}
           onChange={e => setCode(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Description"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
         />
       
         {imgUri && (
