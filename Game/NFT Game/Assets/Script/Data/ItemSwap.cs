@@ -36,6 +36,15 @@ public class ItemSwap : MonoBehaviour
             case "Sword":
                 weaponRenderer.sprite = itemsprite;
                 weaponRenderer.transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
+
+                // SwordAnim 컴포넌트가 없는 경우에만 추가
+                if (weaponRenderer.gameObject.GetComponent<SwordAnim>() == null)
+                {
+                    weaponRenderer.gameObject.AddComponent<SwordAnim>();
+                }
+
+                AdjustSwordAngle(itemsprite.name);
+                // 필요한 경우 여기에 추가적인 SwordAnim 설정 코드를 추가할 수 있습니다.
                 break;
         }
 
@@ -43,5 +52,24 @@ public class ItemSwap : MonoBehaviour
         {
             equipmentUIslot.SetEquipmentImage(itempart, itemsprite, colorsprite);
         }
+    }
+    private void AdjustSwordAngle(string swordType)
+    {
+        Quaternion newRotation = Quaternion.identity;
+
+        switch (swordType)
+        {
+            case "ArmySword":
+                newRotation = Quaternion.Euler(0, 0, 45); // 예시 각도
+                break;
+            case "IronSword":
+                newRotation = Quaternion.Euler(0, 0, 30); // 예시 각도
+                break;
+            case "KnightSword":
+                newRotation = Quaternion.Euler(0, 0, 15); // 예시 각도
+                break;
+        }
+
+        weaponRenderer.transform.rotation = newRotation;
     }
 }

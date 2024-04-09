@@ -50,7 +50,7 @@ public class ItemManager : MonoBehaviour
         ItemData itemData = JsonConvert.DeserializeObject<ItemData>(ItemDatabase.text);
 
         // 랜덤 아이템 생성
-        int wantItemCount = 3;
+        int wantItemCount = 8;
         for (int i = 0; i < wantItemCount; ++i)
         {
             CreateRandomItem(itemData);

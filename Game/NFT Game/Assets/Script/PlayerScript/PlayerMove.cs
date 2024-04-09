@@ -73,17 +73,13 @@ public class PlayerMove : MonoBehaviour
             anim.SetBool("Grounded", true);
         }
 
-        // 방향 전환
+        // 방향 전환 로직 수정
         if (UnityEngine.Input.GetButton("Horizontal"))
         {
             float direction = UnityEngine.Input.GetAxisRaw("Horizontal");
-            if (direction == -1) // 왼쪽으로 이동
+            if ((direction < 0 && spriteRenderer.flipX) || (direction > 0 && !spriteRenderer.flipX))
             {
-                spriteRenderer.flipX = false;
-            }
-            else if (direction == 1) // 오른쪽으로 이동
-            {
-                spriteRenderer.flipX = true;
+                FlipCharacter();
             }
         }
 
@@ -149,6 +145,20 @@ public class PlayerMove : MonoBehaviour
         }
 
         sliderValue = health / maxHealth;
+    }
+
+    // 캐릭터 및 자식 객체들을 뒤집는 메서드
+    void FlipCharacter()
+    {
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+
+        // 캐릭터의 모든 자식 객체들의 스케일도 뒤집기
+        foreach (Transform child in transform)
+        {
+            Vector3 childScale = child.localScale;
+            childScale.x *= -1;
+            child.localScale = childScale;
+        }
     }
 
     //피격시 효과

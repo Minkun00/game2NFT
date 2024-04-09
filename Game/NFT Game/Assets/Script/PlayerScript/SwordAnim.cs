@@ -15,7 +15,6 @@ public class SwordAnim : MonoBehaviour
         else if (collision.CompareTag("Barrier"))
         {
             GameObject.Find("Boss").GetComponent<Boss>().BarrierHurt(7f);
-
         }
         else if (collision.CompareTag("Boss") && GameObject.Find("Barrier") == null)
         {
